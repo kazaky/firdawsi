@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Firdawsi">
+  <rect width="512" height="512" fill="#f4f0e6"/>
+  <polygon points="256,48 296,168 416,208 296,248 256,368 216,248 96,208 216,168" fill="#3d8f8a"/>
+  <polygon points="256,96 272,168 344,184 272,200 256,272 240,200 168,184 240,168" fill="#1e2433"/>
+  <polygon points="256,128 264,176 312,184 264,192 256,240 248,192 200,184 248,176" fill="#f4f0e6"/>
+  <polygon points="256,144 256,224 176,208 208,144" fill="#7a8fa3"/>
+  <polygon points="256,144 256,224 336,208 304,144" fill="#8b2942"/>
+  <polygon points="256,144 208,176 224,256 144,240" fill="#3d6b4f"/>
+  <polygon points="256,144 304,176 288,256 368,240" fill="#6b4f7a"/>
+  <polygon points="256,168 232,208 256,248 280,208" fill="#e8c547"/>
+</svg>

@@ -1,0 +1,140 @@
+import { expect, test } from "@playwright/test";
+
+async function expectNoHorizontalOverflow(page: import("@playwright/test").Page) {
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(overflow).toBeLessThanOrEqual(1);
+}
+
+test("showcase presents every foundation section", async ({ page }) => {
+  await page.goto("/");
+  await expect(page).toHaveTitle(/Firdawsi/i);
+
+  await expect(page.getByRole("link", { name: /View on GitHub/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Star on GitHub/i })).toBeVisible();
+
+  for (const id of [
+    "overview",
+    "principles",
+    "foundations",
+    "geometry",
+    "regions",
+    "components",
+    "motion",
+    "accessibility",
+    "studio",
+  ]) {
+    await expect(page.locator(`#${id}`)).toBeVisible();
+  }
+
+  await expect(page.locator("img")).toHaveCount(0);
+  await expect(page.locator("#geometry .geometry-card")).toHaveCount(9);
+  await expect(page.locator("#geometry .reference-card")).toHaveCount(2);
+  await expect(page.locator("#geometry")).toContainText("Khatam · zellige palette");
+  await expect(page.locator("#geometry")).toContainText("Curvilinear isometric tessellation");
+  await expect(page.locator("#geometry")).toContainText("Khatam · 8");
+  await expect(page.locator("#geometry")).toContainText("Floral-geometric field");
+  await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
+test("regional profiles render visibly distinct presets", async ({ page }) => {
+  await page.goto("/#regions");
+  const maghrebi = page.locator('#regions article[data-region="maghrebi"]');
+  const ottoman = page.locator('#regions article[data-region="ottoman"]');
+  await expect(maghrebi).toHaveAttribute("data-preset", "zellige-star-cross");
+  await expect(ottoman).toHaveAttribute("data-preset", "rumi-medallion-6");
+  const maghrebiSvg = await maghrebi.locator("svg").evaluate((node) => node.outerHTML);
+  const ottomanSvg = await ottoman.locator("svg").evaluate((node) => node.outerHTML);
+  expect(maghrebiSvg).not.toBe(ottomanSvg);
+});
+
+test("component gallery exposes product chrome primitives", async ({ page }) => {
+  await page.goto("/#components");
+  await expect(page.locator(".firdawsi-app-header")).toBeVisible();
+  await expect(page.locator(".firdawsi-navigation")).toBeVisible();
+  await expect(page.locator(".firdawsi-menu")).toBeVisible();
+  await expect(page.locator(".firdawsi-atmosphere").first()).toBeVisible();
+  await expect(page.locator('[data-atmosphere="courtyard-wash"]')).toBeVisible();
+});
+
+test("themes and direction remain interactive", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByRole("button", { name: "dark", exact: true }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+
+  await page.getByRole("button", { name: "High contrast" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "high-contrast");
+
+  await page.getByRole("button", { name: "RTL" }).click();
+  await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+  await expect(page.locator("#components")).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
+test("studio uses preset-valid controls and construction overlays", async ({ page }) => {
+  await page.goto("/#studio");
+
+  const studioSvg = page.locator("#studio .studio-canvas svg");
+  const before = await studioSvg.evaluate((node) => node.outerHTML);
+  await page.locator('[data-preset-id="floral-geometric-field"]').click();
+  await expect(page.getByRole("slider", { name: "Petal depth" })).toBeVisible();
+  await expect(page.getByRole("switch", { name: "Botanical fill" })).toBeVisible();
+  await expect(page.getByRole("slider", { name: "Weave gap" })).toHaveCount(0);
+  const after = await studioSvg.evaluate((node) => node.outerHTML);
+  expect(after).not.toBe(before);
+
+  await page.locator('[data-preset-id="khatam-8-star-cross"]').click();
+  await expect(page.getByRole("slider", { name: "Weave gap" })).toBeVisible();
+  await expect(page.getByRole("slider", { name: "Petal depth" })).toHaveCount(0);
+
+  await page.getByRole("radio", { name: "full", exact: true }).check();
+  await expect(studioSvg.locator("[data-construction-role]").first()).toBeAttached();
+
+  const straps = page.getByRole("checkbox", { name: /Straps/ });
+  await straps.uncheck();
+  await expect(page.locator("#studio .studio-canvas")).toHaveClass(/studio-layer--hide-straps/);
+
+  await expect(page.locator(".tier-grid article")).toHaveCount(3);
+  await expect(page.locator(".tier-grid")).toContainText("compact");
+  await expect(page.locator(".tier-grid")).toContainText("regular");
+  await expect(page.locator(".tier-grid")).toContainText("expanded");
+});
+
+test("recipe v2 metadata and exports are available", async ({ page }) => {
+  await page.goto("/#studio");
+
+  await expect(page.locator(".recipe-inspector")).toContainText("Recipe v2");
+  await expect(page.locator(".recipe-inspector")).toContainText("khatam-8-v2");
+  await expect(page.locator(".recipe-inspector")).toContainText("Repeat cell");
+  await expect(page.locator(".recipe-inspector")).toContainText("Source IDs");
+  await expect(page.locator(".recipe-inspector")).toContainText("Topology");
+  await expect(page.locator(".recipe-inspector details")).toContainText("Review limitations");
+
+  await expect(page.getByRole("button", { name: /Copy SVG/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: "CSS", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "JSON", exact: true })).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
+test("mobile layout remains contained in both directions", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/");
+  await expectNoHorizontalOverflow(page);
+
+  await page.getByRole("button", { name: "Open guide" }).click();
+  await expect(page.locator("#guide-panel")).toHaveClass(/guide-panel--open/);
+  await page.locator("#guide-panel").getByRole("link", { name: "Pattern Studio", exact: true }).click();
+  await expect(page.locator("#studio")).toBeInViewport();
+  await expect(page.locator("#guide-panel")).not.toHaveClass(/guide-panel--open/);
+
+  await page.getByRole("button", { name: "RTL" }).click();
+  await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+  await expectNoHorizontalOverflow(page);
+
+  await expect(page.locator("#components")).toBeVisible();
+  await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
+  await expect(page.locator(".tier-grid article")).toHaveCount(3);
+});

@@ -1,0 +1,41 @@
+{
+  "name": "@firdawsi/geometry",
+  "version": "0.1.0",
+  "description": "Deterministic SVG, CSS, and JSON geometry recipes for Firdawsi.",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./construction": {
+      "types": "./dist/construction/index.d.ts",
+      "import": "./dist/construction/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/d3-path": "^3.1.1",
+    "@types/d3-polygon": "^3.0.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "d3-path": "^3.1.0",
+    "d3-polygon": "^3.0.1"
+  }
+}

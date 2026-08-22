@@ -1,0 +1,457 @@
+/* Generated from tokens.json. Do not edit directly. */
+export const tokens = {
+  "color.primitive.ink.0": "#ffffff",
+  "color.primitive.ink.50": "#f7f8f7",
+  "color.primitive.ink.100": "#e8ebe9",
+  "color.primitive.ink.300": "#aeb7b2",
+  "color.primitive.ink.500": "#66736d",
+  "color.primitive.ink.700": "#35423c",
+  "color.primitive.ink.900": "#15201b",
+  "color.primitive.ink.950": "#0a110e",
+  "color.primitive.jade.50": "#edf8f4",
+  "color.primitive.jade.100": "#d4eee5",
+  "color.primitive.jade.300": "#83c7ae",
+  "color.primitive.jade.500": "#2d8b6e",
+  "color.primitive.jade.600": "#206f58",
+  "color.primitive.jade.700": "#195847",
+  "color.primitive.jade.900": "#12392f",
+  "color.primitive.saffron.50": "#fff8e8",
+  "color.primitive.saffron.200": "#f8dda0",
+  "color.primitive.saffron.400": "#dda83a",
+  "color.primitive.saffron.600": "#a66d12",
+  "color.primitive.saffron.800": "#68420e",
+  "color.primitive.azure.50": "#eef7fb",
+  "color.primitive.azure.300": "#8fc9df",
+  "color.primitive.azure.500": "#378aac",
+  "color.primitive.azure.700": "#245d78",
+  "color.primitive.azure.900": "#17394a",
+  "color.primitive.clay.50": "#fff3ef",
+  "color.primitive.clay.300": "#eaa38e",
+  "color.primitive.clay.500": "#bd6048",
+  "color.primitive.clay.700": "#843d2e",
+  "color.primitive.clay.900": "#4f271f",
+  "color.primitive.transparent": "#00000000",
+  "space.0": {
+    "value": 0,
+    "unit": "px"
+  },
+  "space.1": {
+    "value": 4,
+    "unit": "px"
+  },
+  "space.2": {
+    "value": 8,
+    "unit": "px"
+  },
+  "space.3": {
+    "value": 12,
+    "unit": "px"
+  },
+  "space.4": {
+    "value": 16,
+    "unit": "px"
+  },
+  "space.5": {
+    "value": 20,
+    "unit": "px"
+  },
+  "space.6": {
+    "value": 24,
+    "unit": "px"
+  },
+  "space.8": {
+    "value": 32,
+    "unit": "px"
+  },
+  "space.10": {
+    "value": 40,
+    "unit": "px"
+  },
+  "space.12": {
+    "value": 48,
+    "unit": "px"
+  },
+  "space.16": {
+    "value": 64,
+    "unit": "px"
+  },
+  "space.20": {
+    "value": 80,
+    "unit": "px"
+  },
+  "space.24": {
+    "value": 96,
+    "unit": "px"
+  },
+  "space.0-5": {
+    "value": 2,
+    "unit": "px"
+  },
+  "space.1-5": {
+    "value": 6,
+    "unit": "px"
+  },
+  "font.family.sans": [
+    "Noto Sans",
+    "Noto Sans Arabic",
+    "system-ui",
+    "sans-serif"
+  ],
+  "font.family.display": [
+    "Noto Kufi Arabic",
+    "Noto Sans Arabic",
+    "system-ui",
+    "sans-serif"
+  ],
+  "font.family.mono": [
+    "ui-monospace",
+    "SFMono-Regular",
+    "monospace"
+  ],
+  "font.size.xs": {
+    "value": 12,
+    "unit": "px"
+  },
+  "font.size.sm": {
+    "value": 14,
+    "unit": "px"
+  },
+  "font.size.md": {
+    "value": 16,
+    "unit": "px"
+  },
+  "font.size.lg": {
+    "value": 18,
+    "unit": "px"
+  },
+  "font.size.xl": {
+    "value": 22,
+    "unit": "px"
+  },
+  "font.size.2xl": {
+    "value": 28,
+    "unit": "px"
+  },
+  "font.size.3xl": {
+    "value": 36,
+    "unit": "px"
+  },
+  "font.size.4xl": {
+    "value": 48,
+    "unit": "px"
+  },
+  "font.size.5xl": {
+    "value": 64,
+    "unit": "px"
+  },
+  "font.weight.regular": 400,
+  "font.weight.medium": 500,
+  "font.weight.semibold": 600,
+  "font.weight.bold": 700,
+  "font.lineHeight.tight": 1.2,
+  "font.lineHeight.display": 1.3,
+  "font.lineHeight.body": 1.6,
+  "font.lineHeight.arabic": 1.85,
+  "font.tracking.tight": {
+    "value": -0.02,
+    "unit": "rem"
+  },
+  "font.tracking.normal": {
+    "value": 0,
+    "unit": "rem"
+  },
+  "font.tracking.wide": {
+    "value": 0.04,
+    "unit": "rem"
+  },
+  "radius.none": {
+    "value": 0,
+    "unit": "px"
+  },
+  "radius.sm": {
+    "value": 4,
+    "unit": "px"
+  },
+  "radius.md": {
+    "value": 8,
+    "unit": "px"
+  },
+  "radius.lg": {
+    "value": 14,
+    "unit": "px"
+  },
+  "radius.xl": {
+    "value": 22,
+    "unit": "px"
+  },
+  "radius.full": {
+    "value": 9999,
+    "unit": "px"
+  },
+  "shape.facet.subtle": {
+    "value": 4,
+    "unit": "px"
+  },
+  "shape.facet.medium": {
+    "value": 8,
+    "unit": "px"
+  },
+  "shape.facet.bold": {
+    "value": 14,
+    "unit": "px"
+  },
+  "shape.arch.rise.shallow": 0.18,
+  "shape.arch.rise.balanced": 0.32,
+  "shape.arch.rise.tall": 0.5,
+  "shape.arch.shoulder.narrow": 0.22,
+  "shape.arch.shoulder.standard": 0.34,
+  "shape.arch.shoulder.wide": 0.44,
+  "shape.corner.rounded": "round",
+  "shape.corner.faceted": "bevel",
+  "shape.corner.notched": "notch",
+  "shape.corner.arch": "arch",
+  "shape.container.sm": {
+    "value": 4,
+    "unit": "px"
+  },
+  "shape.container.md": {
+    "value": 8,
+    "unit": "px"
+  },
+  "shape.container.lg": {
+    "value": 14,
+    "unit": "px"
+  },
+  "shape.container.xl": {
+    "value": 22,
+    "unit": "px"
+  },
+  "stroke.width.hairline": {
+    "value": 1,
+    "unit": "px"
+  },
+  "stroke.width.regular": {
+    "value": 1.5,
+    "unit": "px"
+  },
+  "stroke.width.strong": {
+    "value": 2,
+    "unit": "px"
+  },
+  "stroke.width.ornamental": {
+    "value": 3,
+    "unit": "px"
+  },
+  "stroke.dash.none": "none",
+  "stroke.dash.measured": "4 4",
+  "stroke.dash.decorative": "1 5",
+  "elevation.0": {
+    "color": "#00000000",
+    "offsetX": "0px",
+    "offsetY": "0px",
+    "blur": "0px",
+    "spread": "0px"
+  },
+  "elevation.1": {
+    "color": "#15201b14",
+    "offsetX": "0px",
+    "offsetY": "1px",
+    "blur": "3px",
+    "spread": "0px"
+  },
+  "elevation.2": {
+    "color": "#15201b1f",
+    "offsetX": "0px",
+    "offsetY": "4px",
+    "blur": "12px",
+    "spread": "-2px"
+  },
+  "elevation.3": {
+    "color": "#15201b29",
+    "offsetX": "0px",
+    "offsetY": "12px",
+    "blur": "28px",
+    "spread": "-6px"
+  },
+  "elevation.tonal.1": "color-mix(in srgb, {color.primitive.jade.500} 4%, {color.primitive.ink.0})",
+  "elevation.tonal.2": "color-mix(in srgb, {color.primitive.jade.500} 8%, {color.primitive.ink.0})",
+  "elevation.tonal.3": "color-mix(in srgb, {color.primitive.jade.500} 12%, {color.primitive.ink.0})",
+  "opacity.disabled": 0.42,
+  "opacity.muted": 0.64,
+  "opacity.scrim": 0.58,
+  "opacity.pattern": 0.09,
+  "opacity.full": 1,
+  "gradient.courtyard-wash": "radial-gradient(120% 90% at 12% 8%, #f7efd9 0%, #e8ebe9 42%, #d4eee5 100%)",
+  "gradient.lapis-veil": "linear-gradient(155deg, #eef7fb 0%, #d4eee5 48%, #8fc9df 100%)",
+  "gradient.jade-depth": "radial-gradient(90% 70% at 80% 20%, #83c7ae 0%, #206f58 55%, #12392f 100%)",
+  "pattern.density.quiet": 0.35,
+  "pattern.density.balanced": 0.6,
+  "pattern.density.rich": 0.85,
+  "pattern.cell.sm": {
+    "value": 16,
+    "unit": "px"
+  },
+  "pattern.cell.md": {
+    "value": 28,
+    "unit": "px"
+  },
+  "pattern.cell.lg": {
+    "value": 44,
+    "unit": "px"
+  },
+  "motion.duration.instant": {
+    "value": 0,
+    "unit": "ms"
+  },
+  "motion.duration.fast": {
+    "value": 120,
+    "unit": "ms"
+  },
+  "motion.duration.normal": {
+    "value": 220,
+    "unit": "ms"
+  },
+  "motion.duration.slow": {
+    "value": 360,
+    "unit": "ms"
+  },
+  "motion.duration.ceremonial": {
+    "value": 600,
+    "unit": "ms"
+  },
+  "motion.easing.standard": [
+    0.2,
+    0,
+    0,
+    1
+  ],
+  "motion.easing.enter": [
+    0.16,
+    1,
+    0.3,
+    1
+  ],
+  "motion.easing.exit": [
+    0.4,
+    0,
+    1,
+    1
+  ],
+  "motion.easing.emphasis": [
+    0.22,
+    1,
+    0.36,
+    1
+  ],
+  "zIndex.base": 0,
+  "zIndex.raised": 10,
+  "zIndex.sticky": 100,
+  "zIndex.overlay": 400,
+  "zIndex.modal": 500,
+  "zIndex.toast": 600,
+  "size.icon-sm": {
+    "value": 16,
+    "unit": "px"
+  },
+  "size.icon-md": {
+    "value": 20,
+    "unit": "px"
+  },
+  "size.icon-lg": {
+    "value": 24,
+    "unit": "px"
+  },
+  "size.control-sm": {
+    "value": 32,
+    "unit": "px"
+  },
+  "size.control-md": {
+    "value": 40,
+    "unit": "px"
+  },
+  "size.control-lg": {
+    "value": 48,
+    "unit": "px"
+  },
+  "size.content-sm": {
+    "value": 560,
+    "unit": "px"
+  },
+  "size.content-md": {
+    "value": 720,
+    "unit": "px"
+  },
+  "size.content-lg": {
+    "value": 1120,
+    "unit": "px"
+  },
+  "logical.flow.inline-start": "inline-start",
+  "logical.flow.inline-end": "inline-end",
+  "logical.flow.block-start": "block-start",
+  "logical.flow.block-end": "block-end",
+  "logical.icon.directional-transform-ltr": "none",
+  "logical.icon.directional-transform-rtl": "scaleX(-1)",
+  "logical.text.align-start": "start",
+  "logical.text.align-end": "end"
+} as const;
+
+export const themes = {
+  "light": {
+    "color.background": "#f7f8f7",
+    "color.surface": "#ffffff",
+    "color.surface-subtle": "#e8ebe9",
+    "color.text": "#15201b",
+    "color.text-muted": "#66736d",
+    "color.border": "#aeb7b2",
+    "color.primary": "#206f58",
+    "color.primary-hover": "#195847",
+    "color.on-primary": "#ffffff",
+    "color.secondary": "#245d78",
+    "color.accent": "#a66d12",
+    "color.focus": "#378aac",
+    "color.danger": "#843d2e",
+    "color.on-danger": "#ffffff",
+    "color.selection": "#d4eee5",
+    "color.scrim": "#0a110e94"
+  },
+  "dark": {
+    "color.background": "#0a110e",
+    "color.surface": "#15201b",
+    "color.surface-subtle": "#35423c",
+    "color.text": "#f7f8f7",
+    "color.text-muted": "#aeb7b2",
+    "color.border": "#66736d",
+    "color.primary": "#83c7ae",
+    "color.primary-hover": "#d4eee5",
+    "color.on-primary": "#12392f",
+    "color.secondary": "#8fc9df",
+    "color.accent": "#f8dda0",
+    "color.focus": "#8fc9df",
+    "color.danger": "#eaa38e",
+    "color.on-danger": "#4f271f",
+    "color.selection": "#195847",
+    "color.scrim": "#000000b8"
+  },
+  "highContrast": {
+    "color.background": "#000000",
+    "color.surface": "#000000",
+    "color.surface-subtle": "#171717",
+    "color.text": "#ffffff",
+    "color.text-muted": "#ffffff",
+    "color.border": "#ffffff",
+    "color.primary": "#62f5ba",
+    "color.primary-hover": "#ffffff",
+    "color.on-primary": "#000000",
+    "color.secondary": "#8fddff",
+    "color.accent": "#ffd65c",
+    "color.focus": "#ffd65c",
+    "color.danger": "#ff9c86",
+    "color.on-danger": "#000000",
+    "color.selection": "#195847",
+    "color.scrim": "#000000e6"
+  }
+} as const;
+
+export type TokenName = keyof typeof tokens;
+export type ThemeName = keyof typeof themes;
+export type SemanticColorRole = keyof (typeof themes)["light"];
