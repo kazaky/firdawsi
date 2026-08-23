@@ -13,12 +13,30 @@ importers:
       '@firdawsi/geometry':
         specifier: workspace:*
         version: link:../../packages/geometry
+      '@firdawsi/shape':
+        specifier: workspace:*
+        version: link:../../packages/shape
       '@firdawsi/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       '@firdawsi/web':
         specifier: workspace:*
         version: link:../../packages/web
+      '@fontsource/el-messiri':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/noto-kufi-arabic':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/noto-sans':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/noto-sans-arabic':
+        specifier: ^5.3.0
+        version: 5.3.0
+      adhan:
+        specifier: ^4.4.4
+        version: 4.4.4
       react:
         specifier: ^19.1.1
         version: 19.2.8
@@ -67,6 +85,12 @@ importers:
         specifier: ^3.2.4
         version: 3.2.7(jsdom@25.0.1)
 
+  packages/shape:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.3
+
   packages/tokens:
     devDependencies:
       typescript:
@@ -78,6 +102,9 @@ importers:
       '@firdawsi/geometry':
         specifier: workspace:*
         version: link:../geometry
+      '@firdawsi/shape':
+        specifier: workspace:*
+        version: link:../shape
       '@firdawsi/tokens':
         specifier: workspace:*
         version: link:../tokens
@@ -392,6 +419,18 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@fontsource/el-messiri@5.3.0':
+    resolution: {integrity: sha512-Fqhf6DEuRInnLso60tk2i8mQlFfDjYNeF6Ybrto7jBnAwNClQqn4g9lMae/M+ub1zWYteM98uPOA1DwU5J8hbw==}
+
+  '@fontsource/noto-kufi-arabic@5.3.0':
+    resolution: {integrity: sha512-3iSq8i00+omfUXFXuCUrNDz1ghck3HDXul3p3iAfY0Vd9NZqI1NcUNoAVPiUW+BaEQGYQSi+r0R3d1eoNK3OBg==}
+
+  '@fontsource/noto-sans-arabic@5.3.0':
+    resolution: {integrity: sha512-i3t6GR0LOReyJVEk+YfYCnxv53wuIelg7Y9NGNvOq4Diq/EP0YszaGXkQwfQNigLjfO4POrLaPGM0sNliGYk7A==}
+
+  '@fontsource/noto-sans@5.3.0':
+    resolution: {integrity: sha512-fBCog2PY7DiVVTEEqtI/Qdinx/knobHYfoGpjFXdfBX5RoJaBp1Prw2G75p0OIsdlMZg3cLo0c+YbIUYOxnQJw==}
+
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
 
@@ -648,6 +687,9 @@ packages:
 
   '@vitest/utils@3.2.7':
     resolution: {integrity: sha512-x6BDOd7dyo3PFLY3I9/HJ25X/6OurhGXk2/B9gOZNPF7XDVjeBK4k01lQE5uvDpbuheErh91qYuE1E2OEjK3Rw==}
+
+  adhan@4.4.4:
+    resolution: {integrity: sha512-6KmAwLtk2ZU0hLdMR3HofOuoEMa76mKv75Bknv8OEwquIGGNUFabWZna+dJI3gEuS7TqUw62Ro5PkwccgW19zw==}
 
   agent-base@7.1.4:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
@@ -1458,6 +1500,14 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
+  '@fontsource/el-messiri@5.3.0': {}
+
+  '@fontsource/noto-kufi-arabic@5.3.0': {}
+
+  '@fontsource/noto-sans-arabic@5.3.0': {}
+
+  '@fontsource/noto-sans@5.3.0': {}
+
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -1692,6 +1742,8 @@ snapshots:
       '@vitest/pretty-format': 3.2.7
       loupe: 3.2.1
       tinyrainbow: 2.0.0
+
+  adhan@4.4.4: {}
 
   agent-base@7.1.4: {}
 

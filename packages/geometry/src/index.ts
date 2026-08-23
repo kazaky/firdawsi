@@ -11,6 +11,7 @@ export {
   generateScreen,
   generateStar,
   generateZellige,
+  decorativeStar,
 } from "./generators.js";
 export {
   generateFromRecipe,

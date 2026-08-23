@@ -10,6 +10,9 @@ Load the generated CSS once:
 import "@firdawsi/tokens/css";
 ```
 
+Display type is El Messiri (open Maghrebi) with Noto Kufi Arabic as fallback.
+Self-host those families in the app — the token package names them but does not ship font files.
+
 Select a semantic theme on an application root:
 
 ```html

@@ -18,6 +18,8 @@ export const guideNavGroups = [
     items: [
       { id: "geometry", label: "Geometry", icon: "grid" },
       { id: "regions", label: "Regions", icon: "map" },
+      { id: "mechanics", label: "Mechanics", icon: "mechanics" },
+      { id: "tokens", label: "Tokens", icon: "tokens" },
       { id: "components", label: "Components", icon: "blocks" },
     ],
   },
@@ -97,6 +99,20 @@ function NavGlyph({ kind }: { kind: string }) {
           <path {...common} d="M7 11h6" />
         </svg>
       );
+    case "mechanics":
+      return (
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <path {...common} d="M4 16c4-10 8-10 12 0" />
+          <path {...common} d="M6 6h8v4H6z" />
+        </svg>
+      );
+    case "tokens":
+      return (
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <rect {...common} x="3" y="4" width="14" height="4" rx="1" />
+          <rect {...common} x="3" y="10" width="14" height="6" rx="1" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -150,7 +166,7 @@ export function GuidePanel({
         <a className="guide-panel__pill" href={SITE_URL} rel="noreferrer">
           firdawsi.org
         </a>
-        <p className="guide-panel__meta">Open source · v0.1 · 2026</p>
+        <p className="guide-panel__meta">Open source · v0.2 · 2026</p>
       </div>
     </aside>
   );

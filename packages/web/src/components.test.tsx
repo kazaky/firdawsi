@@ -33,9 +33,9 @@ describe("foundation controls", () => {
     expect(button).toHaveAttribute("aria-busy", "true");
   });
 
-  it("applies corner treatment classes on secondary buttons", () => {
-    render(<Button variant="secondary" corner="bevel">Facet</Button>);
-    expect(screen.getByRole("button", { name: "Facet" })).toHaveClass("firdawsi-corner--bevel");
+  it("applies the arch-corner identity without an ornament prop", () => {
+    render(<Button variant="secondary">Facet</Button>);
+    expect(screen.getByRole("button", { name: "Facet" })).toHaveAttribute("data-shape", "arch");
   });
 
   it("connects field labels, hints, and errors", () => {
@@ -86,16 +86,17 @@ describe("product chrome", () => {
     expect(screen.getByText("2")).toBeInTheDocument();
   });
 
-  it("applies card ornament and corner props", () => {
+  it("uses a surface tier instead of ornamental overlays", () => {
     const { container } = render(
-      <Card title="Framed" corner="notch" ornament="frame" intensity="quiet">
+      <Card title="Framed" tier={2}>
         Body
       </Card>,
     );
     const card = container.querySelector(".firdawsi-card");
-    expect(card).toHaveAttribute("data-ornament", "frame");
-    expect(card).toHaveClass("firdawsi-corner--notch");
-    expect(container.querySelector(".firdawsi-geometry-overlay")).toBeInTheDocument();
+    expect(card).toHaveAttribute("data-shape", "arch");
+    expect(card).toHaveAttribute("data-tier", "2");
+    expect(card).toHaveClass("firdawsi-surface--tier-2");
+    expect(container.querySelector(".firdawsi-geometry-overlay")).not.toBeInTheDocument();
   });
 });
 

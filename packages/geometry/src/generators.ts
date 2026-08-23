@@ -177,6 +177,12 @@ function regularAt(center: Point, radius: number, sides: number, rotation = -Mat
   return regularPolygon(circle(center, radius), sides, rotation);
 }
 
+/**
+ * Decorative star polygon. This is not compass construction: it places
+ * alternating outer/inner radii on a circle. Prefer `rosetteGeometry` or a
+ * named construction preset. Callers that need the decorative primitive
+ * should import `decorativeStar`.
+ */
 function alternatingStar(
   center: Point,
   outerRadius: number,
@@ -2084,7 +2090,9 @@ export const generateGrid = (options: PatternOptions = {}): PatternResult =>
 export const generateStar = (options: PatternOptions = {}): PatternResult =>
   options.symmetry === 16
     ? buildPreset("medallion-16-nested", options)
-    : buildPreset("khatam-8-star-cross", options);
+    : options.symmetry === 8
+      ? buildPreset("khatam-8-star-cross", options)
+      : buildPreset("rosette-12-almond", options);
 export const generateRosette = (options: PatternOptions = {}): PatternResult =>
   buildPreset("rosette-12-almond", options);
 export const generateGirih = (options: PatternOptions = {}): PatternResult =>
@@ -2151,3 +2159,6 @@ export function generateConstructionRecipe(
 // Retained only for downstream source compatibility with callers that imported
 // the old helper indirectly; new construction code uses validated polygons.
 export const points = legacyPoints;
+
+/** Explicit decorative primitive — not a construction recipe. */
+export const decorativeStar = alternatingStar;

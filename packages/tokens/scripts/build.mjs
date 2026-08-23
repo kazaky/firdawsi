@@ -26,10 +26,13 @@ function collect(node, path = [], inheritedType, output = {}) {
 }
 
 const allTokens = collect(source);
-const baseTokens = Object.fromEntries(
-  Object.entries(allTokens).filter(([name]) => !name.startsWith("theme."))
-);
 const themeNames = Object.keys(source.theme ?? {});
+const regionNames = Object.keys(source.region ?? {});
+
+const isScoped = (name) => name.startsWith("theme.") || name.startsWith("region.");
+const baseTokens = Object.fromEntries(
+  Object.entries(allTokens).filter(([name]) => !isScoped(name))
+);
 
 function resolveAlias(value, stack = []) {
   if (typeof value !== "string") return value;
@@ -44,26 +47,29 @@ function resolveAlias(value, stack = []) {
   return resolveAlias(target.value, [...stack, name]);
 }
 
+function flatten(value) {
+  if (value && typeof value === "object" && "value" in value && "unit" in value) {
+    return `${value.value}${value.unit}`;
+  }
+  return String(value);
+}
+
 function resolveEmbeddedAliases(value) {
   if (typeof value !== "string") return value;
   return value.replace(/\{([^}]+)\}/g, (_, name) => {
     const target = allTokens[name];
     if (!target) throw new Error(`Unknown token reference: ${name}`);
-    const resolved = resolveAlias(target.value);
-    if (resolved && typeof resolved === "object" && "value" in resolved && "unit" in resolved) {
-      return `${resolved.value}${resolved.unit}`;
-    }
-    return String(resolved);
+    return flatten(resolveAlias(target.value));
   });
 }
 
 function cssValue(value, type) {
   const resolved = resolveAlias(value);
   if (resolved && typeof resolved === "object" && "value" in resolved && "unit" in resolved) {
-    return `${resolved.value}${resolved.unit}`;
+    return flatten(resolved);
   }
   if (type === "fontFamily" && Array.isArray(resolved)) {
-    return resolved.map((family) => family.includes(" ") ? `"${family}"` : family).join(", ");
+    return resolved.map((family) => (family.includes(" ") ? `"${family}"` : family)).join(", ");
   }
   if (type === "cubicBezier" && Array.isArray(resolved)) {
     return `cubic-bezier(${resolved.join(", ")})`;
@@ -74,33 +80,108 @@ function cssValue(value, type) {
   return resolveEmbeddedAliases(String(resolved));
 }
 
+/**
+ * Negative sebka steps would emit a double hyphen, which reads as a malformed
+ * custom property. `sebka.step.-2` becomes `--firdawsi-sebka-step-n2`.
+ */
 const cssName = (name) =>
-  `--firdawsi-${name.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`).replace(/\./g, "-")}`;
+  `--firdawsi-${name
+    .replace(/\.-/g, ".n")
+    .replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)
+    .replace(/\./g, "-")}`;
 
 function declarations(tokens, prefixToRemove = "") {
   return Object.entries(tokens)
     .map(([name, token]) => {
-      const publicName = prefixToRemove ? name.replace(prefixToRemove, "") : name;
+      const publicName = prefixToRemove ? name.slice(prefixToRemove.length) : name;
       return `  ${cssName(publicName)}: ${cssValue(token.value, token.type)};`;
     })
     .join("\n");
 }
 
-const themes = Object.fromEntries(themeNames.map((themeName) => {
-  const prefix = `theme.${themeName}.`;
-  const tokens = Object.fromEntries(
-    Object.entries(allTokens).filter(([name]) => name.startsWith(prefix))
-  );
-  return [
-    themeName,
-    Object.fromEntries(
-      Object.entries(tokens).map(([name, token]) => [
-        name.slice(prefix.length),
-        resolveAlias(token.value)
-      ])
-    )
-  ];
-}));
+const scopedTokens = (prefix) =>
+  Object.fromEntries(Object.entries(allTokens).filter(([name]) => name.startsWith(prefix)));
+
+/**
+ * Alberca springs are authored as physics. Settling time to within 2% of rest is
+ * derived here rather than hand-written so the CSS fallback duration can never
+ * drift from the spring it approximates.
+ */
+function springDurationMs({ stiffness, damping, mass }) {
+  const angularFrequency = Math.sqrt(stiffness / mass);
+  const dampingRatio = damping / (2 * Math.sqrt(stiffness * mass));
+  const settling = -Math.log(0.02) / (Math.min(dampingRatio, 1) * angularFrequency);
+  return Math.round(settling * 1000);
+}
+
+const springs = Object.fromEntries(
+  Object.entries(source.motion?.spring ?? {})
+    .filter(([key]) => !key.startsWith("$"))
+    .map(([name, group]) => [
+      name,
+      {
+        stiffness: group.stiffness.$value,
+        damping: group.damping.$value,
+        mass: group.mass.$value
+      }
+    ])
+);
+
+const springDeclarations = Object.entries(springs)
+  .map(([name, spring]) => {
+    const ratio = spring.damping / (2 * Math.sqrt(spring.stiffness * spring.mass));
+    return [
+      `  --firdawsi-motion-spring-${name}-damping-ratio: ${ratio.toFixed(4)};`,
+      `  --firdawsi-motion-spring-${name}-duration: ${springDurationMs(spring)}ms;`
+    ].join("\n");
+  })
+  .join("\n");
+
+const regionRules = regionNames
+  .map((regionName) => {
+    const aliases = source.region[regionName].$aliases ?? [];
+    const selectors = [regionName, ...aliases]
+      .map((id) => `[data-region="${id}"]`)
+      .join(",\n");
+    const description = source.region[regionName].$description;
+    return `${description ? `/* ${description} */\n` : ""}${selectors} {
+${declarations(scopedTokens(`region.${regionName}.`), `region.${regionName}.`)}
+}`;
+  })
+  .join("\n\n");
+
+const themes = Object.fromEntries(
+  themeNames.map((themeName) => {
+    const prefix = `theme.${themeName}.`;
+    return [
+      themeName,
+      Object.fromEntries(
+        Object.entries(scopedTokens(prefix)).map(([name, token]) => [
+          name.slice(prefix.length),
+          resolveAlias(token.value)
+        ])
+      )
+    ];
+  })
+);
+
+const regions = Object.fromEntries(
+  regionNames.map((regionName) => {
+    const prefix = `region.${regionName}.`;
+    return [
+      regionName,
+      {
+        aliases: source.region[regionName].$aliases ?? [],
+        tokens: Object.fromEntries(
+          Object.entries(scopedTokens(prefix)).map(([name, token]) => [
+            name.slice(prefix.length),
+            resolveAlias(token.value)
+          ])
+        )
+      }
+    ];
+  })
+);
 
 const baseResolved = Object.fromEntries(
   Object.entries(baseTokens).map(([name, token]) => [name, resolveAlias(token.value)])
@@ -110,26 +191,18 @@ const css = `/* Generated from src/tokens.json. Do not edit directly. */
 :root,
 [data-theme="light"] {
 ${declarations(baseTokens)}
-${declarations(
-  Object.fromEntries(Object.entries(allTokens).filter(([name]) => name.startsWith("theme.light."))),
-  "theme.light."
-)}
+${springDeclarations}
+${declarations(scopedTokens("theme.light."), "theme.light.")}
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-${declarations(
-  Object.fromEntries(Object.entries(allTokens).filter(([name]) => name.startsWith("theme.dark."))),
-  "theme.dark."
-)}
+${declarations(scopedTokens("theme.dark."), "theme.dark.")}
   color-scheme: dark;
 }
 
 [data-theme="high-contrast"] {
-${declarations(
-  Object.fromEntries(Object.entries(allTokens).filter(([name]) => name.startsWith("theme.highContrast."))),
-  "theme.highContrast."
-)}
+${declarations(scopedTokens("theme.highContrast."), "theme.highContrast.")}
   color-scheme: dark;
 }
 
@@ -141,61 +214,10 @@ ${declarations(
   --firdawsi-logical-icon-directional-transform: var(--firdawsi-logical-icon-directional-transform-ltr);
 }
 
-/* Regional profile overlays — subtle surface/accent/pattern shifts, not full themes. */
-[data-region="universal"] {
-  --firdawsi-color-surface: #ffffff;
-  --firdawsi-color-surface-subtle: #e8ebe9;
-  --firdawsi-color-accent: #a66d12;
-  --firdawsi-opacity-pattern: 0.09;
-}
-
-[data-region="maghrebi"] {
-  --firdawsi-color-surface: #fbf6ee;
-  --firdawsi-color-surface-subtle: #f0e6d4;
-  --firdawsi-color-accent: #a66d12;
-  --firdawsi-color-primary: #1f5a50;
-  --firdawsi-opacity-pattern: 0.11;
-}
-
-[data-region="andalusi"] {
-  --firdawsi-color-surface: #f7faf8;
-  --firdawsi-color-surface-subtle: #e4efe9;
-  --firdawsi-color-accent: #c89b3c;
-  --firdawsi-color-primary: #245d78;
-  --firdawsi-opacity-pattern: 0.1;
-}
-
-[data-region="mamluk"] {
-  --firdawsi-color-surface: #f4f1ea;
-  --firdawsi-color-surface-subtle: #e6dfd0;
-  --firdawsi-color-accent: #843d2e;
-  --firdawsi-color-primary: #184f78;
-  --firdawsi-opacity-pattern: 0.12;
-}
-
-[data-region="ottoman"] {
-  --firdawsi-color-surface: #f5f8fb;
-  --firdawsi-color-surface-subtle: #e2ebf3;
-  --firdawsi-color-accent: #c79a3b;
-  --firdawsi-color-primary: #173b6c;
-  --firdawsi-opacity-pattern: 0.08;
-}
-
-[data-region="persian"] {
-  --firdawsi-color-surface: #faf7f2;
-  --firdawsi-color-surface-subtle: #efe6d8;
-  --firdawsi-color-accent: #bd6048;
-  --firdawsi-color-primary: #195847;
-  --firdawsi-opacity-pattern: 0.1;
-}
-
-[data-region="south-asian"] {
-  --firdawsi-color-surface: #f8f4ec;
-  --firdawsi-color-surface-subtle: #ebe3d2;
-  --firdawsi-color-accent: #a66d12;
-  --firdawsi-color-primary: #2d6b5a;
-  --firdawsi-opacity-pattern: 0.11;
-}
+/* Regional profile overlays. Andalusi is the system default, so its overlay
+   restates the baseline; the others are deviations from it. Profiles tune
+   non-semantic surface and ornament values only. */
+${regionRules}
 
 @media (prefers-reduced-motion: reduce) {
   :root {
@@ -203,23 +225,62 @@ ${declarations(
     --firdawsi-motion-duration-normal: 0ms;
     --firdawsi-motion-duration-slow: 0ms;
     --firdawsi-motion-duration-ceremonial: 0ms;
+${Object.keys(springs)
+  .map((name) => `    --firdawsi-motion-spring-${name}-duration: 0ms;`)
+  .join("\n")}
   }
 }
 `;
 
-const resolvedJson = `${JSON.stringify({
-  $description: "Generated, resolved token values for platform adapters.",
-  base: baseResolved,
-  themes
-}, null, 2)}\n`;
+const resolvedJson = `${JSON.stringify(
+  {
+    $description: "Generated, resolved token values for platform adapters.",
+    base: baseResolved,
+    themes,
+    regions,
+    springs: Object.fromEntries(
+      Object.entries(springs).map(([name, spring]) => [
+        name,
+        {
+          ...spring,
+          dampingRatio:
+            Math.round((spring.damping / (2 * Math.sqrt(spring.stiffness * spring.mass))) * 1e4) / 1e4,
+          durationMs: springDurationMs(spring)
+        }
+      ])
+    )
+  },
+  null,
+  2
+)}\n`;
 
 const generatedTs = `/* Generated from tokens.json. Do not edit directly. */
 export const tokens = ${JSON.stringify(baseResolved, null, 2)} as const;
 
 export const themes = ${JSON.stringify(themes, null, 2)} as const;
 
+export const regions = ${JSON.stringify(regions, null, 2)} as const;
+
+export const springs = ${JSON.stringify(
+  Object.fromEntries(
+    Object.entries(springs).map(([name, spring]) => [
+      name,
+      {
+        ...spring,
+        dampingRatio:
+          Math.round((spring.damping / (2 * Math.sqrt(spring.stiffness * spring.mass))) * 1e4) / 1e4,
+        durationMs: springDurationMs(spring)
+      }
+    ])
+  ),
+  null,
+  2
+)} as const;
+
 export type TokenName = keyof typeof tokens;
 export type ThemeName = keyof typeof themes;
+export type RegionName = keyof typeof regions;
+export type SpringName = keyof typeof springs;
 export type SemanticColorRole = keyof (typeof themes)["light"];
 `;
 

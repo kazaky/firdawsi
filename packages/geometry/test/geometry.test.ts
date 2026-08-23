@@ -54,6 +54,8 @@ describe("geometry generators", () => {
     expect(generatePreset("khatam-8-star-cross", { symmetry: 12 }).recipe.options.symmetry).toBe(8);
     expect(generatePreset("rosette-12-almond", { symmetry: 8 }).recipe.options.symmetry).toBe(12);
     expect(generateStar({ symmetry: 16 }).recipe.construction.id).toBe("medallion-16-v2");
+    expect(generateStar().recipe.presetId).toBe("rosette-12-almond");
+    expect(generateStar().recipe.kind).toBe("rosette");
     expect(SUPPORTED_SYMMETRIES).toContain(16);
   });
 

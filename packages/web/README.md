@@ -35,7 +35,7 @@ standard `dir` attribute; no component-level direction prop is needed.
 
 - Actions: `Button`, `IconButton`, `Menu`
 - Fields: `TextField`, `SearchField`, `Select`, `Checkbox`, `Radio`, `Switch`
-- Containers: `Surface`, `Card`, `PatternSurface`, `IslamicCorner`, `Frame`
+- Containers: `Surface`, `Card`, `PatternSurface`, `IslamicCorner`, `Frame`, `PrayerPlaque`
 - Navigation: `Tabs`, `Navigation`, `Stepper`
 - Overlays: `Dialog`, `Sheet`, `Tooltip`, `Popover`, `Toast`
 - Feedback: `Banner`, `Progress`, `EmptyState`

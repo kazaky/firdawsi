@@ -1886,15 +1886,17 @@ main {
   padding: clamp(16px, 3vw, 32px);
 }
 
-.reference-preview--khatam svg {
+.reference-preview--khatam svg,
+.reference-preview--plate .reference-plate {
   display: block;
   height: 100%;
-  max-height: 420px;
+  max-height: 480px;
   width: 100%;
 }
 
 .reference-preview--plate {
   background: #f7f2e8;
+  padding: clamp(12px, 2vw, 20px);
 }
 
 .reference-plate {
@@ -2543,4 +2545,141 @@ main {
   .preset-card {
     transition: none;
   }
+}
+
+/* v2 documentation islands inside the v1 visual tour */
+.firdawsi-theme {
+  min-height: 100vh;
+}
+
+.docs-page {
+  display: grid;
+  gap: 20px;
+}
+
+.docs-kicker {
+  color: var(--firdawsi-color-tertiary, var(--firdawsi-color-accent));
+  font-size: var(--firdawsi-font-role-label-sm-size, 0.75rem);
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.docs-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.docs-section {
+  display: grid;
+  gap: 12px;
+}
+
+.docs-code,
+.docs-table {
+  font-size: 13px;
+  overflow: auto;
+}
+
+.docs-code {
+  background: var(--firdawsi-color-surface-tier-2, var(--firdawsi-color-surface-subtle));
+  border-radius: var(--firdawsi-shape-container-md, 12px);
+  margin: 0;
+  padding: 16px;
+}
+
+.docs-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.docs-table th,
+.docs-table td {
+  border-block-end: 1px solid var(--firdawsi-color-outline-variant, var(--firdawsi-color-border));
+  padding: 8px;
+  text-align: start;
+}
+
+.docs-swatch {
+  border: 1px solid var(--firdawsi-color-outline-variant, var(--firdawsi-color-border));
+  display: inline-block;
+  height: 24px;
+  width: 48px;
+}
+
+.docs-link {
+  color: var(--firdawsi-color-primary);
+}
+
+.docs-arch {
+  display: block;
+  max-width: 220px;
+}
+
+.docs-typelist {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.type-specimen {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: var(--firdawsi-shape-container-md);
+  color: inherit;
+  display: grid;
+  gap: var(--firdawsi-space-4);
+  padding: var(--firdawsi-space-5);
+}
+
+.type-specimen__note {
+  color: color-mix(in srgb, currentColor 72%, transparent);
+  font-size: var(--firdawsi-font-role-body-sm-size);
+  margin: 0;
+}
+
+.type-specimen__pair {
+  display: grid;
+  gap: var(--firdawsi-space-2);
+}
+
+.type-specimen__pair .firdawsi-text--display-sm {
+  margin: 0;
+}
+
+.courtyard-plaque {
+  border-radius: var(--firdawsi-shape-container-md);
+  padding: var(--firdawsi-space-4);
+}
+
+.courtyard-plaque .firdawsi-prayer-plaque {
+  background: color-mix(in srgb, var(--firdawsi-color-surface-tier-1) 92%, transparent);
+}
+
+.courtyard-plaque__note {
+  color: var(--firdawsi-color-text-muted, var(--firdawsi-color-secondary));
+  font-size: var(--firdawsi-font-role-body-sm-size);
+  margin: 0 0 var(--firdawsi-space-3);
+}
+
+.reference-photo {
+  display: block;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.reference-preview--photo {
+  background: #f4ecd9;
+  padding: clamp(12px, 2vw, 20px);
+}
+
+.component-anatomy {
+  display: grid;
+  gap: 28px;
+  margin-block-end: 36px;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@firdawsi/web",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Accessible React components for Firdawsi",
   "type": "module",
   "sideEffects": [
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@firdawsi/geometry": "workspace:*",
+    "@firdawsi/shape": "workspace:*",
     "@firdawsi/tokens": "workspace:*"
   },
   "devDependencies": {

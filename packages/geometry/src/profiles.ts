@@ -25,7 +25,7 @@ export interface RegionalProfileDefaults {
  */
 export const REGIONAL_PROFILES = {
   universal: {
-    preferredPreset: "khatam-8-star-cross",
+    preferredPreset: "jali-8-screen",
     density: 0.62,
     unitSize: 48,
     strandWidth: 2,

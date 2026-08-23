@@ -10,6 +10,8 @@ async function expectNoHorizontalOverflow(page: import("@playwright/test").Page)
 test("showcase presents every foundation section", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/Firdawsi/i);
+  await expect(page.getByRole("heading", { name: /Gardens of/i })).toBeVisible();
+  await expect(page.locator("#overview")).toContainText("A design system, not a star generator");
 
   await expect(page.getByRole("link", { name: /View on GitHub/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Star on GitHub/i })).toBeVisible();
@@ -20,6 +22,8 @@ test("showcase presents every foundation section", async ({ page }) => {
     "foundations",
     "geometry",
     "regions",
+    "mechanics",
+    "tokens",
     "components",
     "motion",
     "accessibility",
@@ -28,15 +32,42 @@ test("showcase presents every foundation section", async ({ page }) => {
     await expect(page.locator(`#${id}`)).toBeVisible();
   }
 
-  await expect(page.locator("img")).toHaveCount(0);
+  await expect(page.locator("#geometry img")).toHaveCount(0);
   await expect(page.locator("#geometry .geometry-card")).toHaveCount(9);
-  await expect(page.locator("#geometry .reference-card")).toHaveCount(2);
+  await expect(page.locator("#geometry .reference-card")).toHaveCount(3);
+  await expect(page.locator("#geometry svg[data-plate='zellige']")).toBeVisible();
+  await expect(page.locator("#geometry svg[data-plate='khatam-zellige']")).toBeVisible();
+  await expect(page.locator("#geometry svg[data-plate='khatam-zellige'] [data-construction-role]").first()).toBeAttached();
+  await expect(page.locator("#geometry")).toContainText("Zellige construction plate");
   await expect(page.locator("#geometry")).toContainText("Khatam · zellige palette");
   await expect(page.locator("#geometry")).toContainText("Curvilinear isometric tessellation");
   await expect(page.locator("#geometry")).toContainText("Khatam · 8");
   await expect(page.locator("#geometry")).toContainText("Floral-geometric field");
   await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
   await expectNoHorizontalOverflow(page);
+});
+
+test("documentation site exposes mechanics, tokens, and components", async ({ page }) => {
+  await page.goto("/");
+
+  await page.getByRole("navigation", { name: "Showcase sections" }).getByRole("link", { name: "Mechanics" }).click();
+  await expect(page.getByRole("heading", { name: /signature mechanics/i })).toBeVisible();
+  await expect(page.locator("#mechanics")).toContainText("Sebka");
+  await expect(page.locator("#mechanics")).toContainText("Alberca");
+
+  await page.getByRole("navigation", { name: "Showcase sections" }).getByRole("link", { name: "Tokens" }).click();
+  await expect(page.getByRole("heading", { name: /Token reference/i })).toBeVisible();
+  await expect(page.locator("#tokens")).toContainText("surface-tier-1");
+  await expect(page.locator("#tokens [data-type-specimen]")).toContainText("El Messiri");
+  await expect(page.locator("#tokens [data-type-specimen]")).toContainText("حدائق النور");
+
+  await page.getByRole("navigation", { name: "Showcase sections" }).getByRole("link", { name: "Components" }).click();
+  const primary = page.locator("#button").getByRole("button", { name: "Primary", exact: true });
+  await expect(primary).toBeVisible();
+  await expect(primary).toHaveAttribute("data-shape", "arch");
+  await expect(page.locator(".firdawsi-card").first()).toBeVisible();
+  await expect(page.locator("#prayer-plaque")).toContainText("الفجر");
+  await expect(page.locator("#prayer-plaque")).toContainText("Next");
 });
 
 test("regional profiles render visibly distinct presets", async ({ page }) => {
@@ -57,11 +88,11 @@ test("component gallery exposes product chrome primitives", async ({ page }) => 
   await expect(page.locator(".firdawsi-menu")).toBeVisible();
   await expect(page.locator(".firdawsi-atmosphere").first()).toBeVisible();
   await expect(page.locator('[data-atmosphere="courtyard-wash"]')).toBeVisible();
+  await expect(page.locator(".firdawsi-prayer-plaque")).toBeVisible();
 });
 
 test("themes and direction remain interactive", async ({ page }) => {
-  await page.goto("/");
-
+  await page.goto("/#components");
   await page.getByRole("button", { name: "dark", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 
@@ -74,8 +105,10 @@ test("themes and direction remain interactive", async ({ page }) => {
   await expectNoHorizontalOverflow(page);
 });
 
-test("studio uses preset-valid controls and construction overlays", async ({ page }) => {
+test("studio shows construction and preset-valid controls", async ({ page }) => {
   await page.goto("/#studio");
+  await expect(page.locator("#studio")).toContainText("compass rosette");
+  await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
 
   const studioSvg = page.locator("#studio .studio-canvas svg");
   const before = await studioSvg.evaluate((node) => node.outerHTML);
@@ -105,6 +138,7 @@ test("studio uses preset-valid controls and construction overlays", async ({ pag
 
 test("recipe v2 metadata and exports are available", async ({ page }) => {
   await page.goto("/#studio");
+  await page.locator('[data-preset-id="khatam-8-star-cross"]').click();
 
   await expect(page.locator(".recipe-inspector")).toContainText("Recipe v2");
   await expect(page.locator(".recipe-inspector")).toContainText("khatam-8-v2");
@@ -119,7 +153,7 @@ test("recipe v2 metadata and exports are available", async ({ page }) => {
   await expectNoHorizontalOverflow(page);
 });
 
-test("mobile layout remains contained in both directions", async ({ page }) => {
+test("mobile guide drawer reaches studio and components", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/");
   await expectNoHorizontalOverflow(page);
@@ -129,6 +163,10 @@ test("mobile layout remains contained in both directions", async ({ page }) => {
   await page.locator("#guide-panel").getByRole("link", { name: "Pattern Studio", exact: true }).click();
   await expect(page.locator("#studio")).toBeInViewport();
   await expect(page.locator("#guide-panel")).not.toHaveClass(/guide-panel--open/);
+
+  await page.getByRole("button", { name: "Open guide" }).click();
+  await page.locator("#guide-panel").getByRole("link", { name: "Components", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Components" })).toBeVisible();
 
   await page.getByRole("button", { name: "RTL" }).click();
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");

@@ -1,6 +1,14 @@
 /* Generated from src/tokens.json. Do not edit directly. */
 :root,
 [data-theme="light"] {
+  --firdawsi-color-primitive-yeso-0: #fffdf9;
+  --firdawsi-color-primitive-yeso-50: #faf6ee;
+  --firdawsi-color-primitive-yeso-100: #f2ece0;
+  --firdawsi-color-primitive-yeso-200: #e7dfd0;
+  --firdawsi-color-primitive-yeso-300: #d5cab6;
+  --firdawsi-color-primitive-yeso-500: #a89b83;
+  --firdawsi-color-primitive-yeso-700: #6b6151;
+  --firdawsi-color-primitive-yeso-900: #2e2a22;
   --firdawsi-color-primitive-ink-0: #ffffff;
   --firdawsi-color-primitive-ink-50: #f7f8f7;
   --firdawsi-color-primitive-ink-100: #e8ebe9;
@@ -11,27 +19,49 @@
   --firdawsi-color-primitive-ink-950: #0a110e;
   --firdawsi-color-primitive-jade-50: #edf8f4;
   --firdawsi-color-primitive-jade-100: #d4eee5;
+  --firdawsi-color-primitive-jade-200: #b6e0d0;
   --firdawsi-color-primitive-jade-300: #83c7ae;
   --firdawsi-color-primitive-jade-500: #2d8b6e;
   --firdawsi-color-primitive-jade-600: #206f58;
   --firdawsi-color-primitive-jade-700: #195847;
+  --firdawsi-color-primitive-jade-800: #14463a;
   --firdawsi-color-primitive-jade-900: #12392f;
-  --firdawsi-color-primitive-saffron-50: #fff8e8;
-  --firdawsi-color-primitive-saffron-200: #f8dda0;
-  --firdawsi-color-primitive-saffron-400: #dda83a;
-  --firdawsi-color-primitive-saffron-600: #a66d12;
-  --firdawsi-color-primitive-saffron-800: #68420e;
   --firdawsi-color-primitive-azure-50: #eef7fb;
+  --firdawsi-color-primitive-azure-100: #d5ecf5;
   --firdawsi-color-primitive-azure-300: #8fc9df;
   --firdawsi-color-primitive-azure-500: #378aac;
   --firdawsi-color-primitive-azure-700: #245d78;
+  --firdawsi-color-primitive-azure-800: #1d4a60;
   --firdawsi-color-primitive-azure-900: #17394a;
+  --firdawsi-color-primitive-saffron-50: #fff8e8;
+  --firdawsi-color-primitive-saffron-100: #fdeec6;
+  --firdawsi-color-primitive-saffron-200: #f8dda0;
+  --firdawsi-color-primitive-saffron-400: #dda83a;
+  --firdawsi-color-primitive-saffron-600: #a66d12;
+  --firdawsi-color-primitive-saffron-700: #855610;
+  --firdawsi-color-primitive-saffron-800: #68420e;
   --firdawsi-color-primitive-clay-50: #fff3ef;
+  --firdawsi-color-primitive-clay-100: #ffe1d8;
   --firdawsi-color-primitive-clay-300: #eaa38e;
   --firdawsi-color-primitive-clay-500: #bd6048;
   --firdawsi-color-primitive-clay-700: #843d2e;
+  --firdawsi-color-primitive-clay-800: #663026;
   --firdawsi-color-primitive-clay-900: #4f271f;
   --firdawsi-color-primitive-transparent: #00000000;
+  --firdawsi-sebka-ratio-octagon: 1.41421356;
+  --firdawsi-sebka-ratio-silver: 2.41421356;
+  --firdawsi-sebka-ratio-step: 1.18920712;
+  --firdawsi-sebka-step-0: 16px;
+  --firdawsi-sebka-step-1: 19px;
+  --firdawsi-sebka-step-2: 22.5px;
+  --firdawsi-sebka-step-3: 27px;
+  --firdawsi-sebka-step-4: 32px;
+  --firdawsi-sebka-step-5: 38px;
+  --firdawsi-sebka-step-6: 45px;
+  --firdawsi-sebka-step-7: 54px;
+  --firdawsi-sebka-step-8: 64px;
+  --firdawsi-sebka-step-n2: 11.5px;
+  --firdawsi-sebka-step-n1: 13.5px;
   --firdawsi-space-0: 0px;
   --firdawsi-space-1: 4px;
   --firdawsi-space-2: 8px;
@@ -48,16 +78,16 @@
   --firdawsi-space-0-5: 2px;
   --firdawsi-space-1-5: 6px;
   --firdawsi-font-family-sans: "Noto Sans", "Noto Sans Arabic", system-ui, sans-serif;
-  --firdawsi-font-family-display: "Noto Kufi Arabic", "Noto Sans Arabic", system-ui, sans-serif;
+  --firdawsi-font-family-display: "El Messiri", "Noto Kufi Arabic", "Noto Sans Arabic", system-ui, sans-serif;
   --firdawsi-font-family-mono: ui-monospace, SFMono-Regular, monospace;
-  --firdawsi-font-size-xs: 12px;
-  --firdawsi-font-size-sm: 14px;
+  --firdawsi-font-size-xs: 11.5px;
+  --firdawsi-font-size-sm: 13.5px;
   --firdawsi-font-size-md: 16px;
-  --firdawsi-font-size-lg: 18px;
-  --firdawsi-font-size-xl: 22px;
-  --firdawsi-font-size-2xl: 28px;
-  --firdawsi-font-size-3xl: 36px;
-  --firdawsi-font-size-4xl: 48px;
+  --firdawsi-font-size-lg: 19px;
+  --firdawsi-font-size-xl: 22.5px;
+  --firdawsi-font-size-2xl: 27px;
+  --firdawsi-font-size-3xl: 38px;
+  --firdawsi-font-size-4xl: 45px;
   --firdawsi-font-size-5xl: 64px;
   --firdawsi-font-weight-regular: 400;
   --firdawsi-font-weight-medium: 500;
@@ -70,29 +100,133 @@
   --firdawsi-font-tracking-tight: -0.02rem;
   --firdawsi-font-tracking-normal: 0rem;
   --firdawsi-font-tracking-wide: 0.04rem;
+  --firdawsi-font-tracking-arabic: 0rem;
+  --firdawsi-font-role-display-lg-size: 64px;
+  --firdawsi-font-role-display-lg-size-arabic: 66.5px;
+  --firdawsi-font-role-display-lg-line-height: 1.08;
+  --firdawsi-font-role-display-lg-line-height-arabic: 1.5;
+  --firdawsi-font-role-display-lg-weight: 600;
+  --firdawsi-font-role-display-lg-tracking: -0.02rem;
+  --firdawsi-font-role-display-md-size: 54px;
+  --firdawsi-font-role-display-md-size-arabic: 56px;
+  --firdawsi-font-role-display-md-line-height: 1.1;
+  --firdawsi-font-role-display-md-line-height-arabic: 1.5;
+  --firdawsi-font-role-display-md-weight: 600;
+  --firdawsi-font-role-display-md-tracking: -0.02rem;
+  --firdawsi-font-role-display-sm-size: 45px;
+  --firdawsi-font-role-display-sm-size-arabic: 47px;
+  --firdawsi-font-role-display-sm-line-height: 1.12;
+  --firdawsi-font-role-display-sm-line-height-arabic: 1.52;
+  --firdawsi-font-role-display-sm-weight: 600;
+  --firdawsi-font-role-display-sm-tracking: -0.02rem;
+  --firdawsi-font-role-headline-lg-size: 38px;
+  --firdawsi-font-role-headline-lg-size-arabic: 39.5px;
+  --firdawsi-font-role-headline-lg-line-height: 1.18;
+  --firdawsi-font-role-headline-lg-line-height-arabic: 1.6;
+  --firdawsi-font-role-headline-lg-weight: 600;
+  --firdawsi-font-role-headline-lg-tracking: -0.01rem;
+  --firdawsi-font-role-headline-md-size: 32px;
+  --firdawsi-font-role-headline-md-size-arabic: 33.5px;
+  --firdawsi-font-role-headline-md-line-height: 1.2;
+  --firdawsi-font-role-headline-md-line-height-arabic: 1.6;
+  --firdawsi-font-role-headline-md-weight: 600;
+  --firdawsi-font-role-headline-md-tracking: -0.01rem;
+  --firdawsi-font-role-headline-sm-size: 27px;
+  --firdawsi-font-role-headline-sm-size-arabic: 28px;
+  --firdawsi-font-role-headline-sm-line-height: 1.24;
+  --firdawsi-font-role-headline-sm-line-height-arabic: 1.62;
+  --firdawsi-font-role-headline-sm-weight: 600;
+  --firdawsi-font-role-headline-sm-tracking: 0rem;
+  --firdawsi-font-role-title-lg-size: 22.5px;
+  --firdawsi-font-role-title-lg-size-arabic: 24.5px;
+  --firdawsi-font-role-title-lg-line-height: 1.3;
+  --firdawsi-font-role-title-lg-line-height-arabic: 1.7;
+  --firdawsi-font-role-title-lg-weight: 600;
+  --firdawsi-font-role-title-lg-tracking: 0rem;
+  --firdawsi-font-role-title-md-size: 19px;
+  --firdawsi-font-role-title-md-size-arabic: 20.5px;
+  --firdawsi-font-role-title-md-line-height: 1.34;
+  --firdawsi-font-role-title-md-line-height-arabic: 1.72;
+  --firdawsi-font-role-title-md-weight: 600;
+  --firdawsi-font-role-title-md-tracking: 0rem;
+  --firdawsi-font-role-title-sm-size: 16px;
+  --firdawsi-font-role-title-sm-size-arabic: 17.5px;
+  --firdawsi-font-role-title-sm-line-height: 1.4;
+  --firdawsi-font-role-title-sm-line-height-arabic: 1.75;
+  --firdawsi-font-role-title-sm-weight: 600;
+  --firdawsi-font-role-title-sm-tracking: 0rem;
+  --firdawsi-font-role-body-lg-size: 19px;
+  --firdawsi-font-role-body-lg-size-arabic: 20.5px;
+  --firdawsi-font-role-body-lg-line-height: 1.6;
+  --firdawsi-font-role-body-lg-line-height-arabic: 1.85;
+  --firdawsi-font-role-body-lg-weight: 400;
+  --firdawsi-font-role-body-lg-tracking: 0rem;
+  --firdawsi-font-role-body-md-size: 16px;
+  --firdawsi-font-role-body-md-size-arabic: 17.5px;
+  --firdawsi-font-role-body-md-line-height: 1.6;
+  --firdawsi-font-role-body-md-line-height-arabic: 1.85;
+  --firdawsi-font-role-body-md-weight: 400;
+  --firdawsi-font-role-body-md-tracking: 0rem;
+  --firdawsi-font-role-body-sm-size: 13.5px;
+  --firdawsi-font-role-body-sm-size-arabic: 14.5px;
+  --firdawsi-font-role-body-sm-line-height: 1.55;
+  --firdawsi-font-role-body-sm-line-height-arabic: 1.8;
+  --firdawsi-font-role-body-sm-weight: 400;
+  --firdawsi-font-role-body-sm-tracking: 0rem;
+  --firdawsi-font-role-label-lg-size: 16px;
+  --firdawsi-font-role-label-lg-size-arabic: 17.5px;
+  --firdawsi-font-role-label-lg-line-height: 1.4;
+  --firdawsi-font-role-label-lg-line-height-arabic: 1.7;
+  --firdawsi-font-role-label-lg-weight: 600;
+  --firdawsi-font-role-label-lg-tracking: 0rem;
+  --firdawsi-font-role-label-md-size: 13.5px;
+  --firdawsi-font-role-label-md-size-arabic: 14.5px;
+  --firdawsi-font-role-label-md-line-height: 1.4;
+  --firdawsi-font-role-label-md-line-height-arabic: 1.7;
+  --firdawsi-font-role-label-md-weight: 500;
+  --firdawsi-font-role-label-md-tracking: 0.02rem;
+  --firdawsi-font-role-label-sm-size: 11.5px;
+  --firdawsi-font-role-label-sm-size-arabic: 12.5px;
+  --firdawsi-font-role-label-sm-line-height: 1.36;
+  --firdawsi-font-role-label-sm-line-height-arabic: 1.66;
+  --firdawsi-font-role-label-sm-weight: 500;
+  --firdawsi-font-role-label-sm-tracking: 0.04rem;
   --firdawsi-radius-none: 0px;
-  --firdawsi-radius-sm: 4px;
+  --firdawsi-radius-xs: 4px;
+  --firdawsi-radius-sm: 6px;
   --firdawsi-radius-md: 8px;
-  --firdawsi-radius-lg: 14px;
-  --firdawsi-radius-xl: 22px;
+  --firdawsi-radius-lg: 11px;
+  --firdawsi-radius-xl: 16px;
+  --firdawsi-radius-2xl: 23px;
   --firdawsi-radius-full: 9999px;
   --firdawsi-shape-facet-subtle: 4px;
   --firdawsi-shape-facet-medium: 8px;
   --firdawsi-shape-facet-bold: 14px;
+  --firdawsi-shape-arch-rise-none: 0;
   --firdawsi-shape-arch-rise-shallow: 0.18;
   --firdawsi-shape-arch-rise-balanced: 0.32;
   --firdawsi-shape-arch-rise-tall: 0.5;
   --firdawsi-shape-arch-shoulder-narrow: 0.22;
   --firdawsi-shape-arch-shoulder-standard: 0.34;
   --firdawsi-shape-arch-shoulder-wide: 0.44;
+  --firdawsi-shape-arch-morph-rest: 1;
+  --firdawsi-shape-arch-morph-hover: 1.08;
+  --firdawsi-shape-arch-morph-pressed: 0.86;
+  --firdawsi-shape-arch-morph-selected: 1.12;
+  --firdawsi-shape-arch-morph-expanded: 1.18;
   --firdawsi-shape-corner-rounded: round;
   --firdawsi-shape-corner-faceted: bevel;
   --firdawsi-shape-corner-notched: notch;
   --firdawsi-shape-corner-arch: arch;
-  --firdawsi-shape-container-sm: 4px;
+  --firdawsi-shape-container-xs: 4px;
+  --firdawsi-shape-container-sm: 6px;
   --firdawsi-shape-container-md: 8px;
-  --firdawsi-shape-container-lg: 14px;
-  --firdawsi-shape-container-xl: 22px;
+  --firdawsi-shape-container-lg: 11px;
+  --firdawsi-shape-container-xl: 16px;
+  --firdawsi-shape-container-2xl: 23px;
+  --firdawsi-focus-strap-gap: 2px;
+  --firdawsi-focus-strap-core: 2.5px;
+  --firdawsi-focus-strap-offset: 1px;
   --firdawsi-stroke-width-hairline: 1px;
   --firdawsi-stroke-width-regular: 1.5px;
   --firdawsi-stroke-width-strong: 2px;
@@ -101,20 +235,25 @@
   --firdawsi-stroke-dash-measured: 4 4;
   --firdawsi-stroke-dash-decorative: 1 5;
   --firdawsi-elevation-0: 0px 0px 0px 0px #00000000;
-  --firdawsi-elevation-1: 0px 1px 3px 0px #15201b14;
-  --firdawsi-elevation-2: 0px 4px 12px -2px #15201b1f;
-  --firdawsi-elevation-3: 0px 12px 28px -6px #15201b29;
-  --firdawsi-elevation-tonal-1: color-mix(in srgb, #2d8b6e 4%, #ffffff);
-  --firdawsi-elevation-tonal-2: color-mix(in srgb, #2d8b6e 8%, #ffffff);
-  --firdawsi-elevation-tonal-3: color-mix(in srgb, #2d8b6e 12%, #ffffff);
+  --firdawsi-elevation-1: 0px 1px 3px 0px #2e2a2214;
+  --firdawsi-elevation-2: 0px 4px 12px -2px #2e2a221f;
+  --firdawsi-elevation-3: 0px 12px 28px -6px #2e2a2229;
   --firdawsi-opacity-disabled: 0.42;
   --firdawsi-opacity-muted: 0.64;
   --firdawsi-opacity-scrim: 0.58;
   --firdawsi-opacity-pattern: 0.09;
   --firdawsi-opacity-full: 1;
-  --firdawsi-gradient-courtyard-wash: radial-gradient(120% 90% at 12% 8%, #f7efd9 0%, #e8ebe9 42%, #d4eee5 100%);
+  --firdawsi-state-hover: 0.08;
+  --firdawsi-state-focus: 0.12;
+  --firdawsi-state-pressed: 0.14;
+  --firdawsi-state-dragged: 0.16;
+  --firdawsi-state-selected: 0.12;
+  --firdawsi-state-disabled-content: 0.38;
+  --firdawsi-state-disabled-container: 0.12;
+  --firdawsi-gradient-courtyard-wash: radial-gradient(120% 90% at 12% 8%, #faf6ee 0%, #f2ece0 42%, #d4eee5 100%);
   --firdawsi-gradient-lapis-veil: linear-gradient(155deg, #eef7fb 0%, #d4eee5 48%, #8fc9df 100%);
   --firdawsi-gradient-jade-depth: radial-gradient(90% 70% at 80% 20%, #83c7ae 0%, #206f58 55%, #12392f 100%);
+  --firdawsi-pattern-density-none: 0;
   --firdawsi-pattern-density-quiet: 0.35;
   --firdawsi-pattern-density-balanced: 0.6;
   --firdawsi-pattern-density-rich: 0.85;
@@ -130,6 +269,18 @@
   --firdawsi-motion-easing-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --firdawsi-motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);
   --firdawsi-motion-easing-emphasis: cubic-bezier(0.22, 1, 0.36, 1);
+  --firdawsi-motion-spring-snap-stiffness: 340;
+  --firdawsi-motion-spring-snap-damping: 35;
+  --firdawsi-motion-spring-snap-mass: 1;
+  --firdawsi-motion-spring-settle-stiffness: 220;
+  --firdawsi-motion-spring-settle-damping: 23;
+  --firdawsi-motion-spring-settle-mass: 1;
+  --firdawsi-motion-spring-ripple-stiffness: 160;
+  --firdawsi-motion-spring-ripple-damping: 16;
+  --firdawsi-motion-spring-ripple-mass: 1;
+  --firdawsi-motion-spring-calm-stiffness: 120;
+  --firdawsi-motion-spring-calm-damping: 22;
+  --firdawsi-motion-spring-calm-mass: 1;
   --firdawsi-z-index-base: 0;
   --firdawsi-z-index-raised: 10;
   --firdawsi-z-index-sticky: 100;
@@ -142,9 +293,13 @@
   --firdawsi-size-control-sm: 32px;
   --firdawsi-size-control-md: 40px;
   --firdawsi-size-control-lg: 48px;
+  --firdawsi-size-target-min: 24px;
   --firdawsi-size-content-sm: 560px;
   --firdawsi-size-content-md: 720px;
   --firdawsi-size-content-lg: 1120px;
+  --firdawsi-density-comfortable: 1;
+  --firdawsi-density-compact: 0.85;
+  --firdawsi-density-spacious: 1.15;
   --firdawsi-logical-flow-inline-start: inline-start;
   --firdawsi-logical-flow-inline-end: inline-end;
   --firdawsi-logical-flow-block-start: block-start;
@@ -153,40 +308,124 @@
   --firdawsi-logical-icon-directional-transform-rtl: scaleX(-1);
   --firdawsi-logical-text-align-start: start;
   --firdawsi-logical-text-align-end: end;
-  --firdawsi-color-background: #f7f8f7;
-  --firdawsi-color-surface: #ffffff;
-  --firdawsi-color-surface-subtle: #e8ebe9;
+  --firdawsi-motion-spring-snap-damping-ratio: 0.9491;
+  --firdawsi-motion-spring-snap-duration: 224ms;
+  --firdawsi-motion-spring-settle-damping-ratio: 0.7753;
+  --firdawsi-motion-spring-settle-duration: 340ms;
+  --firdawsi-motion-spring-ripple-damping-ratio: 0.6325;
+  --firdawsi-motion-spring-ripple-duration: 489ms;
+  --firdawsi-motion-spring-calm-damping-ratio: 1.0042;
+  --firdawsi-motion-spring-calm-duration: 357ms;
+  --firdawsi-color-background: #faf6ee;
+  --firdawsi-color-on-background: #15201b;
+  --firdawsi-color-surface: #fffdf9;
+  --firdawsi-color-surface-tier-1: #faf6ee;
+  --firdawsi-color-surface-tier-2: #f2ece0;
+  --firdawsi-color-surface-tier-3: #e7dfd0;
+  --firdawsi-color-surface-tier-4: #d5cab6;
+  --firdawsi-color-surface-subtle: #f2ece0;
+  --firdawsi-color-on-surface: #15201b;
+  --firdawsi-color-on-surface-variant: #6b6151;
   --firdawsi-color-text: #15201b;
-  --firdawsi-color-text-muted: #66736d;
-  --firdawsi-color-border: #aeb7b2;
+  --firdawsi-color-text-muted: #6b6151;
+  --firdawsi-color-outline: #a89b83;
+  --firdawsi-color-outline-variant: #d5cab6;
+  --firdawsi-color-border: #d5cab6;
   --firdawsi-color-primary: #206f58;
   --firdawsi-color-primary-hover: #195847;
-  --firdawsi-color-on-primary: #ffffff;
+  --firdawsi-color-on-primary: #fffdf9;
+  --firdawsi-color-primary-container: #d4eee5;
+  --firdawsi-color-on-primary-container: #12392f;
   --firdawsi-color-secondary: #245d78;
+  --firdawsi-color-on-secondary: #fffdf9;
+  --firdawsi-color-secondary-container: #d5ecf5;
+  --firdawsi-color-on-secondary-container: #17394a;
+  --firdawsi-color-tertiary: #a66d12;
+  --firdawsi-color-on-tertiary: #fffdf9;
+  --firdawsi-color-tertiary-container: #fdeec6;
+  --firdawsi-color-on-tertiary-container: #68420e;
   --firdawsi-color-accent: #a66d12;
-  --firdawsi-color-focus: #378aac;
+  --firdawsi-color-error: #843d2e;
+  --firdawsi-color-on-error: #fffdf9;
+  --firdawsi-color-error-container: #ffe1d8;
+  --firdawsi-color-on-error-container: #4f271f;
   --firdawsi-color-danger: #843d2e;
-  --firdawsi-color-on-danger: #ffffff;
+  --firdawsi-color-on-danger: #fffdf9;
+  --firdawsi-color-success: #206f58;
+  --firdawsi-color-on-success: #fffdf9;
+  --firdawsi-color-success-container: #d4eee5;
+  --firdawsi-color-on-success-container: #12392f;
+  --firdawsi-color-warning: #855610;
+  --firdawsi-color-on-warning: #fffdf9;
+  --firdawsi-color-warning-container: #fdeec6;
+  --firdawsi-color-on-warning-container: #68420e;
+  --firdawsi-color-info: #245d78;
+  --firdawsi-color-on-info: #fffdf9;
+  --firdawsi-color-info-container: #d5ecf5;
+  --firdawsi-color-on-info-container: #17394a;
+  --firdawsi-color-inverse-surface: #15201b;
+  --firdawsi-color-inverse-on-surface: #faf6ee;
+  --firdawsi-color-inverse-primary: #83c7ae;
+  --firdawsi-color-focus: #245d78;
+  --firdawsi-color-focus-contrast: #fffdf9;
   --firdawsi-color-selection: #d4eee5;
-  --firdawsi-color-scrim: #0a110e94;
+  --firdawsi-color-scrim: #2e2a2294;
   color-scheme: light;
 }
 
 [data-theme="dark"] {
   --firdawsi-color-background: #0a110e;
+  --firdawsi-color-on-background: #f7f8f7;
   --firdawsi-color-surface: #15201b;
+  --firdawsi-color-surface-tier-1: #1b2822;
+  --firdawsi-color-surface-tier-2: #22302a;
+  --firdawsi-color-surface-tier-3: #2a3932;
+  --firdawsi-color-surface-tier-4: #35423c;
   --firdawsi-color-surface-subtle: #35423c;
+  --firdawsi-color-on-surface: #f7f8f7;
+  --firdawsi-color-on-surface-variant: #aeb7b2;
   --firdawsi-color-text: #f7f8f7;
   --firdawsi-color-text-muted: #aeb7b2;
+  --firdawsi-color-outline: #66736d;
+  --firdawsi-color-outline-variant: #35423c;
   --firdawsi-color-border: #66736d;
   --firdawsi-color-primary: #83c7ae;
   --firdawsi-color-primary-hover: #d4eee5;
   --firdawsi-color-on-primary: #12392f;
+  --firdawsi-color-primary-container: #14463a;
+  --firdawsi-color-on-primary-container: #d4eee5;
   --firdawsi-color-secondary: #8fc9df;
+  --firdawsi-color-on-secondary: #17394a;
+  --firdawsi-color-secondary-container: #1d4a60;
+  --firdawsi-color-on-secondary-container: #d5ecf5;
+  --firdawsi-color-tertiary: #f8dda0;
+  --firdawsi-color-on-tertiary: #68420e;
+  --firdawsi-color-tertiary-container: #68420e;
+  --firdawsi-color-on-tertiary-container: #fdeec6;
   --firdawsi-color-accent: #f8dda0;
-  --firdawsi-color-focus: #8fc9df;
+  --firdawsi-color-error: #eaa38e;
+  --firdawsi-color-on-error: #4f271f;
+  --firdawsi-color-error-container: #663026;
+  --firdawsi-color-on-error-container: #ffe1d8;
   --firdawsi-color-danger: #eaa38e;
   --firdawsi-color-on-danger: #4f271f;
+  --firdawsi-color-success: #83c7ae;
+  --firdawsi-color-on-success: #12392f;
+  --firdawsi-color-success-container: #14463a;
+  --firdawsi-color-on-success-container: #d4eee5;
+  --firdawsi-color-warning: #f8dda0;
+  --firdawsi-color-on-warning: #68420e;
+  --firdawsi-color-warning-container: #68420e;
+  --firdawsi-color-on-warning-container: #fdeec6;
+  --firdawsi-color-info: #8fc9df;
+  --firdawsi-color-on-info: #17394a;
+  --firdawsi-color-info-container: #1d4a60;
+  --firdawsi-color-on-info-container: #d5ecf5;
+  --firdawsi-color-inverse-surface: #faf6ee;
+  --firdawsi-color-inverse-on-surface: #15201b;
+  --firdawsi-color-inverse-primary: #195847;
+  --firdawsi-color-focus: #8fc9df;
+  --firdawsi-color-focus-contrast: #0a110e;
   --firdawsi-color-selection: #195847;
   --firdawsi-color-scrim: #000000b8;
   color-scheme: dark;
@@ -194,19 +433,57 @@
 
 [data-theme="high-contrast"] {
   --firdawsi-color-background: #000000;
+  --firdawsi-color-on-background: #ffffff;
   --firdawsi-color-surface: #000000;
+  --firdawsi-color-surface-tier-1: #0d0d0d;
+  --firdawsi-color-surface-tier-2: #171717;
+  --firdawsi-color-surface-tier-3: #222222;
+  --firdawsi-color-surface-tier-4: #2e2e2e;
   --firdawsi-color-surface-subtle: #171717;
+  --firdawsi-color-on-surface: #ffffff;
+  --firdawsi-color-on-surface-variant: #ffffff;
   --firdawsi-color-text: #ffffff;
   --firdawsi-color-text-muted: #ffffff;
+  --firdawsi-color-outline: #ffffff;
+  --firdawsi-color-outline-variant: #ffffff;
   --firdawsi-color-border: #ffffff;
   --firdawsi-color-primary: #62f5ba;
   --firdawsi-color-primary-hover: #ffffff;
   --firdawsi-color-on-primary: #000000;
+  --firdawsi-color-primary-container: #00382a;
+  --firdawsi-color-on-primary-container: #62f5ba;
   --firdawsi-color-secondary: #8fddff;
+  --firdawsi-color-on-secondary: #000000;
+  --firdawsi-color-secondary-container: #00293a;
+  --firdawsi-color-on-secondary-container: #8fddff;
+  --firdawsi-color-tertiary: #ffd65c;
+  --firdawsi-color-on-tertiary: #000000;
+  --firdawsi-color-tertiary-container: #3a2a00;
+  --firdawsi-color-on-tertiary-container: #ffd65c;
   --firdawsi-color-accent: #ffd65c;
-  --firdawsi-color-focus: #ffd65c;
+  --firdawsi-color-error: #ff9c86;
+  --firdawsi-color-on-error: #000000;
+  --firdawsi-color-error-container: #3a0f06;
+  --firdawsi-color-on-error-container: #ff9c86;
   --firdawsi-color-danger: #ff9c86;
   --firdawsi-color-on-danger: #000000;
+  --firdawsi-color-success: #62f5ba;
+  --firdawsi-color-on-success: #000000;
+  --firdawsi-color-success-container: #00382a;
+  --firdawsi-color-on-success-container: #62f5ba;
+  --firdawsi-color-warning: #ffd65c;
+  --firdawsi-color-on-warning: #000000;
+  --firdawsi-color-warning-container: #3a2a00;
+  --firdawsi-color-on-warning-container: #ffd65c;
+  --firdawsi-color-info: #8fddff;
+  --firdawsi-color-on-info: #000000;
+  --firdawsi-color-info-container: #00293a;
+  --firdawsi-color-on-info-container: #8fddff;
+  --firdawsi-color-inverse-surface: #ffffff;
+  --firdawsi-color-inverse-on-surface: #000000;
+  --firdawsi-color-inverse-primary: #00382a;
+  --firdawsi-color-focus: #ffd65c;
+  --firdawsi-color-focus-contrast: #000000;
   --firdawsi-color-selection: #195847;
   --firdawsi-color-scrim: #000000e6;
   color-scheme: dark;
@@ -220,59 +497,72 @@
   --firdawsi-logical-icon-directional-transform: var(--firdawsi-logical-icon-directional-transform-ltr);
 }
 
-/* Regional profile overlays — subtle surface/accent/pattern shifts, not full themes. */
+/* Regional profile overlays. Andalusi is the system default, so its overlay
+   restates the baseline; the others are deviations from it. Profiles tune
+   non-semantic surface and ornament values only. */
+[data-region="$description"] {
+
+}
+
+/* Geometry-first core with no regional colour claim. */
 [data-region="universal"] {
   --firdawsi-color-surface: #ffffff;
-  --firdawsi-color-surface-subtle: #e8ebe9;
-  --firdawsi-color-accent: #a66d12;
+  --firdawsi-color-surface-tier-1: #f7f8f7;
+  --firdawsi-color-surface-tier-2: #e8ebe9;
+  --firdawsi-color-tertiary: #a66d12;
   --firdawsi-opacity-pattern: 0.09;
 }
 
+/* The system baseline. Carved lime plaster surfaces, green glaze primary, honey tertiary. */
+[data-region="andalusi-maghrebi"],
+[data-region="andalusi"],
 [data-region="maghrebi"] {
-  --firdawsi-color-surface: #fbf6ee;
-  --firdawsi-color-surface-subtle: #f0e6d4;
-  --firdawsi-color-accent: #a66d12;
-  --firdawsi-color-primary: #1f5a50;
-  --firdawsi-opacity-pattern: 0.11;
-}
-
-[data-region="andalusi"] {
-  --firdawsi-color-surface: #f7faf8;
-  --firdawsi-color-surface-subtle: #e4efe9;
-  --firdawsi-color-accent: #c89b3c;
-  --firdawsi-color-primary: #245d78;
+  --firdawsi-color-surface: #fffdf9;
+  --firdawsi-color-surface-tier-1: #faf6ee;
+  --firdawsi-color-surface-tier-2: #f2ece0;
+  --firdawsi-color-tertiary: #a66d12;
   --firdawsi-opacity-pattern: 0.1;
 }
 
+/* Warmer stone surfaces, deeper cobalt primary, manganese tertiary. */
 [data-region="mamluk"] {
   --firdawsi-color-surface: #f4f1ea;
-  --firdawsi-color-surface-subtle: #e6dfd0;
-  --firdawsi-color-accent: #843d2e;
+  --firdawsi-color-surface-tier-1: #ebe6dc;
+  --firdawsi-color-surface-tier-2: #e6dfd0;
   --firdawsi-color-primary: #184f78;
+  --firdawsi-color-tertiary: #843d2e;
   --firdawsi-opacity-pattern: 0.12;
 }
 
+/* Cooler tile-white surfaces, deep cobalt primary, gold tertiary. */
 [data-region="ottoman"] {
   --firdawsi-color-surface: #f5f8fb;
-  --firdawsi-color-surface-subtle: #e2ebf3;
-  --firdawsi-color-accent: #c79a3b;
+  --firdawsi-color-surface-tier-1: #eaf1f7;
+  --firdawsi-color-surface-tier-2: #e2ebf3;
   --firdawsi-color-primary: #173b6c;
+  --firdawsi-color-tertiary: #c79a3b;
   --firdawsi-opacity-pattern: 0.08;
 }
 
+/* Warm paper surfaces, green primary, terracotta tertiary. */
+[data-region="persian-central-asian"],
 [data-region="persian"] {
   --firdawsi-color-surface: #faf7f2;
-  --firdawsi-color-surface-subtle: #efe6d8;
-  --firdawsi-color-accent: #bd6048;
+  --firdawsi-color-surface-tier-1: #f4eee4;
+  --firdawsi-color-surface-tier-2: #efe6d8;
   --firdawsi-color-primary: #195847;
+  --firdawsi-color-tertiary: #bd6048;
   --firdawsi-opacity-pattern: 0.1;
 }
 
+/* Warm sandstone surfaces, green primary, honey tertiary. */
+[data-region="mughal"],
 [data-region="south-asian"] {
   --firdawsi-color-surface: #f8f4ec;
-  --firdawsi-color-surface-subtle: #ebe3d2;
-  --firdawsi-color-accent: #a66d12;
+  --firdawsi-color-surface-tier-1: #f1ebdf;
+  --firdawsi-color-surface-tier-2: #ebe3d2;
   --firdawsi-color-primary: #2d6b5a;
+  --firdawsi-color-tertiary: #a66d12;
   --firdawsi-opacity-pattern: 0.11;
 }
 
@@ -282,5 +572,9 @@
     --firdawsi-motion-duration-normal: 0ms;
     --firdawsi-motion-duration-slow: 0ms;
     --firdawsi-motion-duration-ceremonial: 0ms;
+    --firdawsi-motion-spring-snap-duration: 0ms;
+    --firdawsi-motion-spring-settle-duration: 0ms;
+    --firdawsi-motion-spring-ripple-duration: 0ms;
+    --firdawsi-motion-spring-calm-duration: 0ms;
   }
 }

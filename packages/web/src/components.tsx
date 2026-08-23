@@ -28,31 +28,24 @@ import {
 const cx = (...values: Array<string | false | null | undefined>) =>
   values.filter(Boolean).join(" ");
 
-export type CornerStyle = "round" | "bevel" | "notch" | "arch";
-export type OrnamentStyle = "none" | "corners" | "frame" | "pattern";
-export type OrnamentIntensity = "quiet" | "balanced";
 export type AtmosphereTone = "courtyard-wash" | "lapis-veil" | "jade-depth";
-
-function cornerClass(corner?: CornerStyle): string | false {
-  return corner ? `firdawsi-corner--${corner}` : false;
-}
+export type SurfaceTier = 0 | 1 | 2 | 3 | 4;
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "quiet" | "danger";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
-  /** Distinctive corner treatment; especially useful on outline/secondary buttons. */
-  corner?: CornerStyle;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", loading = false, disabled, corner, children, ...props }, ref) => (
+  ({ className, variant = "primary", size = "md", loading = false, disabled, children, ...props }, ref) => (
     <button
       ref={ref}
-      className={cx("firdawsi-button", `firdawsi-button--${variant}`, `firdawsi-button--${size}`, cornerClass(corner), className)}
+      className={cx("firdawsi-button", `firdawsi-button--${variant}`, `firdawsi-button--${size}`, className)}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
-      data-corner={corner}
+      data-shape="arch"
+      data-motion="alberca"
       {...props}
     >
       {loading && <span className="firdawsi-spinner" aria-hidden="true" />}
@@ -282,9 +275,15 @@ export const Checkbox = (props: ChoiceProps) => <Choice kind="checkbox" {...prop
 export const Radio = (props: ChoiceProps) => <Choice kind="radio" {...props} />;
 export const Switch = (props: ChoiceProps) => <Choice kind="switch" {...props} />;
 
-export const Surface = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { corner?: CornerStyle }>(
-  ({ className, corner, ...props }, ref) => (
-    <div ref={ref} className={cx("firdawsi-surface", cornerClass(corner), className)} data-corner={corner} {...props} />
+export const Surface = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & { tier?: SurfaceTier }>(
+  ({ className, tier = 1, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cx("firdawsi-surface", `firdawsi-surface--tier-${tier}`, className)}
+      data-shape="arch"
+      data-tier={tier}
+      {...props}
+    />
   ),
 );
 Surface.displayName = "Surface";
@@ -293,9 +292,7 @@ export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, "title"> {
   title?: ReactNode;
   footer?: ReactNode;
   as?: "article" | "section";
-  corner?: CornerStyle;
-  ornament?: OrnamentStyle;
-  intensity?: OrnamentIntensity;
+  tier?: SurfaceTier;
 }
 
 export function Card({
@@ -304,44 +301,19 @@ export function Card({
   children,
   className,
   as: Element = "article",
-  corner,
-  ornament = "none",
-  intensity = "quiet",
+  tier = 1,
   ...props
 }: CardProps) {
-  const body = (
-    <>
+  return (
+    <Element
+      className={cx("firdawsi-card", `firdawsi-surface--tier-${tier}`, className)}
+      data-shape="arch"
+      data-tier={tier}
+      {...props}
+    >
       {title && <h3 className="firdawsi-card__title">{title}</h3>}
       <div className="firdawsi-card__body">{children}</div>
       {footer && <footer className="firdawsi-card__footer">{footer}</footer>}
-    </>
-  );
-  return (
-    <Element
-      className={cx(
-        "firdawsi-card",
-        cornerClass(corner),
-        ornament !== "none" && `firdawsi-card--ornament-${ornament}`,
-        ornament !== "none" && `firdawsi-card--intensity-${intensity}`,
-        className,
-      )}
-      data-corner={corner}
-      data-ornament={ornament}
-      {...props}
-    >
-      {ornament === "corners" && (
-        <GeometryOverlay kind="corners" options={{ density: intensity === "quiet" ? 0.18 : 0.28 }} />
-      )}
-      {ornament === "frame" && (
-        <GeometryOverlay kind="frame" options={{ density: intensity === "quiet" ? 0.22 : 0.32 }} />
-      )}
-      {ornament === "pattern" ? (
-        <PatternSurface intensity={intensity} className="firdawsi-card__pattern">
-          {body}
-        </PatternSurface>
-      ) : (
-        body
-      )}
     </Element>
   );
 }

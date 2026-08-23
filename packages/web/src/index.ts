@@ -39,7 +39,6 @@ export type {
   BannerProps,
   ButtonProps,
   CardProps,
-  CornerStyle,
   DialogProps,
   EmptyStateProps,
   FrameProps,
@@ -47,14 +46,39 @@ export type {
   MenuItem,
   MenuProps,
   NavigationItem,
-  OrnamentIntensity,
-  OrnamentStyle,
   PatternSurfaceProps,
   ProgressProps,
   SelectOption,
   SelectProps,
   Step,
+  SurfaceTier,
   TabItem,
   TabsProps,
   TextFieldProps,
 } from "./components.js";
+
+export {
+  Accordion,
+  AlertDialog,
+  Badge,
+  Breadcrumbs,
+  Chip,
+  Combobox,
+  Heading,
+  Skeleton,
+  Slider,
+  Stack,
+  Text,
+  Textarea,
+  ToastProvider,
+  useToastQueue,
+} from "./extras.js";
+
+export { PrayerPlaque } from "./prayer-plaque.js";
+export type { PrayerEntry, PrayerId, PrayerPlaqueProps } from "./prayer-plaque.js";
+
+export { ThemeProvider, useTheme } from "./theme.js";
+export type { Density, Direction, ThemeContextValue, ThemeName } from "./theme.js";
+
+export { albercaCss, useAlbercaSpring } from "./motion.js";
+export type { SpringName } from "./motion.js";
