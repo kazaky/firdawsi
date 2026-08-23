@@ -6,3 +6,8 @@ dist/
 playwright-report/
 test-results/
 .DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
