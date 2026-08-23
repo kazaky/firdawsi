@@ -24,6 +24,12 @@ export const guideNavGroups = [
     ],
   },
   {
+    label: "Use",
+    items: [
+      { id: "courtyard", label: "Courtyard", icon: "courtyard" },
+    ],
+  },
+  {
     label: "Craft",
     items: [
       { id: "motion", label: "Motion", icon: "motion" },
@@ -111,6 +117,13 @@ function NavGlyph({ kind }: { kind: string }) {
         <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
           <rect {...common} x="3" y="4" width="14" height="4" rx="1" />
           <rect {...common} x="3" y="10" width="14" height="6" rx="1" />
+        </svg>
+      );
+    case "courtyard":
+      return (
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+          <path {...common} d="M3 16V9l7-5 7 5v7" />
+          <path {...common} d="M8 16v-5h4v5" />
         </svg>
       );
     default:

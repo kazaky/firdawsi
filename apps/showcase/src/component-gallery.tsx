@@ -19,7 +19,6 @@ import {
   Menu,
   Navigation,
   PatternSurface,
-  PrayerPlaque,
   Progress,
   Radio,
   SearchField,
@@ -37,9 +36,8 @@ import {
   Textarea,
   Tooltip,
 } from "@firdawsi/web";
-import { useMemo, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
-import { granadaPrayerSchedule } from "./granada-prayer";
 import { KhatamMark } from "./khatam-mark";
 
 function Code({ children }: { children: string }) {
@@ -270,28 +268,13 @@ export function ComponentMatrix() {
         </Sheet>
       </div>
 
-      <CourtyardPrayerDemo />
-    </div>
-  );
-}
-
-function CourtyardPrayerDemo() {
-  const schedule = useMemo(() => granadaPrayerSchedule(), []);
-
-  return (
-    <div className="component-panel component-panel--wide" id="prayer-plaque">
-      <div className="panel-label"><span>08</span>Courtyard timetable</div>
-      <p className="courtyard-plaque__note">
-        A schedule, not scripture: next prayer for Granada, framed by quiet geometry.
-      </p>
-      <PatternSurface
-        className="courtyard-plaque"
-        presetId="zellige-star-cross"
-        intensity="quiet"
-        options={{ density: 0.22, simplificationTier: "compact" }}
-      >
-        <PrayerPlaque {...schedule} />
-      </PatternSurface>
+      <div className="component-panel component-panel--wide">
+        <div className="panel-label"><span>08</span>Courtyard timetable</div>
+        <p className="courtyard-plaque__note">
+          A composed courtyard desk lives in its own section: bilingual plaque, week table, local theme and RTL.
+        </p>
+        <a className="text-link" href="#courtyard">Open courtyard timetable</a>
+      </div>
     </div>
   );
 }

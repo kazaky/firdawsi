@@ -25,6 +25,7 @@ test("showcase presents every foundation section", async ({ page }) => {
     "mechanics",
     "tokens",
     "components",
+    "courtyard",
     "motion",
     "accessibility",
     "studio",
@@ -66,8 +67,7 @@ test("documentation site exposes mechanics, tokens, and components", async ({ pa
   await expect(primary).toBeVisible();
   await expect(primary).toHaveAttribute("data-shape", "arch");
   await expect(page.locator(".firdawsi-card").first()).toBeVisible();
-  await expect(page.locator("#prayer-plaque")).toContainText("الفجر");
-  await expect(page.locator("#prayer-plaque")).toContainText("Next");
+  await expect(page.locator("#components")).toContainText("Open courtyard timetable");
 });
 
 test("regional profiles render visibly distinct presets", async ({ page }) => {
@@ -83,12 +83,11 @@ test("regional profiles render visibly distinct presets", async ({ page }) => {
 
 test("component gallery exposes product chrome primitives", async ({ page }) => {
   await page.goto("/#components");
-  await expect(page.locator(".firdawsi-app-header")).toBeVisible();
-  await expect(page.locator(".firdawsi-navigation")).toBeVisible();
-  await expect(page.locator(".firdawsi-menu")).toBeVisible();
-  await expect(page.locator(".firdawsi-atmosphere").first()).toBeVisible();
-  await expect(page.locator('[data-atmosphere="courtyard-wash"]')).toBeVisible();
-  await expect(page.locator(".firdawsi-prayer-plaque")).toBeVisible();
+  await expect(page.locator("#components .firdawsi-app-header")).toBeVisible();
+  await expect(page.locator("#components .firdawsi-navigation")).toBeVisible();
+  await expect(page.locator("#components .firdawsi-menu")).toBeVisible();
+  await expect(page.locator("#components .firdawsi-atmosphere").first()).toBeVisible();
+  await expect(page.locator("#components [data-atmosphere='courtyard-wash']")).toBeVisible();
 });
 
 test("themes and direction remain interactive", async ({ page }) => {
@@ -99,7 +98,7 @@ test("themes and direction remain interactive", async ({ page }) => {
   await page.getByRole("button", { name: "High contrast" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "high-contrast");
 
-  await page.getByRole("button", { name: "RTL" }).click();
+  await page.getByRole("button", { name: "RTL", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await expect(page.locator("#components")).toBeVisible();
   await expectNoHorizontalOverflow(page);
@@ -153,6 +152,31 @@ test("recipe v2 metadata and exports are available", async ({ page }) => {
   await expectNoHorizontalOverflow(page);
 });
 
+test("courtyard timetable composes a local product desk", async ({ page }) => {
+  await page.goto("/#courtyard");
+  const courtyard = page.locator("#courtyard");
+  await expect(courtyard).toBeVisible();
+  await expect(courtyard).toContainText("A schedule, not scripture");
+  await expect(page.locator("#prayer-plaque")).toContainText("الفجر");
+  await expect(page.locator("#prayer-plaque")).toContainText("Granada");
+  await expect(page.locator(".firdawsi-prayer-plaque")).toBeVisible();
+
+  await courtyard.getByLabel("City").selectOption("fez");
+  await expect(page.locator("#prayer-plaque")).toContainText("فاس");
+  await expect(page.locator("#prayer-plaque")).toContainText("Fez");
+
+  await courtyard.getByRole("tab", { name: "Week" }).click();
+  await expect(courtyard.locator(".firdawsi-table")).toContainText("This week in Fez");
+  await expect(courtyard.locator(".firdawsi-table")).toContainText("الفجر");
+  await courtyard.getByRole("tab", { name: "Today" }).click();
+  await expect(page.locator("#prayer-plaque")).toBeVisible();
+
+  await courtyard.getByRole("button", { name: "RTL courtyard" }).click();
+  await expect(courtyard.locator(".firdawsi-theme")).toHaveAttribute("dir", "rtl");
+  await expect(page.locator("html")).not.toHaveAttribute("dir", "rtl");
+  await expectNoHorizontalOverflow(page);
+});
+
 test("mobile guide drawer reaches studio and components", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/");
@@ -165,10 +189,16 @@ test("mobile guide drawer reaches studio and components", async ({ page }) => {
   await expect(page.locator("#guide-panel")).not.toHaveClass(/guide-panel--open/);
 
   await page.getByRole("button", { name: "Open guide" }).click();
+  await page.locator("#guide-panel").getByRole("link", { name: "Courtyard", exact: true }).click();
+  await expect(page.locator("#courtyard")).toBeInViewport();
+  await expect(page.locator("#prayer-plaque")).toContainText("الفجر");
+  await expectNoHorizontalOverflow(page);
+
+  await page.getByRole("button", { name: "Open guide" }).click();
   await page.locator("#guide-panel").getByRole("link", { name: "Components", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Components" })).toBeVisible();
 
-  await page.getByRole("button", { name: "RTL" }).click();
+  await page.getByRole("button", { name: "RTL", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await expectNoHorizontalOverflow(page);
 

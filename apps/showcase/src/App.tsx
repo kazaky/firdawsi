@@ -15,6 +15,7 @@ import {
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 
 import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
+import { CourtyardSection } from "./courtyard-section";
 import {
   GITHUB_URL,
   GuideMenuButton,
@@ -495,8 +496,16 @@ export function App() {
             <ComponentMatrix />
           </section>
 
+          <section id="courtyard" className="section section--courtyard">
+            <SectionHeading number="08" eyebrow="Use" title="Courtyard timetable">
+              A composed Andalusi desk: bilingual type, carved plaque, quiet geometry, and local theme
+              without hijacking the rest of the site.
+            </SectionHeading>
+            <CourtyardSection />
+          </section>
+
           <section id="motion" className="section section--motion">
-            <SectionHeading number="08" eyebrow="Motion" title="Alberca springs explain cause">
+            <SectionHeading number="09" eyebrow="Motion" title="Alberca springs explain cause">
               A courtyard pool settling: fast rise, long low-amplitude settle. Transitions remain
               brief, interruptible, and disappear when reduced motion is preferred.
             </SectionHeading>
@@ -516,7 +525,7 @@ export function App() {
           </section>
 
           <section id="accessibility" className="section">
-            <SectionHeading number="09" eyebrow="Accessibility" title="Access is part of the form">
+            <SectionHeading number="10" eyebrow="Accessibility" title="Access is part of the form">
               Contrast, focus, direction, language, and motion preferences are design inputs—not post-production checks.
             </SectionHeading>
             <div className="access-layout">
@@ -545,7 +554,7 @@ export function App() {
           </section>
 
           <section id="studio" className="section section--studio">
-            <SectionHeading number="10" eyebrow="Preset-first workshop" title="Pattern Studio">
+            <SectionHeading number="11" eyebrow="Preset-first workshop" title="Pattern Studio">
               Begin with a compass rosette — real construction, not a decorative star — then tune
               only the controls its family supports, compare responsive tiers, and export its recipe.
             </SectionHeading>

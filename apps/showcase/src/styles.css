@@ -2665,6 +2665,83 @@ main {
   margin: 0 0 var(--firdawsi-space-3);
 }
 
+.section--courtyard .firdawsi-theme {
+  background: var(--firdawsi-color-surface);
+  border-radius: var(--firdawsi-shape-container-lg, 20px);
+  color: var(--firdawsi-color-on-surface);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.courtyard-desk {
+  color: inherit;
+}
+
+.courtyard-desk .firdawsi-atmosphere__content {
+  display: grid;
+  gap: var(--firdawsi-space-4);
+  padding: var(--firdawsi-space-4);
+}
+
+.courtyard-desk__title {
+  display: grid;
+  gap: 2px;
+}
+
+.courtyard-desk__title .firdawsi-text {
+  margin: 0;
+}
+
+.courtyard-desk__controls {
+  display: grid;
+  gap: var(--firdawsi-space-4);
+}
+
+.courtyard-desk__toggles {
+  display: grid;
+  gap: var(--firdawsi-space-3);
+}
+
+.courtyard-desk__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--firdawsi-space-2);
+}
+
+.courtyard-desk__note {
+  background: color-mix(in srgb, var(--firdawsi-color-surface-tier-1) 88%, transparent);
+  padding: var(--firdawsi-space-4);
+}
+
+.courtyard-desk__note .firdawsi-text {
+  margin: 0;
+}
+
+.courtyard-desk__today {
+  display: grid;
+  gap: var(--firdawsi-space-4);
+}
+
+.courtyard-desk .firdawsi-table th span {
+  display: block;
+}
+
+.courtyard-desk .firdawsi-table-wrap {
+  background: var(--firdawsi-color-surface);
+  border-radius: var(--firdawsi-shape-container-md);
+}
+
+@media (min-width: 720px) {
+  .courtyard-desk__controls {
+    align-items: end;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .courtyard-desk__toggles {
+    grid-column: 1 / -1;
+  }
+}
+
 .reference-photo {
   display: block;
   height: auto;
