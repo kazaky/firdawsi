@@ -265,6 +265,12 @@
   --firdawsi-motion-duration-normal: 220ms;
   --firdawsi-motion-duration-slow: 360ms;
   --firdawsi-motion-duration-ceremonial: 600ms;
+  --firdawsi-motion-stage-sukun: 0ms;
+  --firdawsi-motion-stage-dunu: 120ms;
+  --firdawsi-motion-stage-istijabah: 120ms;
+  --firdawsi-motion-stage-jarayan: 220ms;
+  --firdawsi-motion-stage-istiqrar: 360ms;
+  --firdawsi-motion-stage-salam: 220ms;
   --firdawsi-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
   --firdawsi-motion-easing-enter: cubic-bezier(0.16, 1, 0.3, 1);
   --firdawsi-motion-easing-exit: cubic-bezier(0.4, 0, 1, 1);

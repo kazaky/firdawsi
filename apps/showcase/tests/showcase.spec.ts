@@ -11,7 +11,11 @@ test("showcase presents every foundation section", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/Firdawsi/i);
   await expect(page.getByRole("heading", { name: /Gardens of/i })).toBeVisible();
-  await expect(page.locator("#overview")).toContainText("A design system, not a star generator");
+  await expect(page.locator("#overview")).toContainText("A design system for peaceful, secure, effortless interaction");
+  await expect(page.locator("#overview")).toContainText("does not depict, reconstruct, or simulate Jannah");
+  await expect(page.locator(".interaction-cycle article")).toHaveCount(6);
+  await expect(page.locator(".interaction-cycle")).toContainText("Sukūn");
+  await expect(page.locator(".interaction-cycle")).toContainText("Salām");
 
   await expect(page.getByRole("link", { name: /View on GitHub/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Star on GitHub/i })).toBeVisible();
@@ -170,6 +174,20 @@ test("courtyard timetable composes a local product desk", async ({ page }) => {
   await expect(courtyard.locator(".firdawsi-table")).toContainText("الفجر");
   await courtyard.getByRole("tab", { name: "Today" }).click();
   await expect(page.locator("#prayer-plaque")).toBeVisible();
+
+  await courtyard.getByRole("textbox", { name: "Quick capture" }).fill("Review the roadmap");
+  await courtyard.getByRole("button", { name: "Add intention" }).click();
+  const task = courtyard.getByRole("checkbox", { name: "Review the roadmap" });
+  await expect(task).toBeVisible();
+  await task.check();
+  await expect(courtyard.getByRole("status")).toContainText("Task settled");
+  await page.reload();
+  await expect(courtyard.getByRole("checkbox", { name: "Review the roadmap" })).toBeChecked();
+
+  await courtyard.getByRole("button", { name: "Remove Review the roadmap" }).click();
+  await expect(courtyard.getByRole("checkbox", { name: "Review the roadmap" })).toHaveCount(0);
+  await courtyard.getByRole("button", { name: "Undo" }).click();
+  await expect(courtyard.getByRole("checkbox", { name: "Review the roadmap" })).toBeChecked();
 
   await courtyard.getByRole("button", { name: "RTL courtyard" }).click();
   await expect(courtyard.locator(".firdawsi-theme")).toHaveAttribute("dir", "rtl");

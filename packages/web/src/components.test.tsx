@@ -33,9 +33,13 @@ describe("foundation controls", () => {
     expect(button).toHaveAttribute("aria-busy", "true");
   });
 
-  it("applies the arch-corner identity without an ornament prop", () => {
+  it("reserves the arch threshold for commitment actions", () => {
+    render(<Button>Commit</Button>);
     render(<Button variant="secondary">Facet</Button>);
-    expect(screen.getByRole("button", { name: "Facet" })).toHaveAttribute("data-shape", "arch");
+    expect(screen.getByRole("button", { name: "Commit" })).toHaveAttribute("data-shape", "arch");
+    expect(screen.getByRole("button", { name: "Commit" })).toHaveAttribute("data-interaction", "commit");
+    expect(screen.getByRole("button", { name: "Facet" })).toHaveAttribute("data-shape", "plain");
+    expect(screen.getByRole("button", { name: "Facet" })).toHaveAttribute("data-interaction", "direct");
   });
 
   it("connects field labels, hints, and errors", () => {

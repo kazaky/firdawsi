@@ -457,6 +457,16 @@ main {
   padding-inline-start: 42px;
 }
 
+.hero-guardrail {
+  border-inline-start: 3px solid var(--firdawsi-color-primary);
+  color: var(--firdawsi-color-text-muted);
+  font-size: var(--firdawsi-font-role-body-sm-size);
+  line-height: 1.65;
+  margin: var(--firdawsi-space-4) 0 0;
+  max-width: 72ch;
+  padding-inline-start: var(--firdawsi-space-3);
+}
+
 .hero-actions {
   display: flex;
   gap: 30px;
@@ -584,6 +594,33 @@ main {
   line-height: 1.7;
   margin: 0;
 }
+
+.interaction-cycle {
+  border: 1px solid var(--firdawsi-color-border);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-block-start: clamp(36px, 6vw, 72px);
+  margin-inline-start: calc(17% + clamp(30px, 5vw, 80px));
+}
+
+.interaction-cycle article {
+  border: 1px solid var(--firdawsi-color-border);
+  display: grid;
+  gap: var(--firdawsi-space-1);
+  min-height: 150px;
+  padding: var(--firdawsi-space-4);
+}
+
+.interaction-cycle article > span {
+  color: var(--firdawsi-color-primary);
+  font: var(--firdawsi-font-role-label-sm-size) var(--firdawsi-font-family-mono);
+}
+
+.interaction-cycle h3,
+.interaction-cycle p { margin: 0; }
+.interaction-cycle h3 { font-family: var(--firdawsi-font-family-display); font-size: 22px; }
+.interaction-cycle strong { font-size: var(--firdawsi-font-role-label-md-size); }
+.interaction-cycle p { color: var(--firdawsi-color-text-muted); font-size: var(--firdawsi-font-role-body-sm-size); }
 
 .section--ink {
   background: var(--firdawsi-color-text);
@@ -1582,6 +1619,11 @@ main {
   }
 
   .principle-list {
+    margin-inline-start: 0;
+  }
+
+  .interaction-cycle {
+    grid-template-columns: 1fr;
     margin-inline-start: 0;
   }
 
@@ -2722,6 +2764,74 @@ main {
   gap: var(--firdawsi-space-4);
 }
 
+.courtyard-desk__prayer {
+  display: grid;
+  gap: var(--firdawsi-space-4);
+  min-width: 0;
+}
+
+.courtyard-tasks {
+  align-content: start;
+  background: color-mix(in srgb, var(--firdawsi-color-surface-tier-1) 94%, transparent);
+  border: var(--firdawsi-stroke-width-regular) solid var(--firdawsi-color-outline-variant);
+  border-radius: var(--firdawsi-shape-container-md);
+  display: grid;
+  gap: var(--firdawsi-space-4);
+  min-width: 0;
+  padding: var(--firdawsi-space-4);
+}
+
+.courtyard-tasks > header {
+  align-items: start;
+  display: flex;
+  gap: var(--firdawsi-space-3);
+  justify-content: space-between;
+}
+
+.courtyard-tasks > header .firdawsi-text { margin: 0; }
+.courtyard-tasks > header h3 { margin: 0; }
+.courtyard-tasks > header .firdawsi-text + .firdawsi-text { margin-block-start: var(--firdawsi-space-1); }
+
+.courtyard-tasks__capture {
+  align-items: end;
+  display: grid;
+  gap: var(--firdawsi-space-2);
+}
+
+.courtyard-tasks__list {
+  display: grid;
+  gap: var(--firdawsi-space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.courtyard-tasks__list li {
+  align-items: center;
+  background: var(--firdawsi-color-surface);
+  border-radius: var(--firdawsi-radius-md);
+  display: flex;
+  gap: var(--firdawsi-space-2);
+  justify-content: space-between;
+  padding: var(--firdawsi-space-2) var(--firdawsi-space-3);
+}
+
+.courtyard-tasks__list li.is-complete .firdawsi-choice__label {
+  color: var(--firdawsi-color-text-muted);
+  text-decoration: line-through;
+}
+
+.courtyard-tasks__status {
+  align-items: center;
+  border-block-start: 1px solid var(--firdawsi-color-outline-variant);
+  color: var(--firdawsi-color-text-muted);
+  display: flex;
+  font-size: var(--firdawsi-font-role-body-sm-size);
+  justify-content: space-between;
+  min-block-size: var(--firdawsi-size-control-sm);
+  padding-block-start: var(--firdawsi-space-2);
+}
+
 .courtyard-desk .firdawsi-table th span {
   display: block;
 }
@@ -2739,6 +2849,17 @@ main {
 
   .courtyard-desk__toggles {
     grid-column: 1 / -1;
+  }
+
+  .courtyard-tasks__capture {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (min-width: 980px) {
+  .courtyard-desk__today {
+    align-items: start;
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .75fr);
   }
 }
 

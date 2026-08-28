@@ -35,16 +35,18 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "quiet" | "danger";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
+  shape?: "threshold" | "plain";
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", loading = false, disabled, children, ...props }, ref) => (
+  ({ className, variant = "primary", size = "md", loading = false, shape, disabled, children, ...props }, ref) => (
     <button
       ref={ref}
       className={cx("firdawsi-button", `firdawsi-button--${variant}`, `firdawsi-button--${size}`, className)}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
-      data-shape="arch"
+      data-shape={(shape ?? (variant === "primary" ? "threshold" : "plain")) === "threshold" ? "arch" : "plain"}
+      data-interaction={variant === "primary" ? "commit" : "direct"}
       data-motion="alberca"
       {...props}
     >

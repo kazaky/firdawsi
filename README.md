@@ -1,10 +1,12 @@
 # Firdawsi
 
-**Paradise-inspired design** · *al-tasmīm al-firdawsī* · a modern Islamic design system
+**Qur’an-guided experience** · *al-tasmīm al-firdawsī* · a modern Islamic design system
 
-Firdawsi translates the spatial grammar of Islamic garden architecture — enclosure,
-geometry, water, light, and measured ornament — into contemporary digital interfaces.
-Geometry is structure, rhythm, and proportion, not decorative wallpaper.
+Firdawsi translates Qur’anic qualities associated with Jannah—peace, security, ease,
+nearness, abundance, beauty, and harmonious companionship—through the spatial grammar
+of Islamic garden architecture into contemporary digital interfaces. It does not claim
+to depict, reconstruct, or simulate Jannah. Geometry is structure, rhythm, and proportion,
+not decorative wallpaper.
 
 The project contains a portable specification and token model, a deterministic
 code-only geometry engine, an accessible React reference library, and an
@@ -48,10 +50,10 @@ pnpm dev
 The development server prints its local URL. Production verification:
 
 ```bash
-pnpm typecheck
 pnpm test
-pnpm test:e2e
 pnpm build
+pnpm typecheck
+pnpm test:e2e
 ```
 
 ## Packages

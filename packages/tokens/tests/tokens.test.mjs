@@ -162,6 +162,17 @@ test("Alberca springs are physically grounded and ordered by damping", () => {
   assert.ok(Math.abs(calm.dampingRatio - 1) < 0.02, "calm is critically damped");
 });
 
+test("the six interaction stages resolve to restrained semantic timing", () => {
+  const stages = canonical.motion.stage;
+  assert.deepEqual(
+    Object.keys(stages).filter((key) => !key.startsWith("$")),
+    ["sukun", "dunu", "istijabah", "jarayan", "istiqrar", "salam"]
+  );
+  assert.match(css, /--firdawsi-motion-stage-dunu: 120ms/);
+  assert.match(css, /--firdawsi-motion-stage-istiqrar: 360ms/);
+  assert.match(css, /--firdawsi-motion-stage-salam: 220ms/);
+});
+
 test("strapwork focus tokens describe a two-stroke band", () => {
   assert.ok(canonical.focus.strap.gap);
   assert.ok(canonical.focus.strap.core);

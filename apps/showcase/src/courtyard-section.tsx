@@ -4,6 +4,8 @@ import {
   AppHeader,
   Atmosphere,
   Badge,
+  Button,
+  Checkbox,
   Chip,
   EmptyState,
   Frame,
@@ -14,9 +16,10 @@ import {
   Table,
   Tabs,
   Text,
+  TextField,
   ThemeProvider,
 } from "@firdawsi/web";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 
 import {
   COURTYARD_CITIES,
@@ -38,6 +41,27 @@ function presetForRegion(region: RegionId) {
   return region === "ottoman" ? "khatam-8-star-cross" : "zellige-star-cross";
 }
 
+interface CourtyardTask {
+  id: string;
+  title: string;
+  complete: boolean;
+}
+
+const TASK_STORAGE_KEY = "firdawsi.courtyard.tasks.v1";
+
+function readTasks(): CourtyardTask[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(TASK_STORAGE_KEY) ?? "[]");
+    return Array.isArray(saved)
+      ? saved.filter((task): task is CourtyardTask =>
+          typeof task?.id === "string" && typeof task?.title === "string" && typeof task?.complete === "boolean")
+      : [];
+  } catch {
+    return [];
+  }
+}
+
 export function CourtyardSection() {
   const [cityId, setCityId] = useState<CityId>("granada");
   const [theme, setTheme] = useState<ThemeName>("light");
@@ -45,10 +69,51 @@ export function CourtyardSection() {
   const [density, setDensity] = useState<Density>("comfortable");
   const [region, setRegion] = useState<RegionId>("andalusi-maghrebi");
   const [tab, setTab] = useState("today");
+  const [tasks, setTasks] = useState<CourtyardTask[]>(readTasks);
+  const [draft, setDraft] = useState("");
+  const [message, setMessage] = useState("Your tasks stay on this device.");
+  const [removed, setRemoved] = useState<CourtyardTask | null>(null);
+
+  useEffect(() => {
+    window.localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(tasks));
+  }, [tasks]);
 
   const day = useMemo(() => courtyardDaySchedule(cityId), [cityId]);
   const week = useMemo(() => courtyardWeek(cityId), [cityId]);
   const next = day.prayers.find((prayer) => prayer.id === day.nextId);
+  const openTasks = tasks.filter((task) => !task.complete).length;
+
+  function addTask(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const title = draft.trim();
+    if (!title) {
+      setMessage("Write a task before adding it.");
+      return;
+    }
+    setTasks((current) => [...current, { id: `${Date.now()}-${current.length}`, title, complete: false }]);
+    setDraft("");
+    setRemoved(null);
+    setMessage(`Added “${title}”.`);
+  }
+
+  function toggleTask(id: string, complete: boolean) {
+    setTasks((current) => current.map((task) => task.id === id ? { ...task, complete } : task));
+    setRemoved(null);
+    setMessage(complete ? "Task settled. Your result stays visible." : "Task returned to the open list.");
+  }
+
+  function removeTask(task: CourtyardTask) {
+    setTasks((current) => current.filter((item) => item.id !== task.id));
+    setRemoved(task);
+    setMessage(`Removed “${task.title}”.`);
+  }
+
+  function undoRemove() {
+    if (!removed) return;
+    setTasks((current) => [...current, removed]);
+    setMessage(`Restored “${removed.title}”.`);
+    setRemoved(null);
+  }
 
   return (
     <ThemeProvider
@@ -84,7 +149,7 @@ export function CourtyardSection() {
                 <span lang="ar" dir="rtl"> {next.nameAr}</span>
               </Badge>
             ) : (
-              <Badge>Night interval</Badge>
+              <Badge>{openTasks ? `${openTasks} open` : "All settled"}</Badge>
             )
           }
         />
@@ -151,33 +216,85 @@ export function CourtyardSection() {
               label: "Today",
               content: (
                 <div className="courtyard-desk__today">
-                  <PatternSurface
-                    className="courtyard-plaque"
-                    presetId={presetForRegion(region)}
-                    intensity="quiet"
-                    options={{ density: 0.22, simplificationTier: "compact" }}
-                  >
-                    <PrayerPlaque
-                      id="prayer-plaque"
-                      locationAr={day.locationAr}
-                      locationEn={day.locationEn}
-                      dateLabel={day.dateLabel}
-                      prayers={day.prayers}
-                      nextId={day.nextId}
-                      remainingLabel={day.remainingLabel}
-                    />
-                  </PatternSurface>
-                  {day.nightRest ? (
-                    <EmptyState title="Night interval">
-                      <Text role="body-sm">Isha has passed. Fajr is the next mark on this timetable.</Text>
-                    </EmptyState>
-                  ) : (
-                    <Progress
-                      label={next ? `Until ${next.nameEn}` : "Next prayer"}
-                      value={day.progress ?? 0}
-                      showValue
-                    />
-                  )}
+                  <div className="courtyard-desk__prayer">
+                    <PatternSurface
+                      className="courtyard-plaque"
+                      presetId={presetForRegion(region)}
+                      intensity="quiet"
+                      options={{ density: 0.22, simplificationTier: "compact" }}
+                    >
+                      <PrayerPlaque
+                        id="prayer-plaque"
+                        locationAr={day.locationAr}
+                        locationEn={day.locationEn}
+                        dateLabel={day.dateLabel}
+                        prayers={day.prayers}
+                        nextId={day.nextId}
+                        remainingLabel={day.remainingLabel}
+                      />
+                    </PatternSurface>
+                    {day.nightRest ? (
+                      <EmptyState title="Night interval">
+                        <Text role="body-sm">Isha has passed. Fajr is the next mark on this timetable.</Text>
+                      </EmptyState>
+                    ) : (
+                      <Progress
+                        label={next ? `Until ${next.nameEn}` : "Next prayer"}
+                        value={day.progress ?? 0}
+                        showValue
+                      />
+                    )}
+                  </div>
+
+                  <section className="courtyard-tasks" aria-labelledby="courtyard-tasks-title">
+                    <header>
+                      <div>
+                        <h3 id="courtyard-tasks-title"><Text role="title-md" as="span">Today’s intentions</Text></h3>
+                        <Text role="body-sm">Capture the next meaningful action. Nothing leaves this device.</Text>
+                      </div>
+                      <Badge>{openTasks} open</Badge>
+                    </header>
+                    <form className="courtyard-tasks__capture" onSubmit={addTask}>
+                      <TextField
+                        label="Quick capture"
+                        value={draft}
+                        onChange={(event) => setDraft(event.target.value)}
+                        placeholder="What needs your attention?"
+                        autoComplete="off"
+                      />
+                      <Button type="submit">Add intention</Button>
+                    </form>
+                    {tasks.length === 0 ? (
+                      <EmptyState title="A quiet beginning">
+                        <Text role="body-sm">Add one intention when you are ready.</Text>
+                      </EmptyState>
+                    ) : (
+                      <ul className="courtyard-tasks__list" aria-label="Today’s intentions">
+                        {tasks.map((task) => (
+                          <li key={task.id} className={task.complete ? "is-complete" : undefined}>
+                            <Checkbox
+                              label={task.title}
+                              checked={task.complete}
+                              onChange={(event) => toggleTask(task.id, event.target.checked)}
+                            />
+                            <Button
+                              variant="quiet"
+                              size="sm"
+                              type="button"
+                              aria-label={`Remove ${task.title}`}
+                              onClick={() => removeTask(task)}
+                            >
+                              Remove
+                            </Button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <div className="courtyard-tasks__status" role="status" aria-live="polite">
+                      <span>{message}</span>
+                      {removed && <Button variant="quiet" size="sm" type="button" onClick={undoRemove}>Undo</Button>}
+                    </div>
+                  </section>
                 </div>
               ),
             },

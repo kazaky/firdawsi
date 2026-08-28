@@ -20,6 +20,7 @@ This specification governs design intent and cross-platform behavior. It does no
 8. [Component anatomy and contracts](08-component-anatomy-and-contracts.md) — semantic anatomy and shared web, iOS, Android, and desktop behavior.
 9. [Accessibility](09-accessibility.md) — WCAG-oriented requirements across color, text, motion, input, semantics, and testing.
 10. [Sources and provenance registry](10-sources-and-provenance.md) — authoritative references, evidence levels, object records, and source logging.
+11. [Qur’an-guided experience and interaction](11-quranic-experience-and-interaction.md) — source hierarchy, non-claims, experiential laws, and the six-stage interaction cycle.
 
 ## Normative language
 
@@ -43,4 +44,3 @@ The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** indica
 - Regional profiles MUST NOT be blended into an unnamed “Islamic” composite.
 - Accessibility, legibility, correct Arabic shaping, and semantic direction take priority over visual effect.
 - Every historical reference used in production requires a provenance entry and human review.
-

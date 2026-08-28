@@ -257,22 +257,26 @@ export function App() {
               <KhatamMark size={420} className="hero-khatam" />
             </div>
             <div className="hero-content">
-              <p className="issue-label">Paradise-inspired design · al-tasmīm al-firdawsī</p>
+              <p className="issue-label">Qur’an-guided experience · al-tasmīm al-firdawsī</p>
               <h1>
                 Gardens of
                 <span>light.</span>
               </h1>
               <div className="hero-statement">
                 <p>
-                  A design system, not a star generator. Identity comes from six mechanics —
-                  sebka, arch corners, carved tiers, strapwork, Alberca springs, and dual-optical type —
-                  rooted in the Firdawsi grammar of enclosure, water, and measured ornament.
+                  A design system for peaceful, secure, effortless interaction. Qur’anic qualities
+                  associated with Jannah guide the experience; Islamic garden architecture gives it
+                  spatial language; tokens and components make it usable.
                 </p>
                 <p lang="ar" dir="rtl">
                   نظام واجهات معاصر يستمد من التصميم الفردوسي: الإحاطة والماء والهندسة والزخرفة المقيسة،
                   فيخدم البنية لا الزينة.
                 </p>
               </div>
+              <p className="hero-guardrail">
+                Firdawsi does not depict, reconstruct, or simulate Jannah. It documents design
+                inferences and keeps sacred text out of decoration and interface feedback.
+              </p>
               <div className="hero-actions">
                 <a className="text-link" href="#studio">Open Pattern Studio <Arrow /></a>
                 <a className="text-link text-link--quiet" href="#principles">Read the manifesto ↓</a>
@@ -282,24 +286,41 @@ export function App() {
               </div>
             </div>
             <div className="hero-meta">
-              <span>10 families</span><span>6 mechanics</span><span>3 themes</span><span>2 directions</span>
+              <span>9 laws</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
             </div>
           </section>
 
           <section id="principles" className="section">
             <SectionHeading number="01" eyebrow="Manifesto" title="Principles before pixels">
-              The system does not reproduce a single visual tradition. It translates durable ideas
-              into an adaptable interface language.
+              Peace, security, ease, nearness, flow, ordered abundance, service, companionship,
+              and quiet completion become testable interface laws—not a decorative mood board.
             </SectionHeading>
             <div className="principle-list">
               {[
-                ["01", "Geometry carries meaning", "Proportion, repetition, and relation organize the interface before any ornament appears."],
-                ["02", "Culture is plural", "Regional profiles are lenses, never labels. They invite context without collapsing difference."],
-                ["03", "Language shapes layout", "Arabic and Latin scripts receive equal typographic attention, not mirrored afterthoughts."],
-                ["04", "Restraint creates presence", "Pattern is used as architecture: to frame, pace, divide, and guide."],
+                ["01", "Peace over pressure", "Urgency is factual, never manufactured; feedback is humane, concise, and free from shame."],
+                ["02", "Security over precarity", "Consequences are named before commitment, and actions are reversible whenever possible."],
+                ["03", "Nearness over pursuit", "The likely next action and relevant context come near without making people hunt."],
+                ["04", "Beauty in service", "Geometry frames hierarchy and flow. It never competes with content, language, or access."],
               ].map(([number, title, copy]) => (
                 <article key={number}>
                   <span>{number}</span><h3>{title}</h3><p>{copy}</p>
+                </article>
+              ))}
+            </div>
+            <div className="interaction-cycle" aria-label="Firdawsi interaction cycle">
+              {[
+                ["Sukūn", "Rest", "Stable and readable"],
+                ["Dunūw", "Nearness", "Action becomes clear"],
+                ["Istijābah", "Response", "Input is acknowledged"],
+                ["Jarāyān", "Flow", "Change preserves place"],
+                ["Istiqrār", "Settling", "New state stabilizes"],
+                ["Salām", "Peace", "Completion stays visible"],
+              ].map(([name, meaning, behavior], index) => (
+                <article key={name} data-stage={name.toLowerCase()}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{name}</h3>
+                  <strong>{meaning}</strong>
+                  <p>{behavior}</p>
                 </article>
               ))}
             </div>
@@ -497,25 +518,28 @@ export function App() {
           </section>
 
           <section id="courtyard" className="section section--courtyard">
-            <SectionHeading number="08" eyebrow="Use" title="Courtyard timetable">
-              A composed Andalusi desk: bilingual type, carved plaque, quiet geometry, and local theme
-              without hijacking the rest of the site.
+            <SectionHeading number="08" eyebrow="Use" title="Courtyard day desk">
+              A real local-first workflow: prayer context, quick capture, persistent intentions,
+              reversible removal, and peaceful completion—without an account.
             </SectionHeading>
             <CourtyardSection />
           </section>
 
           <section id="motion" className="section section--motion">
-            <SectionHeading number="09" eyebrow="Motion" title="Alberca springs explain cause">
-              A courtyard pool settling: fast rise, long low-amplitude settle. Transitions remain
-              brief, interruptible, and disappear when reduced motion is preferred.
+            <SectionHeading number="09" eyebrow="Interaction" title="From rest to peaceful completion">
+              One causal cycle serves touch, pointer, keyboard, and voice. Motion can disappear;
+              response, continuity, and a stable result cannot.
             </SectionHeading>
             <div className="motion-grid">
               {[
-                ["120", "Respond", "Hover, press, focus"],
-                ["220", "Rearrange", "Tabs, disclosure, layout"],
-                ["360", "Enter", "Panels and spatial context"],
+                ["0", "Sukūn", "Rest · stable default"],
+                ["120", "Dunūw", "Nearness · availability clarifies"],
+                ["120", "Istijābah", "Response · input acknowledged"],
+                ["220", "Jarāyān", "Flow · place is preserved"],
+                ["360", "Istiqrār", "Settling · state stabilizes"],
+                ["220", "Salām", "Peace · result remains visible"],
               ].map(([duration, title, copy], index) => (
-                <div className="motion-card" key={duration}>
+                <div className="motion-card" key={title} data-stage={title.toLowerCase()}>
                   <div className={`motion-orbit motion-orbit--${index + 1}`}><KhatamMark size={24} /></div>
                   <strong>{duration}<small>ms</small></strong>
                   <h3>{title}</h3><p>{copy}</p>
@@ -563,7 +587,7 @@ export function App() {
 
           <footer className="footer">
             <div><KhatamMark size={42} /><strong>Firdawsi</strong></div>
-            <p>Paradise-inspired design for interfaces that feel grounded, contemporary, and open to many contexts.</p>
+            <p>Qur’an-guided experiential principles for interfaces that feel peaceful, secure, effortless, and grounded.</p>
             <a href="https://firdawsi.org" rel="noreferrer">firdawsi.org</a>
             <a href={GITHUB_URL} rel="noreferrer" target="_blank">GitHub</a>
             <a href="#overview">Return to top ↑</a>

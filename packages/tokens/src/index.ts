@@ -53,6 +53,18 @@ export const TYPE_ROLES = [
 
 export type TypeRole = (typeof TYPE_ROLES)[number];
 
+/** The six experiential stages shared by touch, pointer, keyboard, and voice flows. */
+export const INTERACTION_STAGES = [
+  "sukun",
+  "dunu",
+  "istijabah",
+  "jarayan",
+  "istiqrar",
+  "salam"
+] as const;
+
+export type InteractionStage = (typeof INTERACTION_STAGES)[number];
+
 /** Returns the CSS custom property name for a dot-separated token path. */
 export function cssVariable(tokenPath: string): `--firdawsi-${string}` {
   const kebabPath = tokenPath
