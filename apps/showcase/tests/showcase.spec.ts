@@ -179,7 +179,7 @@ test("courtyard timetable composes a local product desk", async ({ page }) => {
   await courtyard.getByRole("button", { name: "Add intention" }).click();
   const task = courtyard.getByRole("checkbox", { name: "Review the roadmap" });
   await expect(task).toBeVisible();
-  await task.check();
+  await courtyard.getByText("Review the roadmap", { exact: true }).click();
   await expect(courtyard.getByRole("status")).toContainText("Task settled");
   await page.reload();
   await expect(courtyard.getByRole("checkbox", { name: "Review the roadmap" })).toBeChecked();
