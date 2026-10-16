@@ -67,7 +67,7 @@
 .art-palettes legend { font-size: 12px; padding: 0 0 12px; }
 .art-palettes label { position: relative; display: flex; gap: 8px; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid var(--art-line); border-radius: 14px 5px 14px 5px; font-size: 12px; cursor: pointer; }
 .art-palettes label:has(:checked) { border-color: var(--firdawsi-color-primary); background: var(--art-tint); color: var(--firdawsi-color-on-primary-container); }
-.art-palettes input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.art-palettes input { position: absolute; inset: 0; z-index: 1; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
 .art-palettes label:has(:focus-visible) { outline: 3px solid var(--firdawsi-color-focus); outline-offset: 3px; }
 .art-pigment { width: 18px; height: 18px; background: var(--pigment); clip-path: polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%); }
 .art-construction { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; cursor: pointer; }
@@ -90,7 +90,7 @@
 .intention-choices { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; padding: 0; border: 0; }
 .intention-choices legend { font-size: 12px; margin-bottom: 12px; }
 .intention-choices label { position: relative; flex: 1; min-width: 84px; cursor: pointer; }
-.intention-choices input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.intention-choices input { position: absolute; inset: 0; z-index: 1; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
 .intention-choices label span { display: flex; justify-content: center; align-items: center; gap: 8px; min-height: 48px; border: 1px solid var(--art-line); border-radius: 16px 5px 16px 5px; font-size: 13px; }
 .intention-choices input:checked + span { background: var(--firdawsi-color-primary-container); color: var(--firdawsi-color-on-primary-container); border-color: var(--firdawsi-color-primary); }
 .intention-choices input:checked + span::before { content: "✦"; }

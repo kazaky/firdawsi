@@ -232,6 +232,9 @@ test("art direction coordinates colour and reveals geometric construction", asyn
   const before = await hero.evaluate(node => node.outerHTML);
   await art.getByRole("radio", { name: "Violet", exact: true }).check();
   await expect.poll(() => hero.evaluate(node => node.outerHTML)).not.toBe(before);
+  await art.getByRole("radio", { name: "Violet", exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(art.getByRole("radio", { name: "Coral", exact: true })).toBeChecked();
   await expect(art.locator("[data-construction-role]")).toHaveCount(0);
   await art.getByRole("checkbox", { name: "Reveal the construction" }).check();
   await expect(art.locator("[data-construction-role]").first()).toBeAttached();
