@@ -9,17 +9,21 @@ export const guideNavGroups = [
     label: "Start",
     items: [
       { id: "overview", label: "Overview", icon: "home" },
-      { id: "principles", label: "Manifesto", icon: "star" },
+      { id: "getting-started", label: "Getting started", icon: "blocks" },
+      { id: "principles", label: "Philosophy", icon: "star" },
+      { id: "experience", label: "Experience lab", icon: "mechanics" },
       { id: "foundations", label: "Foundations", icon: "palette" },
     ],
   },
   {
     label: "System",
     items: [
+      { id: "pattern-guidance", label: "Pattern guidance", icon: "grid" },
       { id: "geometry", label: "Geometry", icon: "grid" },
       { id: "regions", label: "Regions", icon: "map" },
       { id: "mechanics", label: "Mechanics", icon: "mechanics" },
       { id: "tokens", label: "Tokens", icon: "tokens" },
+      { id: "contracts", label: "Component guidance", icon: "blocks" },
       { id: "components", label: "Components", icon: "blocks" },
     ],
   },

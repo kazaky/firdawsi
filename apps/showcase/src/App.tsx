@@ -15,6 +15,9 @@ import {
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 
 import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
+import { GettingStarted, PatternGuidance } from "./adoption-guide";
+import { ComponentContracts } from "./component-contracts";
+import { PhilosophySection } from "./philosophy-section";
 import { CourtyardSection } from "./courtyard-section";
 import {
   GITHUB_URL,
@@ -265,12 +268,12 @@ export function App() {
               <div className="hero-statement">
                 <p>
                   A design system for peaceful, secure, effortless interaction. Qur’anic qualities
-                  associated with Jannah guide the experience; Islamic garden architecture gives it
-                  spatial language; tokens and components make it usable.
+                  associated with Jannah guide the experience; intention, dignity, and gentleness
+                  shape its behaviour. Tokens and components make those principles tangible.
                 </p>
                 <p lang="ar" dir="rtl">
-                  نظام واجهات معاصر يستمد من التصميم الفردوسي: الإحاطة والماء والهندسة والزخرفة المقيسة،
-                  فيخدم البنية لا الزينة.
+                  نظام واجهات يستلهم السلام والقرب والتيسير من أوصاف الجنة، وتوجّه النية والكرامة
+                  والرفق سلوكه. معنى يظهر في التجربة، لا في الزخرفة وحدها.
                 </p>
               </div>
               <p className="hero-guardrail">
@@ -278,53 +281,21 @@ export function App() {
                 inferences and keeps sacred text out of decoration and interface feedback.
               </p>
               <div className="hero-actions">
-                <a className="text-link" href="#studio">Open Pattern Studio <Arrow /></a>
-                <a className="text-link text-link--quiet" href="#principles">Read the manifesto ↓</a>
+                <a className="text-link" href="#principles">Explore the philosophy <Arrow /></a>
+                <a className="text-link text-link--quiet" href="#experience">Try the experience ↓</a>
                 <a className="text-link text-link--github" href={GITHUB_URL} rel="noreferrer" target="_blank">
                   Star on GitHub <Arrow />
                 </a>
               </div>
             </div>
             <div className="hero-meta">
-              <span>9 laws</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
+              <span>7 principles</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
             </div>
           </section>
 
-          <section id="principles" className="section">
-            <SectionHeading number="01" eyebrow="Manifesto" title="Principles before pixels">
-              Peace, security, ease, nearness, flow, ordered abundance, service, companionship,
-              and quiet completion become testable interface laws—not a decorative mood board.
-            </SectionHeading>
-            <div className="principle-list">
-              {[
-                ["01", "Peace over pressure", "Urgency is factual, never manufactured; feedback is humane, concise, and free from shame."],
-                ["02", "Security over precarity", "Consequences are named before commitment, and actions are reversible whenever possible."],
-                ["03", "Nearness over pursuit", "The likely next action and relevant context come near without making people hunt."],
-                ["04", "Beauty in service", "Geometry frames hierarchy and flow. It never competes with content, language, or access."],
-              ].map(([number, title, copy]) => (
-                <article key={number}>
-                  <span>{number}</span><h3>{title}</h3><p>{copy}</p>
-                </article>
-              ))}
-            </div>
-            <div className="interaction-cycle" aria-label="Firdawsi interaction cycle">
-              {[
-                ["Sukūn", "Rest", "Stable and readable"],
-                ["Dunūw", "Nearness", "Action becomes clear"],
-                ["Istijābah", "Response", "Input is acknowledged"],
-                ["Jarāyān", "Flow", "Change preserves place"],
-                ["Istiqrār", "Settling", "New state stabilizes"],
-                ["Salām", "Peace", "Completion stays visible"],
-              ].map(([name, meaning, behavior], index) => (
-                <article key={name} data-stage={name.toLowerCase()}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{name}</h3>
-                  <strong>{meaning}</strong>
-                  <p>{behavior}</p>
-                </article>
-              ))}
-            </div>
-          </section>
+          <GettingStarted />
+
+          <PhilosophySection />
 
           <section id="foundations" className="section section--ink">
             <SectionHeading number="02" eyebrow="Foundations" title="A calibrated material palette">
@@ -364,6 +335,8 @@ export function App() {
               </div>
             </div>
           </section>
+
+          <PatternGuidance />
 
           <section id="geometry" className="section">
             <SectionHeading number="03" eyebrow="Construction atlas" title="Exact geometry at working scale">
@@ -513,6 +486,7 @@ export function App() {
               Accessible React primitives carry the grammar — arch corners, carved tiers, strapwork
               focus — without changing expected behavior.
             </SectionHeading>
+            <ComponentContracts />
             <ComponentAnatomy />
             <ComponentMatrix />
           </section>

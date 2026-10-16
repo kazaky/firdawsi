@@ -138,12 +138,12 @@ describe("composite controls", () => {
     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
   });
 
-  it("closes a dialog through its labelled close control", async () => {
+  it.each([undefined, "إغلاق"])("closes a dialog through its localised close control (%s)", async (closeLabel) => {
     const user = userEvent.setup();
     const change = vi.fn();
-    render(<Dialog open onOpenChange={change} title="Preferences">Content</Dialog>);
+    render(<Dialog open onOpenChange={change} closeLabel={closeLabel} title="Preferences">Content</Dialog>);
     expect(screen.getByRole("dialog", { name: "Preferences" })).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Close" }));
+    await user.click(screen.getByRole("button", { name: closeLabel ?? "Close" }));
     expect(change).toHaveBeenCalledWith(false);
   });
 });

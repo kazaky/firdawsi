@@ -4,7 +4,7 @@
 
 This directory defines the research basis and design-language contract for a cross-platform digital design system informed by arts made in Muslim societies. It is not a catalogue of a single, timeless “Islamic style.” The visual traditions discussed here developed across distinct places, periods, workshops, materials, patrons, and communities.
 
-The system’s default is a **universal, geometry-first core**: modern, restrained, and usable without regional ornament. Historical references enter only through named, opt-in regional profiles. Those profiles are starting points for design exploration and **require review by qualified historians, curators, craftspeople, language specialists, and relevant community representatives before public claims of cultural or historical fidelity**.
+The system’s default is a **universal, experience-first core**: modern, restrained, and usable without regional ornament. Historical references enter only through named, opt-in regional profiles. Those profiles are starting points for design exploration and **require review by qualified historians, curators, craftspeople, language specialists, and relevant community representatives before public claims of cultural or historical fidelity**.
 
 This specification governs design intent and cross-platform behavior. It does not authorize copying museum objects, sacred text, monuments, or living artists’ work.
 
@@ -21,6 +21,14 @@ This specification governs design intent and cross-platform behavior. It does no
 9. [Accessibility](09-accessibility.md) — WCAG-oriented requirements across color, text, motion, input, semantics, and testing.
 10. [Sources and provenance registry](10-sources-and-provenance.md) — authoritative references, evidence levels, object records, and source logging.
 11. [Qur’an-guided experience and interaction](11-quranic-experience-and-interaction.md) — source hierarchy, non-claims, experiential laws, and the six-stage interaction cycle.
+
+12. [Meaning to product](12-meaning-to-product.md) — seven grounded principles, source context, foundations, and the interactive experience lab.
+
+13. [Component guidance](13-component-guidance.md) — religious connections, observable contracts, and working component-state examples.
+
+14. [Adoption and pattern use](14-adoption-and-pattern-use.md) — source setup, a bilingual starter, and bounded pattern tiers.
+
+15. [Reference task lifecycle](15-reference-task-lifecycle.md) — editable tasks, completion, grouped weeks, reversible removal, and persistence recovery.
 
 ## Normative language
 

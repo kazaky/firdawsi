@@ -5,31 +5,48 @@ An accessible React 19 component library built on `@firdawsi/tokens` and
 document direction, and keep geometry restrained to optional surfaces and
 frames.
 
-## Install
+## Start from the workspace
+
+The verified setup path is the source repository. Do not assume the workspace
+package names below have been published to a public registry.
 
 ```sh
-pnpm add @firdawsi/web @firdawsi/tokens @firdawsi/geometry
+git clone https://github.com/kazaky/firdawsi.git
+cd firdawsi
+pnpm install --frozen-lockfile
+pnpm build
+pnpm dev
 ```
 
-Import the stylesheet once near the application root:
+Use Node.js 20+ and pnpm 10.15.0. Within a configured workspace app, import both
+stylesheets near the application root:
 
 ```tsx
+import "@firdawsi/tokens/css";
 import "@firdawsi/web/styles.css";
-import { Button, Card, TextField } from "@firdawsi/web";
+import { Button, TextField, ThemeProvider } from "@firdawsi/web";
 
-export function ProfileForm() {
+export function FirstFlow() {
   return (
-    <Card title="Profile">
-      <TextField label="Display name" name="name" />
-      <Button type="submit">Save changes</Button>
-    </Card>
+    <ThemeProvider region="universal" direction="ltr" applyToDocument={false}>
+      <section lang="en">
+        <TextField label="Task title" name="title" />
+        <Button type="button">Continue</Button>
+      </section>
+    </ThemeProvider>
   );
 }
 ```
 
-Set `data-theme="light"`, `data-theme="dark"`, or
-`data-theme="high-contrast"` on any ancestor. Direction is inherited from the
-standard `dir` attribute; no component-level direction prop is needed.
+This is a component composition example, without a persistence implementation.
+The showcase getting-started guide includes a complete local-validation example
+and authored Arabic copy. To use packages in a separate application, configure
+its workspace dependencies, load suitable Arabic and Latin fonts, and verify
+its bundler integration before release.
+
+Use `theme="light"`, `theme="dark"`, or `theme="highContrast"` on the provider.
+`applyToDocument={false}` keeps theme and direction local. Language belongs on
+content through `lang`; use explicit content direction for mixed scripts.
 
 ## Components
 
@@ -43,6 +60,14 @@ standard `dir` attribute; no component-level direction prop is needed.
 
 Related controls share public types, but remain individually importable and
 tree-shakeable.
+
+## Pattern-use guidance
+
+Start without ornament. Quiet accents, supporting section bands, and expressive
+cover moments are editorial usage tiers, not extra API values. Keep long reading,
+fields, and tables on a separate clear plane. Sacred text is never texture. The
+showcase pattern-guidance specimen demonstrates each tier and removes ornament
+in high contrast.
 
 ## Curated pattern surfaces
 
@@ -76,6 +101,7 @@ Pattern geometry is always decorative and hidden from assistive technology.
 - `TextField` and `Select` wire labels and descriptions automatically.
 - `Menu` and `Tabs` implement arrow-key navigation and Escape/Home/End where
   applicable.
+- `Dialog` and `Sheet` accept `closeLabel` for a localised close action (default `Close`).
 - `Dialog` and `Sheet` use the native modal dialog, including its focus trap
   and focus restoration.
 - Decorative geometry is generated with `accessibility.decorative: true` and

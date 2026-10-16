@@ -440,9 +440,10 @@ export interface DialogProps extends Omit<DialogHTMLAttributes<HTMLDialogElement
   description?: ReactNode;
   footer?: ReactNode;
   variant?: "dialog" | "sheet";
+  closeLabel?: string;
 }
 
-export function Dialog({ open, onOpenChange, title, description, footer, children, className, variant = "dialog", ...props }: DialogProps) {
+export function Dialog({ open, onOpenChange, title, description, footer, children, className, variant = "dialog", closeLabel = "Close", ...props }: DialogProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const descriptionId = useId();
@@ -464,7 +465,7 @@ export function Dialog({ open, onOpenChange, title, description, footer, childre
       {...props}
     >
       <div className="firdawsi-dialog__content">
-        <header><div><h2 id={titleId}>{title}</h2>{description && <p id={descriptionId}>{description}</p>}</div><IconButton label="Close" variant="quiet" onClick={() => onOpenChange(false)}>×</IconButton></header>
+        <header><div><h2 id={titleId}>{title}</h2>{description && <p id={descriptionId}>{description}</p>}</div><IconButton label={closeLabel} variant="quiet" onClick={() => onOpenChange(false)}>×</IconButton></header>
         <div className="firdawsi-dialog__body">{children}</div>
         {footer && <footer>{footer}</footer>}
       </div>
