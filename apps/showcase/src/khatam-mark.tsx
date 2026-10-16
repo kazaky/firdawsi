@@ -31,7 +31,7 @@ export function generateKhatamLogoSvg(size: number): string {
     stroke: 0,
     simplificationTier: "expanded",
     seed: "firdawsi-mark",
-    palette: [...KHATAM_ZELLIGE_PALETTE],
+    palette: ["#3451d1", "#acbaff", "#f0f2ff", "#bcacfa", "#ffad91"],
     accessibility: { decorative: true, title: "Firdawsi khatam mark" },
   }).svg;
 }

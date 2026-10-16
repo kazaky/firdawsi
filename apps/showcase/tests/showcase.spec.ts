@@ -230,11 +230,26 @@ test("art direction coordinates colour and reveals geometric construction", asyn
   const art = page.locator("#art-direction");
   const hero = page.locator(".hero-art svg");
   const before = await hero.evaluate(node => node.outerHTML);
-  await art.getByRole("radio", { name: "Lapis", exact: true }).check();
+  await art.getByRole("radio", { name: "Violet", exact: true }).check();
   await expect.poll(() => hero.evaluate(node => node.outerHTML)).not.toBe(before);
   await expect(art.locator("[data-construction-role]")).toHaveCount(0);
   await art.getByRole("checkbox", { name: "Reveal the construction" }).check();
   await expect(art.locator("[data-construction-role]").first()).toBeAttached();
   await art.getByRole("checkbox", { name: "Reveal the construction" }).uncheck();
   await expect(art.locator("[data-construction-role]")).toHaveCount(0);
+});
+
+
+test("shared type and intention controls keep the new identity functional", async ({ page }) => {
+  await page.goto("/#art-direction");
+  const display = await page.locator("#overview h1").evaluate(node => getComputedStyle(node).fontFamily);
+  expect(display).toContain("El Messiri");
+  expect(display).not.toContain("Cormorant");
+  const study = page.locator(".interface-study");
+  await study.getByRole("radio", { name: "Create", exact: true }).check();
+  await study.getByRole("button", { name: "Set intention" }).click();
+  await expect(study.getByRole("status")).toContainText("Create is your intention");
+  await expect(study.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "1");
+  await study.getByRole("button", { name: "Begin again" }).click();
+  await expect(study.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "0");
 });

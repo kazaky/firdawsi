@@ -142,7 +142,7 @@ function TokensSwatches() {
     <>
       <div className="type-specimen" data-type-specimen>
         <p className="type-specimen__note">
-          Cormorant Garamond brings expression to Latin display; El Messiri carries Arabic display. Qandus remains a licensed Fez reference we do not ship.
+          El Messiri gives Arabic and Latin display a shared character. Qandus remains a licensed Fez reference we do not ship.
         </p>
         <div className="type-specimen__pair">
           <Text role="display-sm">Gardens of light</Text>
@@ -183,7 +183,7 @@ function hashSection(): string {
 }
 
 export function App() {
-  const [artPalette, setArtPalette] = useState<PaletteName>("jade");
+  const [artPalette, setArtPalette] = useState<PaletteName>("cobalt");
   const [theme, setTheme] = useState<ThemeName>("light");
   const [direction, setDirection] = useState<Direction>("ltr");
   const [active, setActive] = useState(hashSection);
@@ -290,7 +290,7 @@ export function App() {
             </div>
             <figure className="hero-art">
               <GeometryArtwork palette={artPalette} hero />
-              <figcaption><span>Order, light & possibility</span><span lang="ar" dir="rtl">نظامٌ ونورٌ وإمكان</span></figcaption>
+              <figcaption><span>Geometry, in full colour</span><span lang="ar" dir="rtl">هندسةٌ تنبض بالألوان</span></figcaption>
             </figure>
             <div className="hero-meta">
               <span>7 principles</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
@@ -308,8 +308,8 @@ export function App() {
             <div className="foundation-layout">
               <div className="swatch-stack">
                 {[
-                  ["Primary / Jade", themes[theme]["color.primary"]],
-                  ["Accent / Saffron", themes[theme]["color.accent"]],
+                  ["Primary / Cobalt", themes[theme]["color.primary"]],
+                  ["Accent / Amber", themes[theme]["color.accent"]],
                   ["Surface", themes[theme]["color.surface"]],
                   ["Text", themes[theme]["color.text"]],
                 ].map(([label, value], index) => (
@@ -354,11 +354,11 @@ export function App() {
                     presetId={study.id}
                     options={{
                       seed: `atlas-${study.id}`,
-                      unitSize: study.wide ? 150 : 120,
+                      unitSize: study.wide ? 110 : 150,
                       density: 0.46,
-                      stroke: 0.75,
-                      strandWidth: 1.4,
-                      weaveGap: 1.8,
+                      stroke: 0.35,
+                      strandWidth: 2.2,
+                      weaveGap: 2.4,
                       petalDepth: 0.2,
                       botanicalFill: true,
                       constructionOverlay: "none",

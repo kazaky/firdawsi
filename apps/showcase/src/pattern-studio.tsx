@@ -33,7 +33,7 @@ export function PatternStudio() {
   const [density, setDensity] = useState(0.68);
   const [botanicalFill, setBotanicalFill] = useState(true);
   const [crop, setCrop] = useState<CropMode>("circle");
-  const [paletteName, setPaletteName] = useState<PaletteName>("jade");
+  const [paletteName, setPaletteName] = useState<PaletteName>("cobalt");
   const [overlay, setOverlay] = useState<ConstructionOverlayMode>("none");
   const [layers, setLayers] = useState({ straps: true, botanical: true, construction: true });
   const [notice, setNotice] = useState("");
