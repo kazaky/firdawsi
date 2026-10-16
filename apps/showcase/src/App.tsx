@@ -532,7 +532,7 @@ export function App() {
                   <span>AA</span>
                   <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle className="score-ring" cx="60" cy="60" r="52" /></svg>
                 </div>
-                <p>Core semantic pairs maintain WCAG AA contrast across all three themes.</p>
+                <p>Target: WCAG 2.2 AA. Automated audits support verification; manual accessibility review remains pending.</p>
               </div>
               <div className="access-list">
                 {[

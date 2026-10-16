@@ -28,6 +28,12 @@ jobs:
       - run: pnpm --filter @firdawsi/showcase exec playwright install --with-deps chromium
       - run: pnpm test:e2e
       - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: firdawsi-validation-evidence
+          path: apps/showcase/test-results
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
         with:
           name: firdawsi-showcase-dist
           path: apps/showcase/dist
