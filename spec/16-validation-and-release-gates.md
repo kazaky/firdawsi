@@ -5,19 +5,19 @@ checks; it does not present unfinished reviews as approvals.
 
 ## Phase status
 
-| Phase | Implemented evidence | Remaining gate |
-| --- | --- | --- |
-| Week 1 — Meaning and scope | Seven principles, linked Qur’an/sahih-hadith sources, context and bounded interpretations | Qualified religious review; correct any disputed wording |
-| Week 2 — Direction | Three comparable treatments of the same reference flow | Structured user evaluation and selection of a direction |
-| Week 3 — Foundations and controls | Tokens, six component contracts, native controls, independent Arabic/English guidance | Manual accessibility and Arabic optical review; stability decision |
-| Week 4 — Reference product | Capture/edit/complete/move/remove/undo, grouped week, failure recovery, legacy-data compatibility | Real-product adoption remains separate; no Misho integration is claimed |
-| Week 5 — Validation | Regression suite plus automated accessibility, narrow reflow and reduced-motion gates | Resolve audit findings; conduct formative testing and specialist reviews |
-| Week 6 — Alpha release | Repository setup, checked starter examples, pattern-use guidance | Confirm release scope, unresolved limits, versioning and release notes after validation |
+| Phase                             | Implemented evidence                                                                              | Remaining gate                                                                          |
+| --------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Week 1 — Meaning and scope        | Seven principles, linked Qur’an/sahih-hadith sources, context and bounded interpretations         | Qualified religious review; correct any disputed wording                                |
+| Week 2 — Direction                | Three comparable treatments of the same reference flow                                            | Structured user evaluation and selection of a direction                                 |
+| Week 3 — Foundations and controls | Tokens, six component contracts, native controls, independent Arabic/English guidance             | Manual accessibility and Arabic optical review; stability decision                      |
+| Week 4 — Reference product        | Capture/edit/complete/move/remove/undo, grouped week, failure recovery, legacy-data compatibility | Real-product adoption remains separate; no Misho integration is claimed                 |
+| Week 5 — Validation               | Regression suite plus automated accessibility, narrow reflow and reduced-motion gates             | Resolve audit findings; conduct formative testing and specialist reviews                |
+| Week 6 — Alpha release            | Repository setup, checked starter examples, pattern-use guidance                                  | Confirm release scope, unresolved limits, versioning and release notes after validation |
 
 ## Automated evidence
 
 The base reference implementation passes build, type checks, 138 unit tests, and
-26 browser scenarios at merged commit fc284bb. Week 5 adds six checks:
+26 browser scenarios at merged commit fc284bb. Week 5 adds seven browser checks and two language/direction unit checks:
 
 1. Whole-showcase WCAG-tagged axe audit in light mode.
 2. Whole-showcase WCAG-tagged axe audit in dark mode.
@@ -25,6 +25,7 @@ The base reference implementation passes build, type checks, 138 unit tests, and
 4. Open-dialog audit.
 5. 320 CSS pixel Arabic reflow with populated week data.
 6. Reduced motion with persistent completion feedback.
+7. Dark/high-contrast semantic colours across all six canonical regional providers.
 
 Each axe scan attaches its complete JSON result. This includes violations and
 incomplete checks needing human judgement, not just a pass/fail summary. CI
@@ -45,13 +46,13 @@ Recruit 5–8 participants including Arabic-first and English-first users. Seek
 participants with relevant access needs and record gaps. Use a clean reference
 workspace and ordinary task wording; do not explain the philosophy in advance.
 
-| Task | Prompt | Record |
-| --- | --- | --- |
-| Capture | Add a task you would actually want to do this week | Completion, hesitation, label comprehension |
-| Arrange | Move that task to Friday and find it in the week view | Orientation, keyboard/touch success |
-| Revise | Change its title, then mark it complete | Repair, state comprehension, effort |
-| Recover | Encounter a simulated save failure and continue | Whether saved/pending/failed states are understood |
-| Reverse | Remove the task, then restore it | Discovery of undo and result comprehension |
+| Task    | Prompt                                                | Record                                             |
+| ------- | ----------------------------------------------------- | -------------------------------------------------- |
+| Capture | Add a task you would actually want to do this week    | Completion, hesitation, label comprehension        |
+| Arrange | Move that task to Friday and find it in the week view | Orientation, keyboard/touch success                |
+| Revise  | Change its title, then mark it complete               | Repair, state comprehension, effort                |
+| Recover | Encounter a simulated save failure and continue       | Whether saved/pending/failed states are understood |
+| Reverse | Remove the task, then restore it                      | Discovery of undo and result comprehension         |
 
 Record unassisted completion counts and time, prompts given, errors, and direct
 participant observations. The provisional target is at least 80% unassisted

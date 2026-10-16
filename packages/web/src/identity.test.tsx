@@ -26,18 +26,28 @@ describe("identity without ornament", () => {
     const card = container.querySelector(".firdawsi-card");
     expect(card).toHaveAttribute("data-shape", "arch");
     expect(card).toHaveClass("firdawsi-surface--tier-1");
-    expect(getComputedStyle(card!).boxShadow === "none" || getComputedStyle(card!).boxShadow === "").toBe(true);
+    expect(
+      getComputedStyle(card!).boxShadow === "none" ||
+        getComputedStyle(card!).boxShadow === "",
+    ).toBe(true);
   });
 
   it("exposes dual-optical type roles", () => {
     render(
       <>
         <Heading level={2}>Gardens of light</Heading>
-        <Text role="body-md" lang="ar">حدائق النور</Text>
+        <Text role="body-md" lang="ar">
+          حدائق النور
+        </Text>
       </>,
     );
-    expect(screen.getByRole("heading", { name: "Gardens of light" })).toHaveAttribute("data-type-role", "headline-md");
-    expect(screen.getByText("حدائق النور")).toHaveAttribute("data-type-role", "body-md");
+    expect(
+      screen.getByRole("heading", { name: "Gardens of light" }),
+    ).toHaveAttribute("data-type-role", "headline-md");
+    expect(screen.getByText("حدائق النور")).toHaveAttribute(
+      "data-type-role",
+      "body-md",
+    );
     expect(TYPE_ROLES).toContain("body-md");
   });
 
@@ -47,15 +57,23 @@ describe("identity without ornament", () => {
         <Surface>Plane</Surface>
       </ThemeProvider>,
     );
-    expect(container.querySelector(".firdawsi-theme")).toHaveAttribute("data-region", "andalusi-maghrebi");
-    expect(container.querySelector(".firdawsi-theme")).toHaveAttribute("data-theme", "light");
+    expect(container.querySelector(".firdawsi-theme")).toHaveAttribute(
+      "data-region",
+      "andalusi-maghrebi",
+    );
+    expect(container.querySelector(".firdawsi-theme")).toHaveAttribute(
+      "data-theme",
+      "light",
+    );
   });
 
   it("Alberca springs are physically distinct from a linear ease", () => {
     const settle = spring("settle");
     expect(settle.dampingRatio).toBeLessThan(1);
     expect(settle.durationMs).toBeGreaterThan(200);
-    expect(albercaCss("settle").transitionDuration).toBe(`${settle.durationMs}ms`);
+    expect(albercaCss("settle").transitionDuration).toBe(
+      `${settle.durationMs}ms`,
+    );
   });
 
   it("arch corners morph between rest and pressed", () => {
@@ -66,13 +84,20 @@ describe("identity without ornament", () => {
 
   it("fields stay unornamented and still use the grammar", () => {
     render(<TextField label="Name" />);
-    const field = screen.getByRole("textbox", { name: "Name" }).closest(".firdawsi-field");
+    const field = screen
+      .getByRole("textbox", { name: "Name" })
+      .closest(".firdawsi-field");
     expect(field).not.toHaveAttribute("data-ornament");
     expect(screen.getByRole("textbox", { name: "Name" })).toBeInTheDocument();
   });
 
   it("layout primitives exist so composition is not a generic stack of divs", () => {
-    render(<Stack gap="4"><Button>One</Button><Button>Two</Button></Stack>);
+    render(
+      <Stack gap="4">
+        <Button>One</Button>
+        <Button>Two</Button>
+      </Stack>,
+    );
     expect(document.querySelector(".firdawsi-stack")).toBeInTheDocument();
   });
 
@@ -101,30 +126,54 @@ describe("identity without ornament", () => {
   });
 });
 
-
 describe("language and direction are independent", () => {
   it("preserves the document language when only direction changes", () => {
     const before = document.documentElement.lang;
     const beforeDirection = document.documentElement.dir;
     document.documentElement.lang = "en";
     try {
-      const { rerender } = render(<ThemeProvider direction="rtl"><span>English content</span></ThemeProvider>);
+      const { rerender } = render(
+        <ThemeProvider direction="rtl">
+          <span>English content</span>
+        </ThemeProvider>,
+      );
       expect(document.documentElement).toHaveAttribute("dir", "rtl");
       expect(document.documentElement).toHaveAttribute("lang", "en");
-      rerender(<ThemeProvider direction="ltr"><span>English content</span></ThemeProvider>);
+      rerender(
+        <ThemeProvider direction="ltr">
+          <span>English content</span>
+        </ThemeProvider>,
+      );
       expect(document.documentElement).toHaveAttribute("lang", "en");
-    } finally { document.documentElement.lang = before; document.documentElement.dir = beforeDirection; }
+    } finally {
+      document.documentElement.lang = before;
+      document.documentElement.dir = beforeDirection;
+    }
   });
   it("supports explicit local language without changing the document", () => {
     const before = document.documentElement.lang;
     const beforeDirection = document.documentElement.dir;
     document.documentElement.lang = "en";
     try {
-      const { container, rerender } = render(<ThemeProvider language="ar" direction="rtl" applyToDocument={false}><span>نص عربي</span></ThemeProvider>);
-      expect(container.querySelector(".firdawsi-theme")).toHaveAttribute("lang", "ar");
+      const { container, rerender } = render(
+        <ThemeProvider language="ar" direction="rtl" applyToDocument={false}>
+          <span>نص عربي</span>
+        </ThemeProvider>,
+      );
+      expect(container.querySelector(".firdawsi-theme")).toHaveAttribute(
+        "lang",
+        "ar",
+      );
       expect(document.documentElement).toHaveAttribute("lang", "en");
-      rerender(<ThemeProvider language="ar" direction="rtl"><span>نص عربي</span></ThemeProvider>);
+      rerender(
+        <ThemeProvider language="ar" direction="rtl">
+          <span>نص عربي</span>
+        </ThemeProvider>,
+      );
       expect(document.documentElement).toHaveAttribute("lang", "ar");
-    } finally { document.documentElement.lang = before; document.documentElement.dir = beforeDirection; }
+    } finally {
+      document.documentElement.lang = before;
+      document.documentElement.dir = beforeDirection;
+    }
   });
 });

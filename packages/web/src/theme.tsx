@@ -1,9 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, type ReactNode } from "react";
 import { themeAttribute, type RegionId } from "@firdawsi/tokens";
 
 export type ThemeName = keyof typeof themeAttribute;

@@ -830,7 +830,7 @@ main {
 }
 
 .profile-strip article > span {
-  color: var(--firdawsi-color-primary);
+  color: var(--firdawsi-color-text);
   font-family: var(--firdawsi-font-family-mono);
   font-size: 9px;
 }
@@ -882,12 +882,17 @@ main {
 }
 
 .component-panel {
+  min-width: 0;
   background: var(--firdawsi-elevation-tonal-1, var(--firdawsi-color-surface));
   border: 1px solid var(--firdawsi-color-border);
   border-radius: var(--firdawsi-shape-container-lg, var(--firdawsi-radius-lg));
   display: grid;
   gap: 28px;
   padding: clamp(22px, 3vw, 38px);
+}
+
+.component-panel > * {
+  min-width: 0;
 }
 
 .component-panel--pattern {
@@ -1444,6 +1449,10 @@ main {
   gap: 7px;
 }
 
+.export-row .firdawsi-button--quiet {
+  color: var(--studio-blue);
+}
+
 .export-row .firdawsi-button {
   font-size: 12px;
 }
@@ -1634,7 +1643,7 @@ main {
   .foundation-layout,
   .component-stage,
   .access-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .type-line {
@@ -1709,6 +1718,10 @@ main {
 }
 
 @media (max-width: 420px) {
+  .topbar { padding-inline: 8px; }
+
+  .topbar__start, .topbar__end { gap: 6px; }
+
   .display-controls {
     gap: 4px;
   }
@@ -1720,6 +1733,10 @@ main {
 
   .hero h1 span {
     margin-inline-start: .32em;
+  }
+
+  .card-matrix, .atmosphere-matrix {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .field-row {
@@ -1842,7 +1859,7 @@ main {
 }
 
 .geometry-card__caption h3 {
-  color: #143f70;
+  color: var(--firdawsi-color-primary);
   font-family: var(--firdawsi-font-family-display);
   font-size: 21px;
   font-weight: 500;
@@ -1852,14 +1869,14 @@ main {
 }
 
 .geometry-card__caption p {
-  color: #6f583a;
+  color: var(--firdawsi-color-text-muted);
   font-size: 11px;
   line-height: 1.5;
   margin: 4px 0 0;
 }
 
 .geometry-card__caption code {
-  color: #a04832;
+  color: var(--firdawsi-color-text-muted);
   max-width: 19ch;
   overflow-wrap: anywhere;
   text-align: end;
@@ -1879,6 +1896,10 @@ main {
   display: grid;
   gap: 10px;
   padding: clamp(24px, 4vw, 36px);
+}
+
+.reference-studies__intro .eyebrow {
+  color: #143f70;
 }
 
 .reference-studies__intro h3 {
@@ -2609,6 +2630,8 @@ main {
 }
 
 .docs-section {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
   display: grid;
   gap: 12px;
 }
@@ -2627,6 +2650,8 @@ main {
 }
 
 .docs-table {
+  table-layout: fixed;
+  overflow-wrap: anywhere;
   border-collapse: collapse;
   width: 100%;
 }
