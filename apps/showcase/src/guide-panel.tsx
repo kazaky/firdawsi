@@ -21,6 +21,7 @@ export const guideNavGroups = [
       { id: "regions", label: "Regions", icon: "map" },
       { id: "mechanics", label: "Mechanics", icon: "mechanics" },
       { id: "tokens", label: "Tokens", icon: "tokens" },
+      { id: "contracts", label: "Component guidance", icon: "blocks" },
       { id: "components", label: "Components", icon: "blocks" },
     ],
   },

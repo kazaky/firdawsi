@@ -25,6 +25,11 @@ with three visual treatments and optional ornament. Data stays in the browser.
 See [the implementation contract](spec/12-meaning-to-product.md) for scope,
 religious connections, and verification.
 
+The component-guidance explorer extends these principles to six control families,
+with bilingual contracts and interactive specimens for validation, keyboard
+navigation, state feedback, cancellation, and recovery. See
+[component guidance](spec/13-component-guidance.md).
+
 ## Principles
 
 - Modern first: clear hierarchy, restrained ornament, responsive simplification.

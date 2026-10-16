@@ -15,6 +15,7 @@ import {
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 
 import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
+import { ComponentContracts } from "./component-contracts";
 import { PhilosophySection } from "./philosophy-section";
 import { CourtyardSection } from "./courtyard-section";
 import {
@@ -480,6 +481,7 @@ export function App() {
               Accessible React primitives carry the grammar — arch corners, carved tiers, strapwork
               focus — without changing expected behavior.
             </SectionHeading>
+            <ComponentContracts />
             <ComponentAnatomy />
             <ComponentMatrix />
           </section>

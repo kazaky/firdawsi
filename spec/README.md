@@ -24,6 +24,8 @@ This specification governs design intent and cross-platform behavior. It does no
 
 12. [Meaning to product](12-meaning-to-product.md) — seven grounded principles, source context, foundations, and the interactive experience lab.
 
+13. [Component guidance](13-component-guidance.md) — religious connections, observable contracts, and working component-state examples.
+
 ## Normative language
 
 The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** indicate requirement strength. A deviation from MUST/MUST NOT requires a documented exception and cultural/accessibility review where relevant.
