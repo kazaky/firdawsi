@@ -19,7 +19,8 @@ interactive web showcase. It ships no photographs or raster artwork.
 The showcase begins with seven principles, each with a Qur’an or sahih-hadith
 reference, source context, and an explicitly labelled design interpretation.
 Arabic and English are independently authored. The experience lab demonstrates
-local task capture, keyboard-accessible day changes, save failure, retry, and undo,
+local task capture, editing, completion, grouped weeks, keyboard-accessible day
+changes, save failure, retry, reversible removal, and undo,
 with three visual treatments and optional ornament. Data stays in the browser.
 
 See [the implementation contract](spec/12-meaning-to-product.md) for scope,

@@ -74,3 +74,26 @@
 @media(max-width:1100px) { .philosophy-principle { grid-template-columns:1fr 2fr; } .philosophy-source { grid-column:2; } .philosophy-foundations { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:680px) { .philosophy-heading { flex-direction:column; } .philosophy-principle { grid-template-columns:1fr; gap:18px; } .philosophy-principle__title { flex-direction:row; align-items:center; gap:16px; } .philosophy-source { grid-column:auto; padding-inline-start:16px; } .philosophy-foundations { grid-template-columns:1fr; } .experience-capture>div:first-child { flex-basis:100%; } .experience-workspace--gathering .experience-capture { padding:12px; } }
 @media(prefers-reduced-motion:reduce) { .experience-lab button { transition:none; } }
+
+/* The reference flow keeps task state visible across list and week views. */
+.experience-week-tools { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-block:20px; }
+.experience-week-tools p { font-size:13px; margin:0; }
+.experience-task-title { display:flex; align-items:center; gap:12px; max-width:none!important; flex:1; min-width:0; flex-shrink:1!important; }
+.experience-task-title span { overflow-wrap:anywhere; min-width:0; }
+.experience-task-actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.experience-task-actions button { font-size:12px; padding:8px 12px; }
+.experience-tasks li { flex-wrap:wrap; }
+.experience-tasks li[data-complete="true"] .experience-task-title span,.experience-day-tasks li[data-complete="true"] .experience-task-title span { text-decoration:line-through; }
+.experience-week-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-block:24px; }
+.experience-day { min-width:0; border:1px solid var(--firdawsi-color-border); border-radius:12px; padding:16px; background:var(--firdawsi-color-background); }
+.experience-day h5 { display:flex; justify-content:space-between; gap:8px; margin:0 0 16px; font-size:15px; }
+.experience-day>p { font-size:13px; color:var(--firdawsi-color-text-muted); }
+.experience-day-tasks { padding:0; margin:0; list-style:none; }
+.experience-day-tasks li { border-block-start:1px solid var(--firdawsi-color-border); padding-block:16px; }
+.experience-day-tasks .experience-task-actions { margin-block-start:12px; }
+.experience-day-tasks select { width:100%; }
+.experience-edit { display:flex; flex-direction:column; gap:12px; padding:20px; border-inline-start:3px solid var(--ph-accent); background:var(--firdawsi-color-background); margin-block:24px; }
+.experience-edit>label { font-size:13px; font-weight:600; }
+.experience-edit>div { display:flex; gap:10px; flex-wrap:wrap; }
+.experience-edit p { margin:0; font-size:13px; }
+@media(max-width:680px) { .experience-week-grid { grid-template-columns:1fr; } .experience-task-actions { width:100%; } .experience-task-actions select { flex:1; min-width:0; } }

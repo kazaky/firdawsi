@@ -28,6 +28,8 @@ This specification governs design intent and cross-platform behavior. It does no
 
 14. [Adoption and pattern use](14-adoption-and-pattern-use.md) — source setup, a bilingual starter, and bounded pattern tiers.
 
+15. [Reference task lifecycle](15-reference-task-lifecycle.md) — editable tasks, completion, grouped weeks, reversible removal, and persistence recovery.
+
 ## Normative language
 
 The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** indicate requirement strength. A deviation from MUST/MUST NOT requires a documented exception and cultural/accessibility review where relevant.
