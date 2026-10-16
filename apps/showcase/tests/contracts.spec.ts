@@ -72,8 +72,11 @@ test("Arabic navigation follows local RTL and choices remain operable", async ({
   ).toHaveAttribute("aria-selected", "true");
   await expect(root.getByRole("tabpanel")).toContainText("عرض آخر للعمل نفسه");
   await root.getByLabel("اختر المكوّن").selectOption("choice");
-  await root.getByRole("checkbox", { name: "تضمين المهام المكتملة" }).check();
-  await root.getByRole("switch", { name: "معاينة التذكيرات" }).check();
+  await root.getByText("تضمين المهام المكتملة", { exact: true }).click();
+  await expect(root.getByRole("checkbox", { name: "تضمين المهام المكتملة" })).toBeChecked();
+  await root.getByRole("switch", { name: "معاينة التذكيرات" }).focus();
+  await page.keyboard.press("Space");
+  await expect(root.getByRole("switch", { name: "معاينة التذكيرات" })).toBeChecked();
   await expect(root.getByRole("status")).toContainText("مفعّلة");
   await root.getByLabel("اختر المكوّن").selectOption("overlay");
   await root.getByRole("button", { name: "أرشفة المشروع التجريبي" }).click();
