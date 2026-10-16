@@ -15,7 +15,7 @@ import {
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 
 import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
-import { GettingStarted, PatternGuidance } from "./adoption-guide";
+import { PatternGuidance } from "./adoption-guide";
 import { ComponentContracts } from "./component-contracts";
 import { PhilosophySection } from "./philosophy-section";
 import { CourtyardSection } from "./courtyard-section";
@@ -292,8 +292,6 @@ export function App() {
               <span>7 principles</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
             </div>
           </section>
-
-          <GettingStarted />
 
           <PhilosophySection />
 

@@ -3,6 +3,11 @@
 Status record started 16 October 2026. This records implemented work and remaining
 checks; it does not present unfinished reviews as approvals.
 
+Current owner direction (16 October 2026): strengthen philosophy, art direction,
+patterns and geometry before distributing reusable coding components. The React
+starter and preview-kit promotion have been removed from the homepage. Component
+distribution and the previously proposed release/integration phases are deferred.
+
 ## Phase status
 
 | Phase                             | Implemented evidence                                                                              | Remaining gate                                                                          |
@@ -38,7 +43,7 @@ settings, or device testing. Automated colour analysis may leave uncertain
 backgrounds for manual inspection.
 
 The current validation result is recorded in [PR #2](https://github.com/kazaky/firdawsi/pull/2)
-and its linked CI runs. The suite now contains 140 unit tests and 33 browser
+and its linked CI runs. That Week 5 run contains 140 unit tests and 33 browser
 scenarios; the count describes coverage, not a substitute for inspecting results.
 
 The public site describes WCAG 2.2 AA as a target. A passing automated scan is
