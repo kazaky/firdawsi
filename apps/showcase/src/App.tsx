@@ -15,6 +15,7 @@ import {
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 
 import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
+import { GettingStarted, PatternGuidance } from "./adoption-guide";
 import { ComponentContracts } from "./component-contracts";
 import { PhilosophySection } from "./philosophy-section";
 import { CourtyardSection } from "./courtyard-section";
@@ -292,6 +293,8 @@ export function App() {
             </div>
           </section>
 
+          <GettingStarted />
+
           <PhilosophySection />
 
           <section id="foundations" className="section section--ink">
@@ -332,6 +335,8 @@ export function App() {
               </div>
             </div>
           </section>
+
+          <PatternGuidance />
 
           <section id="geometry" className="section">
             <SectionHeading number="03" eyebrow="Construction atlas" title="Exact geometry at working scale">

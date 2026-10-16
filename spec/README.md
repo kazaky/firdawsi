@@ -26,6 +26,8 @@ This specification governs design intent and cross-platform behavior. It does no
 
 13. [Component guidance](13-component-guidance.md) — religious connections, observable contracts, and working component-state examples.
 
+14. [Adoption and pattern use](14-adoption-and-pattern-use.md) — source setup, a bilingual starter, and bounded pattern tiers.
+
 ## Normative language
 
 The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** indicate requirement strength. A deviation from MUST/MUST NOT requires a documented exception and cultural/accessibility review where relevant.
