@@ -37,8 +37,26 @@ content, but is not a substitute for real 200% browser zoom, platform text-size
 settings, or device testing. Automated colour analysis may leave uncertain
 backgrounds for manual inspection.
 
+The current validation result is recorded in [PR #2](https://github.com/kazaky/firdawsi/pull/2)
+and its linked CI runs. The suite now contains 140 unit tests and 33 browser
+scenarios; the count describes coverage, not a substitute for inspecting results.
+
 The public site describes WCAG 2.2 AA as a target. A passing automated scan is
 not a claim of full conformance.
+
+## Findings and repairs
+
+The first audit run (38887172141) failed four scenarios. Findings were kept as
+regressions rather than hidden through rule exclusions.
+
+| Finding | Repair |
+| --- | --- |
+| Regional overlays replaced dark/high-contrast surfaces | Emit theme semantics after regional overlays; exercise every canonical provider in the browser |
+| Inverse sections, captions and dim labels lost contrast | Use inverse semantic roles, theme-aware caption colours and readable text on fixed-light studies; dim disabled controls rather than their explanatory text |
+| Horizontal profile comparison could not receive keyboard focus | Give the scroll region a name and a focus stop |
+| Toolbar and automatic grid minimums exceeded 320px | Reduce toolbar gaps, allow grid children to shrink, wrap table values and stack small gallery cards |
+| RTL direction implicitly changed document language to Arabic | Add explicit optional language; preserve language when only direction changes |
+| Region metadata appeared as a generated profile | Exclude metadata keys from generated region IDs |
 
 ## Formative study protocol — not yet conducted
 
