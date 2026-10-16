@@ -2,7 +2,7 @@
 
 ## Scope and non-claim
 
-Firdawsi translates Qur’anic qualities associated with Jannah—peace, security, ease, nearness, abundance, beauty, and harmonious companionship—into contemporary interface principles. It **MUST NOT** claim to depict, reconstruct, visualize, or simulate Jannah. Revelation is the ethical and experiential source; garden architecture is a spatial interpretation; interface behavior is a documented design inference.
+Firdawsi translates Qur’anic qualities associated with Jannah—peace, security, ease, nearness, abundance, beauty, and harmonious companionship—into contemporary interface principles. It **MUST NOT** claim to depict, reconstruct, visualize, or simulate Jannah. Revelation is the ethical and experiential source; garden architecture is an optional spatial interpretation; interface behavior is a documented design inference.
 
 Qur’anic text and sacred calligraphy **MUST NOT** become decoration, texture, loading copy, achievement language, or interaction feedback. Translations used during research are interpretive aids and require citation. Any public theological claim requires qualified review.
 

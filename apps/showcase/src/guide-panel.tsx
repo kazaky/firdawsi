@@ -9,7 +9,8 @@ export const guideNavGroups = [
     label: "Start",
     items: [
       { id: "overview", label: "Overview", icon: "home" },
-      { id: "principles", label: "Manifesto", icon: "star" },
+      { id: "principles", label: "Philosophy", icon: "star" },
+      { id: "experience", label: "Experience lab", icon: "mechanics" },
       { id: "foundations", label: "Foundations", icon: "palette" },
     ],
   },

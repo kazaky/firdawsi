@@ -3,8 +3,8 @@
 **Qur’an-guided experience** · *al-tasmīm al-firdawsī* · a modern Islamic design system
 
 Firdawsi translates Qur’anic qualities associated with Jannah—peace, security, ease,
-nearness, abundance, beauty, and harmonious companionship—through the spatial grammar
-of Islamic garden architecture into contemporary digital interfaces. It does not claim
+nearness, abundance, beauty, and harmonious companionship—into contemporary digital interfaces, grounded in intention, dignity, trust, and
+gentleness. Garden architecture and geometry are optional expressions of this language. It does not claim
 to depict, reconstruct, or simulate Jannah. Geometry is structure, rhythm, and proportion,
 not decorative wallpaper.
 
@@ -13,6 +13,17 @@ code-only geometry engine, an accessible React reference library, and an
 interactive web showcase. It ships no photographs or raster artwork.
 
 **Live site:** [firdawsi.org](https://firdawsi.org) · **GitHub:** [github.com/kazaky/firdawsi](https://github.com/kazaky/firdawsi)
+
+## Philosophy and experience lab
+
+The showcase begins with seven principles, each with a Qur’an or sahih-hadith
+reference, source context, and an explicitly labelled design interpretation.
+Arabic and English are independently authored. The experience lab demonstrates
+local task capture, keyboard-accessible day changes, save failure, retry, and undo,
+with three visual treatments and optional ornament. Data stays in the browser.
+
+See [the implementation contract](spec/12-meaning-to-product.md) for scope,
+religious connections, and verification.
 
 ## Principles
 
