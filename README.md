@@ -73,6 +73,14 @@ pnpm typecheck
 pnpm test:e2e
 ```
 
+## Preview distribution
+
+Week 6 adds a separate bilingual React starter and four local package tarballs.
+After building, run `pnpm alpha:verify` to pack and install them outside this
+workspace. Successful main CI runs attach `firdawsi-alpha-preview`. See the
+[kit instructions](alpha/README.md) and [release notes](alpha/RELEASE-NOTES.md).
+Manual specialist and user reviews remain pending; no registry release is implied.
+
 ## Packages
 
 ### Tokens

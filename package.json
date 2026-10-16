@@ -2,7 +2,7 @@
   "name": "firdawsi",
   "version": "0.2.0",
   "private": true,
-  "description": "Qur’an-guided experiential principles for a modern Islamic design system",
+  "description": "Qur\u2019an-guided experiential principles for a modern Islamic design system",
   "repository": "github:kazaky/firdawsi",
   "homepage": "https://firdawsi.org",
   "packageManager": "pnpm@10.15.0",
@@ -11,6 +11,8 @@
     "dev": "pnpm --filter @firdawsi/showcase dev",
     "test": "pnpm -r test",
     "test:e2e": "pnpm --filter @firdawsi/showcase test:e2e",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "alpha:pack": "node scripts/alpha-kit.mjs",
+    "alpha:verify": "node scripts/alpha-kit.mjs --verify"
   }
 }

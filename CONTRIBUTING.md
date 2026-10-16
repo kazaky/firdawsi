@@ -62,6 +62,17 @@ Regenerate token CSS after editing `tokens.json`:
 pnpm --filter @firdawsi/tokens build
 ```
 
+## Maintainer delivery
+
+The repository owner has requested direct pushes to `main` for this project.
+For work performed on their behalf, run the relevant checks, commit focused
+changes and push to `main`; merge existing validated PRs without a further
+confirmation. Do not bypass repository protections or force-push. Other
+contributors may continue to use pull requests.
+
+The Week 6 distribution check is `pnpm alpha:verify` after `pnpm build`. It packs
+real tarballs and installs/builds a consumer outside the workspace.
+
 ## Pull requests
 
 Keep changes focused. Match existing naming, token usage, and bilingual/RTL

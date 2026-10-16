@@ -25,6 +25,7 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm typecheck
+      - run: pnpm alpha:verify
       - run: pnpm --filter @firdawsi/showcase exec playwright install --with-deps chromium
       - run: pnpm test:e2e
       - uses: actions/upload-artifact@v4
@@ -37,6 +38,12 @@ jobs:
         with:
           name: firdawsi-showcase-dist
           path: apps/showcase/dist
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firdawsi-alpha-preview
+          path: dist/alpha-preview
           if-no-files-found: error
 
   deploy:

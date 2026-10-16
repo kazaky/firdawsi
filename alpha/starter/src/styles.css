@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--firdawsi-font-family-sans);
+}
+.firdawsi-theme {
+  min-height: 100vh;
+  background: var(--firdawsi-color-background);
+  color: var(--firdawsi-color-text);
+}
+.starter {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding: clamp(20px, 6vw, 64px);
+  overflow-wrap: anywhere;
+}
+.starter nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--firdawsi-space-3);
+  margin-block-end: var(--firdawsi-space-6);
+}
+.starter h1 {
+  font-family: var(--firdawsi-font-family-display);
+  line-height: 1.35;
+}
+.starter form {
+  display: grid;
+  gap: var(--firdawsi-space-4);
+  margin-block-start: var(--firdawsi-space-6);
+}
+.starter form > button {
+  justify-self: start;
+}

@@ -173,6 +173,22 @@ export function GettingStarted() {
           <SourceLink id="trust" />
         </article>
       </div>
+      <p>
+        <a
+          href="https://github.com/kazaky/firdawsi/actions?query=branch%3Amain"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t(
+            "Get the separate preview kit from a successful main CI run",
+            "احصل على حزمة التجربة المستقلة من تشغيل ناجح لفرع main",
+          )}
+        </a>
+        {t(
+          " — four local packages and a bilingual React starter. Manual reviews remain pending.",
+          " — أربع حزم محلية ومثال React بالعربية والإنجليزية. لا تزال المراجعات البشرية قيد الانتظار.",
+        )}
+      </p>
       <CopyCode
         code={setup}
         language={language}

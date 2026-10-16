@@ -11,8 +11,8 @@ checks; it does not present unfinished reviews as approvals.
 | Week 2 — Direction                | Three comparable treatments of the same reference flow                                            | Structured user evaluation and selection of a direction                                 |
 | Week 3 — Foundations and controls | Tokens, six component contracts, native controls, independent Arabic/English guidance             | Manual accessibility and Arabic optical review; stability decision                      |
 | Week 4 — Reference product        | Capture/edit/complete/move/remove/undo, grouped week, failure recovery, legacy-data compatibility | Real-product adoption remains separate; no Misho integration is claimed                 |
-| Week 5 — Validation               | Regression suite plus automated accessibility, narrow reflow and reduced-motion gates             | Resolve audit findings; conduct formative testing and specialist reviews                |
-| Week 6 — Alpha release            | Repository setup, checked starter examples, pattern-use guidance                                  | Confirm release scope, unresolved limits, versioning and release notes after validation |
+| Week 5 — Validation               | Regression suite plus automated accessibility, narrow reflow and reduced-motion gates             | Automated findings repaired; conduct formative testing and specialist reviews                |
+| Week 6 — Alpha release            | Installable preview kit, isolated React starter build, checksums and release notes                                  | Evaluate candidate with users/specialists before stable tag or registry publication |
 
 ## Automated evidence
 
