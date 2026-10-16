@@ -45,8 +45,10 @@ its workspace dependencies, load suitable Arabic and Latin fonts, and verify
 its bundler integration before release.
 
 Use `theme="light"`, `theme="dark"`, or `theme="highContrast"` on the provider.
-`applyToDocument={false}` keeps theme and direction local. Language belongs on
-content through `lang`; use explicit content direction for mixed scripts.
+`applyToDocument={false}` keeps theme and direction local. Language is independent of direction. Set `language="ar"` on the provider to
+explicitly mark Arabic content, or use `lang` on individual content regions.
+Omitting `language` preserves the document language, even when direction changes.
+Use explicit content direction for mixed scripts.
 
 ## Components
 

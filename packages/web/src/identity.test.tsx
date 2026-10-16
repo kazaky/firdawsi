@@ -100,3 +100,31 @@ describe("identity without ornament", () => {
     expect(screen.getByText("Next · Dhuhr")).toBeInTheDocument();
   });
 });
+
+
+describe("language and direction are independent", () => {
+  it("preserves the document language when only direction changes", () => {
+    const before = document.documentElement.lang;
+    const beforeDirection = document.documentElement.dir;
+    document.documentElement.lang = "en";
+    try {
+      const { rerender } = render(<ThemeProvider direction="rtl"><span>English content</span></ThemeProvider>);
+      expect(document.documentElement).toHaveAttribute("dir", "rtl");
+      expect(document.documentElement).toHaveAttribute("lang", "en");
+      rerender(<ThemeProvider direction="ltr"><span>English content</span></ThemeProvider>);
+      expect(document.documentElement).toHaveAttribute("lang", "en");
+    } finally { document.documentElement.lang = before; document.documentElement.dir = beforeDirection; }
+  });
+  it("supports explicit local language without changing the document", () => {
+    const before = document.documentElement.lang;
+    const beforeDirection = document.documentElement.dir;
+    document.documentElement.lang = "en";
+    try {
+      const { container, rerender } = render(<ThemeProvider language="ar" direction="rtl" applyToDocument={false}><span>نص عربي</span></ThemeProvider>);
+      expect(container.querySelector(".firdawsi-theme")).toHaveAttribute("lang", "ar");
+      expect(document.documentElement).toHaveAttribute("lang", "en");
+      rerender(<ThemeProvider language="ar" direction="rtl"><span>نص عربي</span></ThemeProvider>);
+      expect(document.documentElement).toHaveAttribute("lang", "ar");
+    } finally { document.documentElement.lang = before; document.documentElement.dir = beforeDirection; }
+  });
+});

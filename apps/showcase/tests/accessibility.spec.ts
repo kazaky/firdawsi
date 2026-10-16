@@ -43,7 +43,7 @@ test("open dialog is named and has no automatic accessibility violations", async
   await audit(page, info, "archive-dialog");
 });
 
-test("320px reflow keeps the reference workflow usable in Arabic", async ({ page }) => {
+test("320px reflow keeps the reference workflow usable in Arabic", async ({ page }, info) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.goto("/#experience");
   await page.locator("#principles").getByRole("button", { name: "العربية", exact: true }).click();
@@ -52,7 +52,18 @@ test("320px reflow keeps the reference workflow usable in Arabic", async ({ page
   await root.getByRole("button", { name: "إضافة مهمة" }).click();
   await root.getByRole("button", { name: "عرض الأسبوع", exact: true }).click();
   await expect(root.getByRole("button", { name: /تعديل A long/ })).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+  const reflow = await page.evaluate(() => ({
+    overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    elements: [...document.querySelectorAll("body *")].flatMap(node => {
+      const rect = node.getBoundingClientRect();
+      return rect.right > document.documentElement.clientWidth + 1 && rect.width > 0
+        ? [{ tag: node.tagName, class: node.getAttribute("class"), width: rect.width, right: rect.right }]
+        : [];
+    }),
+  }));
+  await info.attach("reflow.json", { body: JSON.stringify(reflow, null, 2), contentType: "application/json" });
+  expect(reflow, "Page must reflow without horizontal document scrolling").toMatchObject({ overflow: expect.any(Number) });
+  expect(reflow.overflow, JSON.stringify(reflow.elements)).toBeLessThanOrEqual(1);
 });
 
 test("reduced motion removes animation without removing state feedback", async ({ page }) => {

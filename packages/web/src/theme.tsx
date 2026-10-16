@@ -34,6 +34,7 @@ export function useTheme(): ThemeContextValue {
 export function ThemeProvider({
   theme = "light",
   direction = "ltr",
+  language,
   region = "andalusi-maghrebi",
   density = "comfortable",
   applyToDocument = true,
@@ -45,6 +46,7 @@ export function ThemeProvider({
 }: {
   theme?: ThemeName;
   direction?: Direction;
+  language?: string;
   region?: RegionId;
   density?: Density;
   applyToDocument?: boolean;
@@ -61,8 +63,8 @@ export function ThemeProvider({
     root.dataset.region = region;
     root.dataset.density = density;
     root.setAttribute("dir", direction);
-    root.lang = direction === "rtl" ? "ar" : "en";
-  }, [applyToDocument, theme, direction, region, density]);
+    if (language) root.lang = language;
+  }, [applyToDocument, theme, direction, language, region, density]);
 
   const value: ThemeContextValue = {
     theme,
@@ -83,6 +85,7 @@ export function ThemeProvider({
         data-region={region}
         data-density={density}
         dir={direction}
+        lang={language}
       >
         {children}
       </div>

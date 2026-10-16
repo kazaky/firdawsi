@@ -26,8 +26,8 @@ function collect(node, path = [], inheritedType, output = {}) {
 }
 
 const allTokens = collect(source);
-const themeNames = Object.keys(source.theme ?? {});
-const regionNames = Object.keys(source.region ?? {});
+const themeNames = Object.keys(source.theme ?? {}).filter((name) => !name.startsWith("$"));
+const regionNames = Object.keys(source.region ?? {}).filter((name) => !name.startsWith("$"));
 
 const isScoped = (name) => name.startsWith("theme.") || name.startsWith("region.");
 const baseTokens = Object.fromEntries(
@@ -196,16 +196,6 @@ ${declarations(scopedTokens("theme.light."), "theme.light.")}
   color-scheme: light;
 }
 
-[data-theme="dark"] {
-${declarations(scopedTokens("theme.dark."), "theme.dark.")}
-  color-scheme: dark;
-}
-
-[data-theme="high-contrast"] {
-${declarations(scopedTokens("theme.highContrast."), "theme.highContrast.")}
-  color-scheme: dark;
-}
-
 [dir="rtl"] {
   --firdawsi-logical-icon-directional-transform: var(--firdawsi-logical-icon-directional-transform-rtl);
 }
@@ -218,6 +208,17 @@ ${declarations(scopedTokens("theme.highContrast."), "theme.highContrast.")}
    restates the baseline; the others are deviations from it. Profiles tune
    non-semantic surface and ornament values only. */
 ${regionRules}
+
+/* Theme semantics override regional colour on the same provider boundary. */
+[data-theme="dark"] {
+${declarations(scopedTokens("theme.dark."), "theme.dark.")}
+  color-scheme: dark;
+}
+
+[data-theme="high-contrast"] {
+${declarations(scopedTokens("theme.highContrast."), "theme.highContrast.")}
+  color-scheme: dark;
+}
 
 @media (prefers-reduced-motion: reduce) {
   :root {
