@@ -25,10 +25,10 @@ export const profileCopy: Record<RegionalProfile, { place: string; note: string 
 };
 
 export const palettes = {
-  courtyard: ["#113b67", "#0d684f", "#f3ead7", "#ca9338", "#a84932"],
-  lapis: ["#153f73", "#267b70", "#f7efd9", "#d3a13e", "#963e2f"],
-  jade: ["#0b5b49", "#173d65", "#f1e8d2", "#d5a23d", "#ad5438"],
-  terracotta: ["#9e4733", "#133e6a", "#f6eddc", "#bf8b2e", "#276c5b"],
+  courtyard: ["#244d43", "#9c8253", "#f4f0e5", "#8daa9a", "#dae3d6"],
+  lapis: ["#284c66", "#a18a62", "#f4f0e7", "#91a9b5", "#d9e3e5"],
+  jade: ["#285747", "#a68a55", "#f5f1e7", "#91ad99", "#dbe5d6"],
+  terracotta: ["#874e3c", "#ad9269", "#f7eee2", "#c7a28b", "#e9d9c8"],
 } as const;
 
 export type PaletteName = keyof typeof palettes;

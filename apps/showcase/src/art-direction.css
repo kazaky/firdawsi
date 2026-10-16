@@ -1,0 +1,119 @@
+/* Week 8: an editorial setting for geometry, with quiet reading surfaces. */
+.app {
+  --art-paper: #f8f5ed;
+  --art-ink: #233d36;
+  --art-muted: #52645c;
+  --art-line: #dcded4;
+  --art-surface: #fffdf8;
+  --art-tint: #eaf0e8;
+  --firdawsi-font-family-display: "Cormorant Garamond", "El Messiri", Georgia, serif;
+  background: var(--art-paper);
+  color: var(--art-ink);
+}
+[data-theme="dark"] .app, .app[data-theme="dark"] {
+  --art-paper: #111b18; --art-ink: #eaf1e8; --art-muted: #bdc7bf;
+  --art-line: #34453c; --art-surface: #18251f; --art-tint: #233a30;
+}
+[data-theme="high-contrast"] .app, .app[data-theme="high-contrast"] {
+  --art-paper: var(--firdawsi-color-background); --art-ink: var(--firdawsi-color-text);
+  --art-muted: var(--firdawsi-color-text-muted); --art-line: var(--firdawsi-color-border);
+  --art-surface: var(--firdawsi-color-surface); --art-tint: var(--firdawsi-color-background);
+}
+.app .topbar, .app .guide-panel { background: var(--art-paper); border-color: var(--art-line); }
+.app .hero {
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  align-items: center; gap: 40px; min-height: 0;
+  padding: 132px clamp(24px, 4vw, 72px) 0;
+  background: var(--art-paper); border-color: var(--art-line);
+}
+.app .hero::before { display: none; }
+.app .hero-content { min-width: 0; }
+.app .issue-label { margin-bottom: 10px; color: var(--art-ink); font-size: 13px; letter-spacing: .12em; }
+.hero-edition { color: var(--art-muted); font-size: 12px; margin: 0 0 38px; }
+.app .hero h1 { font-size: clamp(66px, 7.7vw, 118px); line-height: .94; letter-spacing: -.045em; max-width: 9ch; }
+.app .hero h1 span { margin-inline-start: .35em; color: var(--art-ink); }
+.app .hero-statement { grid-template-columns: 1fr; gap: 20px; margin-top: 32px; max-width: 48ch; }
+.app .hero-statement p { font-size: 15px; line-height: 1.85; }
+.app .hero-statement p[lang="ar"] { font-size: 17px; line-height: 2; padding: 0; border: 0; color: var(--art-muted); }
+.app .hero-guardrail { border-width: 1px; border-color: var(--art-line); color: var(--art-muted); font-size: 12px; line-height: 1.8; }
+.app .hero-actions { flex-wrap: wrap; gap: 18px 24px; margin-top: 28px; }
+.app .hero-actions a { color: var(--art-ink); font-size: 12px; }
+.hero-art { min-width: 0; margin: 0; align-self: center; }
+.geometry-artwork { position: relative; aspect-ratio: 1; width: 100%; padding: 8%; isolation: isolate; }
+.geometry-artwork::before { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: #ece9db; z-index: -1; }
+.geometry-artwork__ring { position: absolute; inset: 3%; border: 1px solid var(--art-line); border-radius: 50%; }
+.geometry-artwork__ring::after { content: ""; position: absolute; inset: 3%; border: 1px solid var(--art-line); border-radius: 50%; }
+.geometry-artwork__image, .geometry-artwork__image svg { display: block; width: 100%; height: 100%; }
+.hero-art figcaption, .art-plate figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 24px 0; color: var(--art-muted); font-size: 11px; line-height: 1.8; }
+.hero-art figcaption { border-top: 1px solid var(--art-line); margin-top: 20px; }
+.app .hero-meta { position: static; grid-column: 1 / -1; margin-top: 24px; border-color: var(--art-line); }
+.app .hero-meta span { font-size: 10px; padding: 22px 8px; border: 0; color: var(--art-muted); letter-spacing: .06em; }
+.app .section { padding: clamp(72px, 8vw, 120px) clamp(24px, 4vw, 72px); }
+.app .section-heading { grid-template-columns: 36px minmax(0, 760px); gap: 24px; margin-bottom: 56px; }
+.app .section-heading h2 { font-size: clamp(44px, 5.5vw, 76px); line-height: 1.04; letter-spacing: -.035em; font-weight: 500; }
+.app .section-heading p { line-height: 1.85; }
+.art-direction { background: var(--art-surface); color: var(--art-ink); }
+.art-heading { max-width: 700px; margin-bottom: 56px; }
+.art-heading .eyebrow { color: var(--art-muted); font-size: 11px; }
+.art-heading h2 { font: 500 clamp(58px, 6vw, 88px)/.98 var(--firdawsi-font-family-display); letter-spacing: -.035em; margin: 0 0 28px; }
+.art-heading h2 em { font-weight: 400; }
+.art-heading > p:last-child { max-width: 44ch; color: var(--art-muted); font-size: 16px; line-height: 1.85; }
+.art-composition { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: clamp(24px, 5vw, 72px); }
+.art-plate { margin: 0; min-width: 0; }
+.art-plate .geometry-artwork { background: var(--art-paper); padding: 10%; }
+.art-plate figcaption { border-bottom: 1px solid var(--art-line); }
+.art-editorial { min-width: 0; }
+.art-arabic { display: block; font: 400 28px/1.9 "El Messiri", serif; color: var(--art-muted); text-align: start; }
+.art-editorial h3 { font: 500 clamp(34px, 3.5vw, 48px)/1.12 var(--firdawsi-font-family-display); margin: 16px 0 24px; }
+.art-editorial p { font-size: 14px; line-height: 1.9; color: var(--art-muted); }
+.art-palettes { border: 0; padding: 0; margin: 28px 0 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.art-palettes legend { font-size: 12px; padding: 0 0 12px; }
+.art-palettes label { display: flex; gap: 8px; align-items: center; min-height: 44px; padding: 8px 10px; border: 1px solid var(--art-line); font-size: 12px; cursor: pointer; }
+.art-palettes label:has(:checked) { border-color: var(--art-ink); background: var(--art-tint); }
+.art-palettes input, .art-construction input { accent-color: var(--art-ink); }
+.art-pigment { width: 14px; height: 14px; border-radius: 50%; background: var(--pigment); }
+.art-construction { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 12px; cursor: pointer; }
+.art-palettes input:focus-visible, .art-construction input:focus-visible { outline: 2px solid var(--art-ink); outline-offset: 4px; }
+.art-editorial .art-source { border-top: 1px solid var(--art-line); padding-top: 22px; margin-top: 22px; font-size: 12px; }
+.art-principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 64px; }
+.art-principles article { border-top: 1px solid var(--art-line); padding-top: 24px; }
+.art-principles article > span { font-size: 11px; color: var(--art-muted); }
+.art-principles h3 { font: 500 28px/1.2 var(--firdawsi-font-family-display); margin: 20px 0 12px; }
+.art-principles p { font-size: 14px; line-height: 1.85; color: var(--art-muted); }
+.app .philosophy-principle { padding-block: 40px; }
+.app .philosophy-principle h3 { font-family: var(--firdawsi-font-family-display); font-size: 32px; line-height: 1.2; }
+.app .philosophy-principle h4 { font-family: var(--firdawsi-font-family-display); font-size: 27px; line-height: 1.3; }
+.app #geometry { background: var(--art-paper); }
+.app .geometry-grid { gap: 24px; border: 0; background: transparent; }
+.app .geometry-card { border: 1px solid var(--art-line); background: #f3f0e6; min-height: 0; }
+.app .geometry-card .pattern-preview { height: 300px; padding: 24px; }
+.app .geometry-card--wide .pattern-preview { height: 380px; padding: 32px; }
+.app .geometry-card > div:last-child { padding: 24px; }
+.app .geometry-card h3 { font-family: var(--firdawsi-font-family-display); font-size: 28px; line-height: 1.2; }
+.app .experience-workspace { border-radius: 12px; box-shadow: none; }
+.app #studio { --studio-blue: #285747; --studio-blue-deep: #1d3b32; --studio-jade: #285747; --studio-clay: #874e3c; --studio-gold: #a68a55; --studio-cream: #f1eddf; --studio-paper: #fffdf8; background: var(--art-paper); }
+.app .studio-canvas { background-image: none; }
+.app .preset-card strong { font-size: 16px; }
+.app .preset-card small { font-size: 11px; }
+.app :is(h1,h2,h3,h4)[lang="ar"] { font-family: "El Messiri", serif; letter-spacing: normal; }
+@media (max-width: 1250px) {
+  .app .hero { gap: 24px; }
+  .app .hero h1 { font-size: clamp(66px, 7.7vw, 96px); }
+  .art-composition { gap: 28px; }
+}
+@media (max-width: 760px) {
+  .app .hero { grid-template-columns: 1fr; padding-top: 112px; gap: 32px; }
+  .app .hero h1 { font-size: clamp(68px, 13vw, 104px); }
+  .app .hero-statement { max-width: 56ch; }
+  .hero-art { width: min(100%, 480px); justify-self: center; }
+  .app .hero-meta { margin-top: 0; flex-wrap: wrap; }
+  .app .hero-meta span { flex: 1 1 40%; }
+  .art-composition { grid-template-columns: 1fr; }
+  .art-editorial { padding-top: 12px; }
+  .art-principles { grid-template-columns: 1fr; gap: 28px; margin-top: 44px; }
+  .app .section-heading { grid-template-columns: 1fr; gap: 16px; }
+  .app .geometry-card .pattern-preview, .app .geometry-card--wide .pattern-preview { height: 280px; padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .art-direction *, .hero-art * { animation: none; transition: none; }
+}

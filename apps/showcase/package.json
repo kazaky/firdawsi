@@ -16,6 +16,7 @@
     "@firdawsi/shape": "workspace:*",
     "@firdawsi/tokens": "workspace:*",
     "@firdawsi/web": "workspace:*",
+    "@fontsource/cormorant-garamond": "^5.3.0",
     "@fontsource/el-messiri": "^5.3.0",
     "@fontsource/noto-kufi-arabic": "^5.3.0",
     "@fontsource/noto-sans": "^5.3.0",

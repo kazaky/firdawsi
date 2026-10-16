@@ -15,6 +15,7 @@ import {
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 
 import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
+import { ArtDirection, GeometryArtwork } from "./art-direction";
 import { PatternGuidance } from "./adoption-guide";
 import { ComponentContracts } from "./component-contracts";
 import { PhilosophySection } from "./philosophy-section";
@@ -33,7 +34,7 @@ import {
   KhatamZelligeReference,
   ZelligeConstructionPlate,
 } from "./reference-examples";
-import { galleryPresets, palettes, profileCopy, profiles } from "./showcase-data";
+import { galleryPresets, palettes, profileCopy, profiles, type PaletteName } from "./showcase-data";
 
 const sectionIds = guideNavGroups.flatMap((group) => group.items.map((item) => item.id));
 
@@ -141,7 +142,7 @@ function TokensSwatches() {
     <>
       <div className="type-specimen" data-type-specimen>
         <p className="type-specimen__note">
-          El Messiri is the open Maghrebi display. Qandus is the licensed Fez reference we do not ship.
+          Cormorant Garamond brings expression to Latin display; El Messiri carries Arabic display. Qandus remains a licensed Fez reference we do not ship.
         </p>
         <div className="type-specimen__pair">
           <Text role="display-sm">Gardens of light</Text>
@@ -182,6 +183,7 @@ function hashSection(): string {
 }
 
 export function App() {
+  const [artPalette, setArtPalette] = useState<PaletteName>("jade");
   const [theme, setTheme] = useState<ThemeName>("light");
   const [direction, setDirection] = useState<Direction>("ltr");
   const [active, setActive] = useState(hashSection);
@@ -256,11 +258,9 @@ export function App() {
 
         <main id="main">
           <section id="overview" className="hero">
-            <div className="hero-grid" aria-hidden="true">
-              <KhatamMark size={420} className="hero-khatam" />
-            </div>
             <div className="hero-content">
-              <p className="issue-label">Qur’an-guided experience · al-tasmīm al-firdawsī</p>
+              <p className="issue-label">Firdawsi / فردوسي</p>
+              <p className="hero-edition">A Qur’an-guided design language</p>
               <h1>
                 Gardens of
                 <span>light.</span>
@@ -269,7 +269,7 @@ export function App() {
                 <p>
                   A design system for peaceful, secure, effortless interaction. Qur’anic qualities
                   associated with Jannah guide the experience; intention, dignity, and gentleness
-                  shape its behaviour. Tokens and components make those principles tangible.
+                  shape its behaviour. Beauty gives those principles a visible rhythm.
                 </p>
                 <p lang="ar" dir="rtl">
                   نظام واجهات يستلهم السلام والقرب والتيسير من أوصاف الجنة، وتوجّه النية والكرامة
@@ -288,10 +288,16 @@ export function App() {
                 </a>
               </div>
             </div>
+            <figure className="hero-art">
+              <GeometryArtwork palette={artPalette} hero />
+              <figcaption><span>Order, light & possibility</span><span lang="ar" dir="rtl">نظامٌ ونورٌ وإمكان</span></figcaption>
+            </figure>
             <div className="hero-meta">
               <span>7 principles</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
             </div>
           </section>
+
+          <ArtDirection palette={artPalette} onPaletteChange={setArtPalette} />
 
           <PhilosophySection />
 
@@ -348,17 +354,17 @@ export function App() {
                     presetId={study.id}
                     options={{
                       seed: `atlas-${study.id}`,
-                      unitSize: study.wide ? 104 : 78,
-                      density: 0.66,
-                      stroke: 1.15,
-                      strandWidth: 2,
-                      weaveGap: 1.35,
+                      unitSize: study.wide ? 150 : 120,
+                      density: 0.46,
+                      stroke: 0.75,
+                      strandWidth: 1.4,
+                      weaveGap: 1.8,
                       petalDepth: 0.2,
                       botanicalFill: true,
-                      constructionOverlay: study.overlay ?? "none",
+                      constructionOverlay: "none",
                       simplificationTier: "expanded",
                       crop: PRESETS[study.id].topology.mode === "focal" ? "circle" : "square",
-                      palette: palettes[index % 2 === 0 ? "courtyard" : "lapis"],
+                      palette: palettes[artPalette],
                     }}
                   />
                   <div className="geometry-card__caption">

@@ -224,3 +224,17 @@ test("mobile guide drawer reaches studio and components", async ({ page }) => {
   await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
   await expect(page.locator(".tier-grid article")).toHaveCount(3);
 });
+
+test("art direction coordinates colour and reveals geometric construction", async ({ page }) => {
+  await page.goto("/#art-direction");
+  const art = page.locator("#art-direction");
+  const hero = page.locator(".hero-art svg");
+  const before = await hero.evaluate(node => node.outerHTML);
+  await art.getByRole("radio", { name: "Lapis", exact: true }).check();
+  await expect.poll(() => hero.evaluate(node => node.outerHTML)).not.toBe(before);
+  await expect(art.locator("[data-construction-role]")).toHaveCount(0);
+  await art.getByRole("checkbox", { name: "Reveal the construction" }).check();
+  await expect(art.locator("[data-construction-role]").first()).toBeAttached();
+  await art.getByRole("checkbox", { name: "Reveal the construction" }).uncheck();
+  await expect(art.locator("[data-construction-role]")).toHaveCount(0);
+});
