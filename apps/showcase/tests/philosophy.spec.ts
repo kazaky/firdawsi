@@ -7,7 +7,7 @@ test("philosophy explains religious sources and independently switches language"
   await expect(page.locator("#principle-nearness .source-link")).toHaveAttribute("href", "https://quran.com/al-insan/14");
   await page.locator("#principle-nearness summary").click();
   await expect(page.locator("#principle-nearness details")).toContainText("design analogy");
-  await page.getByRole("button", { name: "العربية", exact: true }).click();
+  await page.locator("#principles").getByRole("button", { name: "العربية", exact: true }).click();
   await expect(page.locator("#principles")).toHaveAttribute("lang", "ar");
   await expect(page.locator("#principles")).toHaveAttribute("dir", "rtl");
   await expect(page.getByRole("heading", { name: "معنى يتجسّد." })).toBeVisible();
@@ -77,7 +77,7 @@ test("visual directions keep identical content and work on a narrow RTL screen",
   await page.getByLabel("Show decorative geometry").check();
   await expect(page.locator(".experience-workspace")).toHaveAttribute("data-ornament", "true");
   await page.getByLabel("Continuity & gathering", { exact: true }).check();
-  await page.getByRole("button", { name: "العربية", exact: true }).click();
+  await page.locator("#principles").getByRole("button", { name: "العربية", exact: true }).click();
   await page.getByRole("button", { name: "RTL", exact: true }).click();
   await page.getByRole("button", { name: "High contrast" }).click();
   await expect(page.locator(".experience-tasks")).toContainText("One task");
