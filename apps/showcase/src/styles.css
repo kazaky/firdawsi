@@ -1932,6 +1932,12 @@ main {
   min-height: 480px;
 }
 
+.reference-card > .geometry-card__caption {
+  background: var(--firdawsi-color-surface);
+  color: var(--firdawsi-color-text);
+  padding: 20px 22px;
+}
+
 .reference-preview {
   align-items: center;
   background:
