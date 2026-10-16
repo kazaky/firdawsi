@@ -438,7 +438,7 @@ export function App() {
             <SectionHeading number="04" eyebrow="Regional profiles" title="One engine, many cadences">
               Profiles adjust proportion and rhythm while preserving the same API and performance budget.
             </SectionHeading>
-            <div className="profile-strip">
+            <div className="profile-strip" tabIndex={0} role="region" aria-label="Regional profile comparison">
               {profiles.map((profile, index) => {
                 const presetId = preferredPresetForProfile(profile);
                 const options = applyRegionalProfile({
@@ -532,7 +532,7 @@ export function App() {
                   <span>AA</span>
                   <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle className="score-ring" cx="60" cy="60" r="52" /></svg>
                 </div>
-                <p>Core semantic pairs maintain WCAG AA contrast across all three themes.</p>
+                <p>Target: WCAG 2.2 AA. Automated audits support verification; manual accessibility review remains pending.</p>
               </div>
               <div className="access-list">
                 {[

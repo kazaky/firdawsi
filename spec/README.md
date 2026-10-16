@@ -30,6 +30,8 @@ This specification governs design intent and cross-platform behavior. It does no
 
 15. [Reference task lifecycle](15-reference-task-lifecycle.md) — editable tasks, completion, grouped weeks, reversible removal, and persistence recovery.
 
+16. [Validation and release gates](16-validation-and-release-gates.md) — week-phase status, automated evidence, user-study protocol, and pending human reviews.
+
 ## Normative language
 
 The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** indicate requirement strength. A deviation from MUST/MUST NOT requires a documented exception and cultural/accessibility review where relevant.

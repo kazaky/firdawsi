@@ -379,6 +379,80 @@
   color-scheme: light;
 }
 
+[dir="rtl"] {
+  --firdawsi-logical-icon-directional-transform: var(--firdawsi-logical-icon-directional-transform-rtl);
+}
+
+[dir="ltr"] {
+  --firdawsi-logical-icon-directional-transform: var(--firdawsi-logical-icon-directional-transform-ltr);
+}
+
+/* Regional profile overlays. Andalusi is the system default, so its overlay
+   restates the baseline; the others are deviations from it. Profiles tune
+   non-semantic surface and ornament values only. */
+/* Geometry-first core with no regional colour claim. */
+[data-region="universal"] {
+  --firdawsi-color-surface: #ffffff;
+  --firdawsi-color-surface-tier-1: #f7f8f7;
+  --firdawsi-color-surface-tier-2: #e8ebe9;
+  --firdawsi-color-tertiary: #a66d12;
+  --firdawsi-opacity-pattern: 0.09;
+}
+
+/* The system baseline. Carved lime plaster surfaces, green glaze primary, honey tertiary. */
+[data-region="andalusi-maghrebi"],
+[data-region="andalusi"],
+[data-region="maghrebi"] {
+  --firdawsi-color-surface: #fffdf9;
+  --firdawsi-color-surface-tier-1: #faf6ee;
+  --firdawsi-color-surface-tier-2: #f2ece0;
+  --firdawsi-color-tertiary: #a66d12;
+  --firdawsi-opacity-pattern: 0.1;
+}
+
+/* Warmer stone surfaces, deeper cobalt primary, manganese tertiary. */
+[data-region="mamluk"] {
+  --firdawsi-color-surface: #f4f1ea;
+  --firdawsi-color-surface-tier-1: #ebe6dc;
+  --firdawsi-color-surface-tier-2: #e6dfd0;
+  --firdawsi-color-primary: #184f78;
+  --firdawsi-color-tertiary: #843d2e;
+  --firdawsi-opacity-pattern: 0.12;
+}
+
+/* Cooler tile-white surfaces, deep cobalt primary, gold tertiary. */
+[data-region="ottoman"] {
+  --firdawsi-color-surface: #f5f8fb;
+  --firdawsi-color-surface-tier-1: #eaf1f7;
+  --firdawsi-color-surface-tier-2: #e2ebf3;
+  --firdawsi-color-primary: #173b6c;
+  --firdawsi-color-tertiary: #c79a3b;
+  --firdawsi-opacity-pattern: 0.08;
+}
+
+/* Warm paper surfaces, green primary, terracotta tertiary. */
+[data-region="persian-central-asian"],
+[data-region="persian"] {
+  --firdawsi-color-surface: #faf7f2;
+  --firdawsi-color-surface-tier-1: #f4eee4;
+  --firdawsi-color-surface-tier-2: #efe6d8;
+  --firdawsi-color-primary: #195847;
+  --firdawsi-color-tertiary: #bd6048;
+  --firdawsi-opacity-pattern: 0.1;
+}
+
+/* Warm sandstone surfaces, green primary, honey tertiary. */
+[data-region="mughal"],
+[data-region="south-asian"] {
+  --firdawsi-color-surface: #f8f4ec;
+  --firdawsi-color-surface-tier-1: #f1ebdf;
+  --firdawsi-color-surface-tier-2: #ebe3d2;
+  --firdawsi-color-primary: #2d6b5a;
+  --firdawsi-color-tertiary: #a66d12;
+  --firdawsi-opacity-pattern: 0.11;
+}
+
+/* Theme semantics override regional colour on the same provider boundary. */
 [data-theme="dark"] {
   --firdawsi-color-background: #0a110e;
   --firdawsi-color-on-background: #f7f8f7;
@@ -493,83 +567,6 @@
   --firdawsi-color-selection: #195847;
   --firdawsi-color-scrim: #000000e6;
   color-scheme: dark;
-}
-
-[dir="rtl"] {
-  --firdawsi-logical-icon-directional-transform: var(--firdawsi-logical-icon-directional-transform-rtl);
-}
-
-[dir="ltr"] {
-  --firdawsi-logical-icon-directional-transform: var(--firdawsi-logical-icon-directional-transform-ltr);
-}
-
-/* Regional profile overlays. Andalusi is the system default, so its overlay
-   restates the baseline; the others are deviations from it. Profiles tune
-   non-semantic surface and ornament values only. */
-[data-region="$description"] {
-
-}
-
-/* Geometry-first core with no regional colour claim. */
-[data-region="universal"] {
-  --firdawsi-color-surface: #ffffff;
-  --firdawsi-color-surface-tier-1: #f7f8f7;
-  --firdawsi-color-surface-tier-2: #e8ebe9;
-  --firdawsi-color-tertiary: #a66d12;
-  --firdawsi-opacity-pattern: 0.09;
-}
-
-/* The system baseline. Carved lime plaster surfaces, green glaze primary, honey tertiary. */
-[data-region="andalusi-maghrebi"],
-[data-region="andalusi"],
-[data-region="maghrebi"] {
-  --firdawsi-color-surface: #fffdf9;
-  --firdawsi-color-surface-tier-1: #faf6ee;
-  --firdawsi-color-surface-tier-2: #f2ece0;
-  --firdawsi-color-tertiary: #a66d12;
-  --firdawsi-opacity-pattern: 0.1;
-}
-
-/* Warmer stone surfaces, deeper cobalt primary, manganese tertiary. */
-[data-region="mamluk"] {
-  --firdawsi-color-surface: #f4f1ea;
-  --firdawsi-color-surface-tier-1: #ebe6dc;
-  --firdawsi-color-surface-tier-2: #e6dfd0;
-  --firdawsi-color-primary: #184f78;
-  --firdawsi-color-tertiary: #843d2e;
-  --firdawsi-opacity-pattern: 0.12;
-}
-
-/* Cooler tile-white surfaces, deep cobalt primary, gold tertiary. */
-[data-region="ottoman"] {
-  --firdawsi-color-surface: #f5f8fb;
-  --firdawsi-color-surface-tier-1: #eaf1f7;
-  --firdawsi-color-surface-tier-2: #e2ebf3;
-  --firdawsi-color-primary: #173b6c;
-  --firdawsi-color-tertiary: #c79a3b;
-  --firdawsi-opacity-pattern: 0.08;
-}
-
-/* Warm paper surfaces, green primary, terracotta tertiary. */
-[data-region="persian-central-asian"],
-[data-region="persian"] {
-  --firdawsi-color-surface: #faf7f2;
-  --firdawsi-color-surface-tier-1: #f4eee4;
-  --firdawsi-color-surface-tier-2: #efe6d8;
-  --firdawsi-color-primary: #195847;
-  --firdawsi-color-tertiary: #bd6048;
-  --firdawsi-opacity-pattern: 0.1;
-}
-
-/* Warm sandstone surfaces, green primary, honey tertiary. */
-[data-region="mughal"],
-[data-region="south-asian"] {
-  --firdawsi-color-surface: #f8f4ec;
-  --firdawsi-color-surface-tier-1: #f1ebdf;
-  --firdawsi-color-surface-tier-2: #ebe3d2;
-  --firdawsi-color-primary: #2d6b5a;
-  --firdawsi-color-tertiary: #a66d12;
-  --firdawsi-opacity-pattern: 0.11;
 }
 
 @media (prefers-reduced-motion: reduce) {

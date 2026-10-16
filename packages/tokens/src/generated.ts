@@ -942,10 +942,6 @@ export const themes = {
 } as const;
 
 export const regions = {
-  "$description": {
-    "aliases": [],
-    "tokens": {}
-  },
   "universal": {
     "aliases": [],
     "tokens": {
