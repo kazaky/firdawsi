@@ -75,7 +75,11 @@ export function CourtyardSection() {
   const [removed, setRemoved] = useState<CourtyardTask | null>(null);
 
   useEffect(() => {
-    window.localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(tasks));
+    try {
+      window.localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(tasks));
+    } catch {
+      setMessage("Storage is unavailable. Courtyard changes are only held in memory and will be lost when this page closes.");
+    }
   }, [tasks]);
 
   const day = useMemo(() => courtyardDaySchedule(cityId), [cityId]);
