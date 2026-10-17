@@ -10,6 +10,7 @@ test("philosophy explains religious sources and independently switches language"
   await page.locator("#principles").getByRole("button", { name: "العربية", exact: true }).click();
   await expect(page.locator("#principles")).toHaveAttribute("lang", "ar");
   await expect(page.locator("#principles")).toHaveAttribute("dir", "rtl");
+  await page.locator("#guide-panel").getByRole("link", { name: "Experience lab", exact: true }).click();
   await expect(page.getByRole("heading", { name: "معنى يتجسّد." })).toBeVisible();
   await page.getByLabel("ما الذي يحتاج إلى اهتمامك؟").fill("قراءة مع داوود");
   await page.getByRole("button", { name: "إضافة مهمة" }).click();

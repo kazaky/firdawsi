@@ -4,7 +4,7 @@ import { ExperienceLab } from "./experience-lab";
 import { SourceLink } from "./source-link";
 import "./philosophy.css";
 
-export function PhilosophySection() {
+export function PhilosophySection({ view = "principles" }: { view?: string }) {
   const [language, setLanguage] = useState<Language>("en");
   const t = (en: string, ar: string) => language === "en" ? en : ar;
   return <section id="principles" className="section philosophy" lang={language} dir={language === "ar" ? "rtl" : "ltr"}>
@@ -17,7 +17,7 @@ export function PhilosophySection() {
         <button type="button" lang="ar" aria-pressed={language === "ar"} onClick={() => setLanguage("ar")}>العربية</button>
       </div>
     </header>
-    <aside className="philosophy-boundary">
+    <div hidden={view === "experience"}><aside className="philosophy-boundary">
       <strong>{t("Source → meaning → design interpretation → observable behaviour", "المصدر ← المعنى ← الاستلهام التصميمي ← السلوك القابل للملاحظة")}</strong>
       <p>{t("Qur’anic descriptions of Jannah inspire experiential qualities; Islamic teachings inform our ethics. The interface rules are our design interpretations, not religious prescriptions or depictions of the unseen.", "تلهمنا أوصاف الجنة في القرآن بصفات للتجربة، وتوجّه التعاليم الإسلامية أخلاقنا. قواعد الواجهة اجتهادات تصميمية، وليست أحكامًا دينية أو تصويرًا للغيب.")}</p>
     </aside>
@@ -53,6 +53,6 @@ export function PhilosophySection() {
       <p>{t("Meanings are paraphrased. Hadith references are from Sahih al-Bukhari and Sahih Muslim. References checked; design interpretations have not received scholarly endorsement. Numerical timings, accessibility targets, and visual tokens are engineering choices.", "المعاني معروضة بتصرف، والأحاديث من صحيحَي البخاري ومسلم. جرى التحقق من المراجع، ولم تُعتمد الاستلهامات التصميمية من مراجع شرعي. الأزمنة ومعايير الإتاحة والقيم البصرية اختيارات هندسية.")}</p>
       {Object.entries(sources).map(([id, source]) => <article key={id}><SourceLink id={id as SourceId}/><p>{source.meaning[language]} {source.context[language]}</p></article>)}
     </details>
-    <ExperienceLab language={language}/>
+    </div><div hidden={view !== "experience"}><ExperienceLab language={language}/></div>
   </section>;
 }

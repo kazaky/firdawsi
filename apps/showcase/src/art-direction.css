@@ -155,3 +155,8 @@
 }
 @media (prefers-reduced-motion: reduce) { .study-progress span { transition: none; } }
 @media (forced-colors: active) { .art-palettes input, .intention-choices input { position: static; opacity: 1; width: 16px; height: 16px; } .art-palettes label:has(:checked), .intention-choices input:checked + span { outline: 2px solid Highlight; } }
+
+/* Each guide destination is a page; hidden pages cannot receive focus. */
+.app [hidden] { display: none !important; }
+.app main[data-page]:not([data-page="overview"]) { padding-top: 72px; }
+@media(max-width:680px) { .app main[data-page]:not([data-page="overview"]) { padding-top: 64px; } }

@@ -196,19 +196,8 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-18% 0px -66%", threshold: [0, 0.2, 0.5] },
-    );
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-    return () => observer.disconnect();
-  }, []);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [active]);
 
   useEffect(() => {
     if (!guideOpen) return;
@@ -256,8 +245,8 @@ export function App() {
           onNavigate={() => setGuideOpen(false)}
         />
 
-        <main id="main">
-          <section id="overview" className="hero">
+        <main id="main" data-page={active}>
+          <section hidden={active !== "overview"} id="overview" className="hero">
             <div className="hero-content">
               <p className="issue-label">Firdawsi / فردوسي</p>
               <p className="hero-edition">A Qur’an-guided design language</p>
@@ -297,11 +286,11 @@ export function App() {
             </div>
           </section>
 
-          <ArtDirection palette={artPalette} onPaletteChange={setArtPalette} />
+          <div hidden={active !== "art-direction"}><ArtDirection palette={artPalette} onPaletteChange={setArtPalette} /></div>
 
-          <PhilosophySection />
+          <div hidden={active !== "principles" && active !== "experience"}><PhilosophySection view={active} /></div>
 
-          <section id="foundations" className="section section--ink">
+          <section hidden={active !== "foundations"} id="foundations" className="section section--ink">
             <SectionHeading number="02" eyebrow="Foundations" title="A calibrated material palette">
               Semantic tokens keep every surface coherent across themes, directions, and products.
             </SectionHeading>
@@ -340,9 +329,9 @@ export function App() {
             </div>
           </section>
 
-          <PatternGuidance />
+          <div hidden={active !== "pattern-guidance"}><PatternGuidance /></div>
 
-          <section id="geometry" className="section">
+          <section hidden={active !== "geometry"} id="geometry" className="section">
             <SectionHeading number="03" eyebrow="Construction atlas" title="Exact geometry at working scale">
               Nine curated studies move from compass divisions and repeat cells to architectural
               lattices and botanical-geometric fields — plus reference plates from the Firdawsi tradition.
@@ -438,7 +427,7 @@ export function App() {
             </div>
           </section>
 
-          <section id="regions" className="section section--sand">
+          <section hidden={active !== "regions"} id="regions" className="section section--sand">
             <SectionHeading number="04" eyebrow="Regional profiles" title="One engine, many cadences">
               Profiles adjust proportion and rhythm while preserving the same API and performance budget.
             </SectionHeading>
@@ -470,7 +459,7 @@ export function App() {
             </div>
           </section>
 
-          <section id="mechanics" className="section">
+          <section hidden={active !== "mechanics"} id="mechanics" className="section">
             <SectionHeading number="05" eyebrow="Signature mechanics" title="Six non-decorative identities">
               Ornament is optional. These six mechanics fire in every component, so the system
               stays recognizably Firdawsi with decoration turned off.
@@ -478,24 +467,24 @@ export function App() {
             <MechanicsSection />
           </section>
 
-          <section id="tokens" className="section section--ink">
+          <section hidden={active !== "tokens"} id="tokens" className="section section--ink">
             <SectionHeading number="06" eyebrow="Tokens" title="Sebka scale, carved planes, Alberca springs">
               Type roles, surface tiers, springs, and regional overlays are authorable — not hardcoded CSS.
             </SectionHeading>
             <TokensSection swatches={<TokensSwatches />} />
           </section>
 
-          <section id="components" className="section">
+          <section hidden={active !== "components" && active !== "contracts"} id="components" className="section">
             <SectionHeading number="07" eyebrow="Component gallery" title="Components">
               Accessible React primitives carry the grammar — arch corners, carved tiers, strapwork
               focus — without changing expected behavior.
             </SectionHeading>
-            <ComponentContracts />
-            <ComponentAnatomy />
-            <ComponentMatrix />
+            <div hidden={active !== "contracts"}><ComponentContracts /></div>
+            <div hidden={active !== "components"}><ComponentAnatomy />
+            <ComponentMatrix /></div>
           </section>
 
-          <section id="courtyard" className="section section--courtyard">
+          <section hidden={active !== "courtyard"} id="courtyard" className="section section--courtyard">
             <SectionHeading number="08" eyebrow="Use" title="Courtyard day desk">
               A real local-first workflow: prayer context, quick capture, persistent intentions,
               reversible removal, and peaceful completion—without an account.
@@ -503,7 +492,7 @@ export function App() {
             <CourtyardSection />
           </section>
 
-          <section id="motion" className="section section--motion">
+          <section hidden={active !== "motion"} id="motion" className="section section--motion">
             <SectionHeading number="09" eyebrow="Interaction" title="From rest to peaceful completion">
               One causal cycle serves touch, pointer, keyboard, and voice. Motion can disappear;
               response, continuity, and a stable result cannot.
@@ -526,7 +515,7 @@ export function App() {
             </div>
           </section>
 
-          <section id="accessibility" className="section">
+          <section hidden={active !== "accessibility"} id="accessibility" className="section">
             <SectionHeading number="10" eyebrow="Accessibility" title="Access is part of the form">
               Contrast, focus, direction, language, and motion preferences are design inputs—not post-production checks.
             </SectionHeading>
@@ -555,7 +544,7 @@ export function App() {
             </div>
           </section>
 
-          <section id="studio" className="section section--studio">
+          <section hidden={active !== "studio"} id="studio" className="section section--studio">
             <SectionHeading number="11" eyebrow="Preset-first workshop" title="Pattern Studio">
               Begin with a compass rosette — real construction, not a decorative star — then tune
               only the controls its family supports, compare responsive tiers, and export its recipe.
@@ -563,7 +552,7 @@ export function App() {
             <PatternStudio />
           </section>
 
-          <footer className="footer">
+          <footer hidden={active === "overview"} className="footer">
             <div><KhatamMark size={42} /><strong>Firdawsi</strong></div>
             <p>Qur’an-guided experiential principles for interfaces that feel peaceful, secure, effortless, and grounded.</p>
             <a href="https://firdawsi.org" rel="noreferrer">firdawsi.org</a>

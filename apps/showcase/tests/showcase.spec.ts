@@ -34,9 +34,11 @@ test("showcase presents every foundation section", async ({ page }) => {
     "accessibility",
     "studio",
   ]) {
+    await page.locator("#guide-panel").getByRole("link", { exact: true, name: ({overview:"Overview", principles:"Philosophy", foundations:"Foundations", geometry:"Geometry", regions:"Regions", mechanics:"Mechanics", tokens:"Tokens", components:"Components", courtyard:"Courtyard", motion:"Motion", accessibility:"Access", studio:"Pattern Studio"} as Record<string,string>)[id] }).click();
     await expect(page.locator(`#${id}`)).toBeVisible();
   }
 
+  await page.goto("/#geometry");
   await expect(page.locator("#geometry img")).toHaveCount(0);
   await expect(page.locator("#geometry .geometry-card")).toHaveCount(9);
   await expect(page.locator("#geometry .reference-card")).toHaveCount(3);
@@ -48,6 +50,7 @@ test("showcase presents every foundation section", async ({ page }) => {
   await expect(page.locator("#geometry")).toContainText("Curvilinear isometric tessellation");
   await expect(page.locator("#geometry")).toContainText("Khatam · 8");
   await expect(page.locator("#geometry")).toContainText("Floral-geometric field");
+  await page.goto("/#studio");
   await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
   await expectNoHorizontalOverflow(page);
 });
@@ -70,7 +73,7 @@ test("documentation site exposes mechanics, tokens, and components", async ({ pa
   const primary = page.locator("#button").getByRole("button", { name: "Primary", exact: true });
   await expect(primary).toBeVisible();
   await expect(primary).toHaveAttribute("data-shape", "arch");
-  await expect(page.locator(".firdawsi-card").first()).toBeVisible();
+  await expect(page.locator("#components .firdawsi-card").first()).toBeVisible();
   await expect(page.locator("#components")).toContainText("Open courtyard timetable");
 });
 
@@ -255,4 +258,19 @@ test("shared type and intention controls keep the new identity functional", asyn
   await expect(study.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "1");
   await study.getByRole("button", { name: "Begin again" }).click();
   await expect(study.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "0");
+});
+
+
+test("home shows only overview and guide navigation supports browser history", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#overview")).toBeVisible();
+  await expect(page.locator("#art-direction")).toBeHidden();
+  await expect(page.locator("#geometry")).toBeHidden();
+  await expect(page.locator("#principles")).toBeHidden();
+  await page.locator("#guide-panel").getByRole("link", {name:"Geometry", exact:true}).click();
+  await expect(page.locator("#geometry")).toBeVisible();
+  await expect(page.locator("#overview")).toBeHidden();
+  await page.goBack();
+  await expect(page.locator("#overview")).toBeVisible();
+  await expect(page.locator("#geometry")).toBeHidden();
 });
