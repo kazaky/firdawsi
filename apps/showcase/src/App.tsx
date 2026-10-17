@@ -28,6 +28,7 @@ import {
   guideNavGroups,
 } from "./guide-panel";
 import { KhatamMark } from "./khatam-mark";
+import { FirdawsiLogo } from "./firdawsi-logo";
 import { PatternStudio } from "./pattern-studio";
 import {
   CurvilinearIsometricPlate,
@@ -221,7 +222,7 @@ export function App() {
           <div className="topbar__start">
             <GuideMenuButton open={guideOpen} onClick={() => setGuideOpen((value) => !value)} />
             <a className="brand" href="#overview" aria-label="Firdawsi home">
-              <KhatamMark />
+              <FirdawsiLogo />
               <span>Firdawsi <i>/</i> <span lang="ar" dir="rtl">فردوسي</span></span>
             </a>
           </div>
@@ -553,7 +554,7 @@ export function App() {
           </section>
 
           <footer hidden={active === "overview"} className="footer">
-            <div><KhatamMark size={42} /><strong>Firdawsi</strong></div>
+            <div><FirdawsiLogo size={42} /><strong>Firdawsi</strong></div>
             <p>Qur’an-guided experiential principles for interfaces that feel peaceful, secure, effortless, and grounded.</p>
             <a href="https://firdawsi.org" rel="noreferrer">firdawsi.org</a>
             <a href={GITHUB_URL} rel="noreferrer" target="_blank">GitHub</a>

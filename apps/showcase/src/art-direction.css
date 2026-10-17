@@ -160,3 +160,9 @@
 .app [hidden] { display: none !important; }
 .app main[data-page]:not([data-page="overview"]) { padding-top: 72px; }
 @media(max-width:680px) { .app main[data-page]:not([data-page="overview"]) { padding-top: 64px; } }
+
+/* Approved folded-ribbon emblem; retain the paired bilingual wordmark. */
+.firdawsi-logo { display: block; flex: 0 0 auto; object-fit: contain; }
+@media (forced-colors: active) {
+  .firdawsi-logo { background: white; border-radius: 4px; }
+}
