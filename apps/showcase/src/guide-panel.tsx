@@ -146,14 +146,6 @@ export function GuidePanel({
 }) {
   return (
     <aside id="guide-panel" className={`guide-panel${mobileOpen ? " guide-panel--open" : ""}`} aria-label="Site guide">
-      <div className="guide-panel__brand">
-        <KhatamMark size={36} />
-        <div>
-          <strong>Firdawsi</strong>
-          <span lang="ar" dir="rtl">فردوسي</span>
-        </div>
-      </div>
-
       <nav className="guide-panel__nav" aria-label="Showcase sections">
         {guideNavGroups.map((group) => (
           <div className="guide-panel__group" key={group.label}>
