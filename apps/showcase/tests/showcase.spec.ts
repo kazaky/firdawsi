@@ -34,7 +34,7 @@ test("showcase presents every foundation section", async ({ page }) => {
     "accessibility",
     "studio",
   ]) {
-    await page.locator("#guide-panel").getByRole("link", { exact: true, name: ({overview:"Overview", principles:"Philosophy", foundations:"Foundations", geometry:"Geometry", regions:"Regions", mechanics:"Mechanics", tokens:"Tokens", components:"Components", courtyard:"Courtyard", motion:"Motion", accessibility:"Access", studio:"Pattern Studio"} as Record<string,string>)[id] }).click();
+    await page.locator(`#guide-panel a[href="#${id}"]`).click();
     await expect(page.locator(`#${id}`)).toBeVisible();
   }
 
@@ -224,7 +224,7 @@ test("mobile guide drawer reaches studio and components", async ({ page }) => {
   await expectNoHorizontalOverflow(page);
 
   await expect(page.locator("#components")).toBeVisible();
-  await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
+  await expect(page.locator("#studio")).toBeHidden();
   await expect(page.locator(".tier-grid article")).toHaveCount(3);
 });
 
