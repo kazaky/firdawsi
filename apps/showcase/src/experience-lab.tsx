@@ -499,17 +499,17 @@ export function ExperienceLab({ language }: { language: Language }) {
       </div>
       <div className="experience-connections">
         <span>
-          {t("Capture with ease", "إضافة بتيسير")} · <SourceLink id="ease" />
+          {t("Capture with ease", "إضافة بتيسير")} · <SourceLink id="ease" language={language} />
         </span>
         <span>
-          {t("Move with dignity", "نقل بكرامة")} · <SourceLink id="dignity" />
+          {t("Move with dignity", "نقل بكرامة")} · <SourceLink id="dignity" language={language} />
         </span>
         <span>
           {t("Recover with trust", "استعادة بأمانة")} ·{" "}
-          <SourceLink id="trust" />
+          <SourceLink id="trust" language={language} />
         </span>
         <span>
-          {t("Report truthfully", "إبلاغ بصدق")} · <SourceLink id="truth" />
+          {t("Report truthfully", "إبلاغ بصدق")} · <SourceLink id="truth" language={language} />
         </span>
       </div>
     </div>

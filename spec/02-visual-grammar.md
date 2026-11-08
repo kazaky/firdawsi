@@ -1,5 +1,7 @@
 # Visual Grammar
 
+The [prior-work review](18-precedents-to-design-system.md) uses Ardalan and Bakhtiar's published account of unity across architectural scales, together with a CEPT University review of the book's space/shape/surface and city-scale structure, as a bounded question for this digital system: do component, screen, and journey form a coherent whole? This is Firdawsi's inference, not a rule extracted from an unread full book. Review space, shape, surface, and hierarchy before adding motif.
+
 ## Purpose
 
 This grammar defines how visual decisions combine. It is intentionally narrower than the historical record: a coherent digital system needs limits, while historical arts are diverse and cannot be reduced to product tokens.

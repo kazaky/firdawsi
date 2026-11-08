@@ -25,6 +25,7 @@ export const profileCopy: Record<RegionalProfile, { place: string; note: string 
 };
 
 export const palettes = {
+  garden: ["#4945a8", "#829acb", "#fff0d9", "#d9a0bb", "#edaa58"],
   cobalt: ["#3451d1", "#7792ff", "#e7eaff", "#bcacfa", "#ffad91"],
   violet: ["#7143ae", "#b69aea", "#f0e6ff", "#5a73e5", "#ffc49a"],
   coral: ["#bd4f45", "#ef8e78", "#fff0e7", "#8f79cb", "#f8bd65"],
@@ -35,6 +36,7 @@ export type PresetCategory = "geometric" | "architectural" | "botanical" | "hybr
 
 export const presetGroups: Record<PresetCategory, readonly PatternPresetId[]> = {
   geometric: [
+    "zellige-pinwheel", "hex-rosette-field", "shamsa-sunburst",
     "khatam-8-star-cross",
     "rosette-12-almond",
     "medallion-16-nested",
@@ -42,13 +44,14 @@ export const presetGroups: Record<PresetCategory, readonly PatternPresetId[]> = 
     "zellige-star-cross",
   ],
   architectural: [
+    "sebka-lattice", "lobed-arch",
     "jali-8-screen",
     "pointed-arch",
     "khatam-corners",
     "geometric-frame",
     "construction-grid",
   ],
-  botanical: ["rumi-medallion-6", "palmette-roundel"],
+  botanical: ["islimi-vine", "rumi-medallion-6", "palmette-roundel"],
   hybrid: ["floral-geometric-field"],
 };
 

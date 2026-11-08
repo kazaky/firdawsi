@@ -17,11 +17,11 @@ import {
   Switch,
   TextField,
 } from "@firdawsi/web";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { categoryForPreset, palettes, presetGroups, type PaletteName, type PresetCategory } from "./showcase-data";
 
-export function PatternStudio() {
+export function PatternStudio({ initialPreset = "rosette-12-almond" }: { initialPreset?: PatternPresetId }) {
   const [presetId, setPresetId] = useState<PatternPresetId>("rosette-12-almond");
   const [symmetry, setSymmetry] = useState<NonNullable<PatternOptions["symmetry"]>>(12);
   const [seed, setSeed] = useState("courtyard-27");
@@ -130,6 +130,8 @@ export function PatternStudio() {
     setBotanicalFill(defaults.botanicalFill ?? true);
     setCrop(defaults.crop ?? "square");
   };
+
+  useEffect(() => { selectPreset(initialPreset); }, [initialPreset]);
 
   const copy = async (format: "svg" | "css" | "json") => {
     const value = format === "svg"

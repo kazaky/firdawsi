@@ -1,0 +1,75 @@
+/* Garden atmosphere: presentation layer, independent of component token contracts. */
+.app { --garden-deep: #123d35; --garden-gold: #d9bc80; }
+[data-theme="light"] .app { --art-paper: #f6f3e9; --art-surface: #fffcf4; --art-ink: #193e35; --art-muted: #59695e; --art-line: #d9ddcb; --firdawsi-color-primary: #235e4d; --firdawsi-color-on-primary: #fffdf2; --firdawsi-color-primary-container: #e3ecdd; --firdawsi-color-on-primary-container: #163e33; }
+.app .topbar { background: color-mix(in srgb, var(--art-paper) 94%, transparent); }
+.app .guide-panel { background: var(--art-paper); }
+.app .guide-panel__group a { transition: background .25s, padding .25s; }
+.app .guide-panel__group a:hover { padding-inline-start: 20px; }
+.app .hero { position: relative; isolation: isolate; overflow: hidden; padding-top: 76px; gap: 28px; background: radial-gradient(ellipse at 90% 25%, #a7bd8d22, transparent 55%), var(--art-paper); }
+.app .hero h1 { font-size: clamp(64px, 7.6vw, 112px); line-height: 1.04; font-weight: 400; }
+.app .hero h1 span { font-weight: 400; }
+.app .hero-edition { letter-spacing: .16em; text-transform: uppercase; font-size: 10px; }
+.app .hero-art { border-radius: 0; background: transparent; box-shadow: none; padding: 0; position: relative; align-self: start; }
+.garden-world { width: 100%; max-width: 720px; margin: auto; }
+.garden-world svg { width: 100%; display: block; overflow: visible; }
+.app .hero-art figcaption { color: var(--art-muted); font-size: 10px; letter-spacing: .04em; padding-inline: 9%; }
+.app .hero-statement p { font-size: 14px; }
+.app .hero-actions a:first-child { border-radius: 30px; padding: 17px 24px; box-shadow: 0 8px 24px #143d3515; }
+.app .hero-actions a { transition: transform .25s, box-shadow .25s; }
+.app .hero-actions a:hover { transform: translateY(-3px); box-shadow: 0 10px 30px #143d3525; }
+.app .hero-meta { margin-top: 0; }
+.garden-invitation { padding: 76px clamp(24px,4vw,72px); display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: #143e35; color: #f5ecd6; }
+.garden-invitation .eyebrow { color: #d9bc80; }
+.garden-invitation h2 { font: 400 clamp(30px,3.5vw,48px)/1.35 var(--firdawsi-font-family-display); margin: 20px 0; }
+.garden-paths a { display: flex; align-items: center; gap: 24px; padding: 22px 0; border-bottom: 1px solid #d9bc8038; text-decoration: none; transition: padding .3s; }
+.garden-paths a:hover { padding-inline: 12px; }
+.garden-paths a > span { color: #d9bc80; font-size: 11px; }
+.garden-paths h3 { font: 400 25px var(--firdawsi-font-family-display); margin: 0; }
+.garden-paths p { font-size: 12px; color: #c5d2bb; margin: 4px 0; }
+.garden-paths b { margin-inline-start: auto; font-size: 24px; font-weight: 400; color: #d9bc80; }
+.garden-motion-control { position: fixed; bottom: 14px; inset-inline-end: 16px; z-index: 110; background: var(--art-surface); color: var(--art-ink); border: 1px solid var(--art-line); padding: 9px 14px; border-radius: 24px; font-size: 10px; box-shadow: 0 4px 20px #0001; cursor: pointer; }
+.app .section { background-image: radial-gradient(ellipse at 100% 0, #8aa66d0d, transparent 60%); }
+.app .section-heading h2, .app .philosophy-heading h2 { font-weight: 400; }
+.app .philosophy-manifesto { background: #143e35; color: #f6ecd6; border: 1px solid #c6ae7655; overflow: hidden; border-radius: 160px 160px 12px 12px; }
+.app .philosophy-manifesto__art { background: transparent; min-height: 370px; padding: 20px 20px 0; overflow: hidden; }
+.app .philosophy-manifesto__art::before, .app .philosophy-manifesto__art::after { display: none; }
+.garden-world--compact { max-width: 340px; }
+.app .philosophy-manifesto__words { padding: 48px 36px; }
+.app .philosophy-manifesto__words p { color: #d7ddc9; }
+.app .philosophy-manifesto__words .eyebrow { color: #d9bc80; }
+.app .philosophy-convictions article { border-top: 2px solid #9aa77c; background: linear-gradient(140deg,#78966a10,transparent); padding: 32px; }
+.app .philosophy-principle { border-radius: 4px 4px 28px 4px; transition: border-color .35s, box-shadow .35s; }
+.app .philosophy-principle:hover { border-color: #8b9f75; box-shadow: 0 10px 40px #123d3509; }
+.app .philosophy-number { color: var(--firdawsi-color-primary); }
+.app .geometry-card { overflow: hidden; border-radius: 100px 100px 8px 8px; border: 1px solid var(--art-line); background: var(--art-surface); transition: box-shadow .35s; }
+.app .geometry-card--wide { border-radius: 12px; }
+.app .geometry-card .pattern-preview { transition: transform 1.2s cubic-bezier(.2,.6,.2,1); }
+.app .geometry-card:hover .pattern-preview { transform: scale(1.045); }
+.app .geometry-card__caption { position: relative; background: var(--art-surface); padding: 24px; }
+.app .reference-card { border-radius: 24px 24px 6px 6px; overflow: hidden; }
+.garden-glow { animation: garden-breathe 9s ease-in-out infinite alternate; transform-origin: 350px 280px; }
+.garden-ripple { animation: garden-water 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.garden-firefly { animation: garden-drift 7s ease-in-out infinite alternate; }
+.garden-leaves { animation: garden-sway 12s ease-in-out infinite alternate; transform-origin: 350px 800px; }
+.garden-reveal { opacity: 1; transform: translateY(22px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.garden-arrived { opacity: 1; transform: none; }
+@keyframes garden-breathe { to { opacity: .55; transform: scale(1.08); } }
+@keyframes garden-water { 50% { opacity: .15; transform: scaleX(1.18); } }
+@keyframes garden-drift { to { transform: translate(6px,-18px); opacity: .2; } }
+@keyframes garden-sway { to { transform: rotate(.8deg); } }
+[data-garden-motion="paused"] .app *, [data-garden-motion="paused"] .app *::before, [data-garden-motion="paused"] .app *::after { animation-play-state: paused !important; transition: none !important; }
+[data-garden-motion="paused"] .garden-reveal { opacity: 1; transform: none; }
+[data-theme="high-contrast"] .garden-invitation, [data-theme="high-contrast"] .app .philosophy-manifesto { background: #000; color: #fff; border: 1px solid #fff; }
+@media(min-width: 1450px) { .app .hero-art { max-width: 620px; justify-self: center; } }
+@media(max-width: 1000px) { .app .hero { gap: 24px; } .app .hero h1 { font-size: 68px; } .app .philosophy-manifesto { border-radius: 80px 80px 8px 8px; } }
+@media(max-width: 760px) { .app .hero { grid-template-columns: 1fr; padding-top: 48px; } .app .hero-content { max-width: 560px; } .app .hero h1 { font-size: clamp(64px,13vw,96px); } .app .hero-art { width: 100%; max-width: 490px; justify-self: center; } .garden-invitation { grid-template-columns: 1fr; gap: 20px; padding-block: 50px; } .app .philosophy-manifesto__words { padding: 32px 24px; } .app .geometry-card { border-radius: 60px 60px 8px 8px; } .garden-motion-control { bottom: 8px; font-size: 9px; } }
+@media(prefers-reduced-motion: reduce) { .app *, .app *::before, .app *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .garden-reveal { opacity: 1; transform: none; } .garden-motion-control { display: none; } }
+.app .hero-art { width: 100%; }
+.garden-pattern-prelude { display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 32px; padding: 36px; margin-bottom: 40px; background: #143e35; color: #f5ecd6; border-radius: 8px 80px 8px 8px; overflow: hidden; }
+.garden-pattern-prelude .eyebrow { color: #d9bc80; font-size: 10px; }
+.garden-pattern-prelude h3 { font: 400 clamp(28px,3vw,44px)/1.25 var(--firdawsi-font-family-display); margin: 16px 0; }
+.garden-pattern-prelude p:last-child { color: #d0d9c6; font-size: 13px; line-height: 1.8; max-width: 44ch; }
+.garden-pattern-prelude svg { width: 100%; }
+.garden-rosette { transform-origin: 0 0; animation: garden-turn 90s linear infinite; }
+@keyframes garden-turn { from { transform: translate(300px,130px) rotate(0deg); } to { transform: translate(300px,130px) rotate(360deg); } }
+@media(max-width:760px) { .garden-pattern-prelude { grid-template-columns: 1fr; padding: 28px; gap: 8px; } }

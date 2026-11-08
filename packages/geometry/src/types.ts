@@ -80,6 +80,13 @@ export interface NormalizedOptions {
 }
 
 export const CONSTRUCTION_IDS = [
+  "sebka-lattice-v2",
+  "lobed-arch-v2",
+  "zellige-pinwheel-v2",
+  "hex-rosette-field-v2",
+  "shamsa-sunburst-v2",
+  "islimi-vine-v2",
+
   "orthogonal-grid-v2",
   "radial-grid-v2",
   "khatam-8-v2",
@@ -99,6 +106,13 @@ export const CONSTRUCTION_IDS = [
 export type ConstructionId = (typeof CONSTRUCTION_IDS)[number];
 
 export const PATTERN_PRESET_IDS = [
+  "sebka-lattice",
+  "lobed-arch",
+  "zellige-pinwheel",
+  "hex-rosette-field",
+  "shamsa-sunburst",
+  "islimi-vine",
+
   "construction-grid",
   "khatam-8-star-cross",
   "rosette-12-almond",
@@ -195,6 +209,13 @@ export interface PatternPreset {
 }
 
 export interface PatternPresetSymmetryMap {
+  "sebka-lattice": 2;
+  "lobed-arch": 2;
+  "zellige-pinwheel": 4;
+  "hex-rosette-field": 6;
+  "shamsa-sunburst": 12 | 16;
+  "islimi-vine": 2;
+
   "construction-grid": Symmetry;
   "khatam-8-star-cross": 8;
   "rosette-12-almond": 12;

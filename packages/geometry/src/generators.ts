@@ -1,3 +1,4 @@
+import { drawAtlasConstruction } from "./atlas-constructions.js";
 import {
   almondPetal,
   bounds,
@@ -1944,6 +1945,13 @@ function floralGeometricFieldGeometry(
 }
 
 const CONSTRUCTIONS: Record<ConstructionId, DrawConstruction> = {
+  "sebka-lattice-v2": (o, d) => drawAtlasConstruction("sebka", o, d),
+  "lobed-arch-v2": (o, d) => drawAtlasConstruction("lobed", o, d),
+  "zellige-pinwheel-v2": (o, d) => drawAtlasConstruction("pinwheel", o, d),
+  "hex-rosette-field-v2": (o, d) => drawAtlasConstruction("hexflower", o, d),
+  "shamsa-sunburst-v2": (o, d) => drawAtlasConstruction("shamsa", o, d),
+  "islimi-vine-v2": (o, d) => drawAtlasConstruction("vine", o, d),
+
   "orthogonal-grid-v2": gridGeometry,
   "radial-grid-v2": gridGeometry,
   "khatam-8-v2": khatamGeometry,
@@ -2006,12 +2014,12 @@ function createRecipe(
     layers: geometry.layers,
     topology: {
       ...preset.topology,
-      ...(presetId === "floral-geometric-field"
+      ...(["floral-geometric-field", "shamsa-sunburst"].includes(presetId)
         ? { rotationOrder: options.symmetry }
         : {}),
     },
     review: {
-      geometry: "verified",
+      geometry: ["sebka-lattice", "lobed-arch", "zellige-pinwheel", "hex-rosette-field", "shamsa-sunburst", "islimi-vine"].includes(presetId) ? "research-draft" : "verified",
       cultural: botanical ? "expert-review-pending" : "research-draft",
       limitations: [
         "Independent contemporary vector construction; not an authenticated reconstruction of a specific object.",

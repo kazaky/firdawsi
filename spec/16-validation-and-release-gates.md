@@ -12,7 +12,7 @@ distribution and the previously proposed release/integration phases are deferred
 
 | Phase                             | Implemented evidence                                                                              | Remaining gate                                                                          |
 | --------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Week 1 — Meaning and scope        | Seven principles, linked Qur’an/sahih-hadith sources, context and bounded interpretations         | Qualified religious review; correct any disputed wording                                |
+| Week 1 — Meaning and scope        | Twelve principles, linked Qur’an/sahih-hadith sources, context and bounded interpretations         | Qualified religious review; correct any disputed wording                                |
 | Week 2 — Direction                | Three comparable treatments of the same reference flow                                            | Structured user evaluation and selection of a direction                                 |
 | Week 3 — Foundations and controls | Tokens, six component contracts, native controls, independent Arabic/English guidance             | Manual accessibility and Arabic optical review; stability decision                      |
 | Week 4 — Reference product        | Capture/edit/complete/move/remove/undo, grouped week, failure recovery, legacy-data compatibility | Real-product adoption remains separate; no Misho integration is claimed                 |
@@ -87,6 +87,20 @@ population-level outcomes or spiritual benefit.
 After task completion, compare treatments with the same content and ask neutral
 questions about clarity, effort, identity and preference. Document the chosen
 direction and reasons; do not infer approval from a pleasing screenshot alone.
+
+The [MCUID research review](18-precedents-to-design-system.md) adds a separate
+meaning check for culturally derived icons, terms, and motifs. Before showing
+the intended explanation, ask each participant what they expect the element to
+do, let them try the task, and record both intended and unexpected readings.
+Compare a plain labelled version with the proposed treatment in Arabic and
+English. Retain a functional label and accessible name when the treatment is
+ambiguous. The prior 26-person student sample supplies a reason to ask this
+question, not a pass rate for Firdawsi.
+
+For each study round, log whose feedback changed a component, screen, or
+journey; what revision was made; and whether the revised task was observed
+again. A consultation principle is evidenced by decisions changed through
+participation, not by listing participants alone.
 
 ## Manual review checklist — pending
 

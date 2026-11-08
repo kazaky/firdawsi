@@ -19,8 +19,7 @@ export const guideNavGroups = [
     label: "System",
     items: [
       { id: "pattern-guidance", label: "Pattern guidance", icon: "grid" },
-      { id: "geometry", label: "Geometry", icon: "grid" },
-      { id: "regions", label: "Regions", icon: "map" },
+      { id: "geometry", label: "Geometry & traditions", icon: "grid" },
       { id: "mechanics", label: "Mechanics", icon: "mechanics" },
       { id: "tokens", label: "Tokens", icon: "tokens" },
       { id: "contracts", label: "Component guidance", icon: "blocks" },

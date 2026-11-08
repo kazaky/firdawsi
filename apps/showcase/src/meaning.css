@@ -1,0 +1,132 @@
+/* Chromatic chapters help readers locate ideas without relying on colour alone. */
+[data-theme="light"] .app { --art-paper: #faf6f0; --art-surface: #fffcf8; --art-ink: #302e50; --art-muted: #686276; --art-line: #dfd9e5; --firdawsi-color-primary: #5851a5; --firdawsi-color-on-primary: #fff; --firdawsi-color-primary-container: #ece7f8; --firdawsi-color-on-primary-container: #39326d; }
+.app .hero { background: radial-gradient(ellipse at 95% 18%,#e6b3d44d,transparent 55%),radial-gradient(ellipse at 15% 90%,#f7ca8c33,transparent 50%),var(--art-paper); }
+.app .hero h1 span { color: #a45273; }
+.garden-invitation { background: linear-gradient(125deg,#33345f,#61507d); }
+.garden-paths a:nth-child(1) b,.garden-paths a:nth-child(1)>span { color: #ffd093; }
+.garden-paths a:nth-child(2) b,.garden-paths a:nth-child(2)>span { color: #c8bdff; }
+.garden-paths a:nth-child(3) b,.garden-paths a:nth-child(3)>span { color: #9cdce9; }
+.garden-paths p { color: #e0d9ec; }
+.app .philosophy-manifesto { background: linear-gradient(130deg,#373364,#695277); border-color:#b3a1d0; }
+.app .philosophy-manifesto__words p:last-child { color: #efe4f1; }
+.garden-pattern-prelude { background: linear-gradient(110deg,#383d78,#6f4b78); }
+.garden-pattern-prelude p:last-child { color: #eee1ed; }
+.app .philosophy-convictions article:first-child { background: #efb68419; border-color: #ca8a53; }
+.app .philosophy-convictions article:nth-child(2) { background: #a597d61c; border-color: #9480c3; }
+.app .philosophy-principle { border-inline-start: 4px solid #a48ec8; }
+.app .philosophy-principle:nth-child(4n+2) { border-inline-start-color: #d7996e; }
+.app .philosophy-principle:nth-child(4n+3) { border-inline-start-color: #739dc1; }
+.app .philosophy-principle:nth-child(4n+4) { border-inline-start-color: #c881a3; }
+.meaning-explorer { margin: 12px 0 72px; }
+.meaning-explorer > header { max-width: 680px; margin-bottom: 26px; }
+.meaning-explorer > header h3 { font: 400 clamp(30px,3.3vw,48px)/1.25 var(--firdawsi-font-family-display); margin: 12px 0; }
+.meaning-explorer > header > p:last-child { color: var(--art-muted); font-size: 15px; line-height: 1.8; max-width: 60ch; }
+[data-tone="apricot"] { --meaning-bg:#f9e2c7; --meaning-ink:#85451c; --meaning-soft:#fff7ed; }
+[data-tone="iris"] { --meaning-bg:#e9e0f6; --meaning-ink:#654595; --meaning-soft:#f8f4fd; }
+[data-tone="blue"] { --meaning-bg:#dcecf7; --meaning-ink:#285d88; --meaning-soft:#f3f9fd; }
+[data-tone="rose"] { --meaning-bg:#f4dfE7; --meaning-ink:#963e65; --meaning-soft:#fff4f8; }
+.meaning-choices { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-bottom:22px; }
+.meaning-choices button { display:grid; grid-template-columns:auto 1fr; align-items:center; gap:12px; padding:18px 20px 22px; border:2px solid transparent; background:var(--meaning-bg); color:var(--meaning-ink); border-radius:64px 64px 14px 14px; cursor:pointer; text-align:start; transition:transform .25s,box-shadow .25s; min-width:0; }
+.meaning-choices svg { grid-column:1/-1; width:100%; height:128px; transition:transform .4s; }
+.meaning-choices button:hover svg { transform:translateY(-5px) rotate(3deg); }
+.meaning-choices button[aria-pressed="true"] { border-color:var(--meaning-ink); box-shadow:0 6px 0 var(--meaning-ink); transform:translateY(-4px); }
+.meaning-choices button:focus-visible { outline:3px solid var(--art-ink); outline-offset:5px; }
+.meaning-choices button>span { font-size:11px; opacity:1; }
+.meaning-choices strong { font-size:14px; line-height:1.45; }
+.meaning-detail { display:grid; grid-template-columns:.85fr 1.3fr; border:1px solid var(--meaning-bg); border-radius:20px; overflow:hidden; background:var(--meaning-soft); color:#312d43; }
+.meaning-feeling { background:var(--meaning-bg); color:var(--meaning-ink); padding:40px; display:flex; flex-direction:column; justify-content:space-between; }
+.meaning-feeling h4 { font:400 clamp(28px,3vw,43px)/1.35 var(--firdawsi-font-family-display); margin:18px 0; }
+.meaning-feeling svg { width:100%; height:180px; opacity:.7; }
+.meaning-feeling .eyebrow { color:inherit; font-size:10px; }
+.meaning-steps { padding:32px; }
+.meaning-steps article { display:grid; grid-template-columns:28px 1fr; gap:16px; position:relative; padding-bottom:24px; }
+.meaning-step { width:28px; height:28px; border-radius:50%; display:grid; place-items:center; font-size:10px; color:var(--meaning-ink); background:var(--meaning-bg); }
+.meaning-steps h4 { margin:2px 0 8px; font-size:13px; }
+.meaning-steps p { font-size:14px; line-height:1.75; margin:0 0 8px; }
+.meaning-steps .source-link, .meaning-steps>a { color:var(--meaning-ink); font-size:12px; font-weight:600; }
+.meaning-before { padding:10px 14px; background:#fff9; border:1px dashed #b7aabc; border-radius:8px; margin-top:14px; }
+.meaning-before p { color:#6c6170; }
+.meaning-after { margin-top:8px; padding:12px 14px; border-inline-start:3px solid var(--meaning-ink); background:var(--meaning-bg); border-radius:4px 10px 10px 4px; }
+.meaning-steps small { display:block; font-size:10px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+.meaning-steps .meaning-before p,.meaning-steps .meaning-after p { margin:0; }
+[data-theme="dark"] .meaning-detail { --meaning-soft:#262334; color:#eee9f6; }
+[data-theme="dark"] .meaning-before { background:#ffffff0b; border-color:#82798c; }
+[data-theme="dark"] .meaning-before p { color:#d0c4d9; }
+[data-theme="dark"] .meaning-after { color:#312d43; }
+[data-theme="dark"] .meaning-steps>a,[data-theme="dark"] .meaning-steps .source-link { color:#e1c6ff; }
+[data-theme="high-contrast"] .meaning-detail,[data-theme="high-contrast"] .meaning-feeling,[data-theme="high-contrast"] .meaning-choices button { background:#000; color:#fff; border:2px solid #fff; }
+[data-theme="high-contrast"] .meaning-before,[data-theme="high-contrast"] .meaning-after { background:#000; color:#fff; }
+[data-theme="high-contrast"] .meaning-steps a,[data-theme="high-contrast"] .meaning-before p { color:#fff; }
+@media(max-width:760px) { .meaning-choices { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; } .meaning-choices button { padding:12px 14px 18px; border-radius:40px 40px 12px 12px; } .meaning-choices svg { height:94px; } .meaning-detail { grid-template-columns:1fr; } .meaning-feeling { padding:28px; } .meaning-feeling svg { display:none; } .meaning-steps { padding:24px 18px; } }
+/* Every principle is a reading experience: idea, application, then visible source. */
+.principle-stories { display:grid; gap:48px; }
+.app .principle-story { display:block; padding:0; overflow:hidden; border:1px solid var(--art-line); border-radius:28px; background:var(--art-surface); scroll-margin-top:94px; }
+.principle-story-heading { display:flex; align-items:center; gap:24px; padding:30px 36px; border-bottom:1px solid var(--art-line); }
+.principle-story-index { font:400 42px/1 var(--firdawsi-font-family-display); color:var(--meaning-ink); background:var(--meaning-bg); width:76px; height:76px; border-radius:50% 50% 12px 12px; display:grid; place-items:center; flex-shrink:0; }
+.principle-story-heading .eyebrow { font-size:10px; margin:0 0 9px; }
+.principle-story-heading h3 { font:400 clamp(28px,3vw,42px)/1.3 var(--firdawsi-font-family-display); margin:0; }
+.principle-story-heading h3 span { font-size:24px; margin-inline-start:24px; color:var(--art-muted); }
+.principle-story-scene { display:grid; grid-template-columns:1fr 1fr; gap:32px; padding:38px; background:var(--meaning-bg); color:var(--meaning-ink); align-items:center; }
+.principle-story-scene .eyebrow { color:inherit; font-size:10px; }
+.principle-story-scene h4 { font:400 clamp(28px,3vw,40px)/1.3 var(--firdawsi-font-family-display); max-width:17ch; margin:16px 0 0; }
+.principle-story-scene svg { display:block; width:100%; height:180px; margin-top:10px; }
+.principle-example-label { display:block; font-size:10px; letter-spacing:.06em; margin-bottom:12px; text-align:center; }
+.principle-example-window { background:#fffcf8; color:#3b344b; border:1px solid #fff; border-radius:16px; box-shadow:0 20px 45px #44306016; padding:24px; transform:rotate(-2deg); }
+.principle-story:nth-child(even) .principle-example-window { transform:rotate(2deg); }
+.principle-window-dots { display:flex; gap:5px; margin-bottom:32px; }
+.principle-window-dots i { width:6px; height:6px; background:#c3b9cb; border-radius:100%; }
+.principle-example-window strong { display:block; font-size:21px; line-height:1.5; }
+.principle-example-window p { font-size:13px; line-height:1.8; color:#696075; }
+.principle-example-marks { display:flex; gap:7px; margin-top:26px; }
+.principle-example-marks span { height:9px; border-radius:10px; flex:1; background:var(--meaning-bg); }
+.principle-example-marks span:first-child { background:var(--meaning-ink); }
+.principle-example-marks--1 span,.principle-example-marks--11 span { background:var(--meaning-ink); }
+.principle-example-marks--3 span:nth-child(2) { background:var(--meaning-ink); }
+.principle-story-lesson { display:grid; grid-template-columns:1.35fr 1fr; gap:36px; padding:38px; }
+.principle-story-lesson h4 { font:400 27px/1.45 var(--firdawsi-font-family-display); margin:10px 0; }
+.principle-story-lesson p { font-size:14px; line-height:1.9; margin-bottom:0; }
+.principle-story-lesson aside { align-self:center; padding:20px 24px; background:var(--art-paper); border-radius:14px; }
+.principle-story-lesson aside>span { font-size:11px; font-weight:600; color:var(--art-muted); }
+.principle-scripture { margin:0 38px 38px; border:1px solid var(--art-line); border-radius:16px; padding:30px; }
+.principle-scripture-reference { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+.app .principle-scripture .source-arabic { font-family:var(--firdawsi-font-family-arabic); font-size:clamp(25px,3vw,34px); line-height:2.1; font-weight:400; color:var(--art-ink); text-align:start; margin:30px 0 22px; padding:0; border:0; background:none; }
+.principle-source-meaning { font-size:15px; line-height:1.9; color:var(--art-muted); }
+.principle-context { border-top:1px solid var(--art-line); margin-top:24px; padding-top:20px; }
+.principle-context strong { font-size:11px; color:var(--art-muted); }
+.principle-context p { font-size:13px; line-height:1.85; margin:8px 0 0; }
+.app .source-register { padding:32px; background:var(--art-surface); border-radius:24px; }
+.app .source-register>article { padding:24px 0; }
+.source-register .source-arabic { font-size:24px; line-height:2; }
+.app .philosophy-foundations { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.app .philosophy-foundations article { display:flex; flex-wrap:wrap; padding:26px; border:1px solid var(--art-line); border-radius:24px 24px 8px 8px; background:var(--art-surface); gap:16px; }
+.app .philosophy-foundations article>div { flex:1; min-width:150px; }
+.app .philosophy-foundations article>a { width:100%; }
+.app .philosophy-journey { gap:14px; }
+.app .philosophy-journey article { border:1px solid var(--art-line); border-radius:30px 30px 8px 8px; background:var(--art-surface); padding:24px; }
+[data-theme="high-contrast"] .principle-story-scene,[data-theme="high-contrast"] .principle-example-window { background:#000; color:#fff; border:1px solid #fff; }
+[data-theme="high-contrast"] .principle-example-window p { color:#fff; }
+@media(max-width:760px) { .principle-stories { gap:32px; } .principle-story-heading { padding:24px 20px; gap:16px; } .principle-story-index { width:54px; height:60px; font-size:30px; } .principle-story-heading h3 span { display:block; margin:5px 0 0; font-size:20px; } .principle-story-scene { grid-template-columns:1fr; padding:26px 22px; gap:18px; } .principle-story-scene>div:first-child { display:grid; grid-template-columns:1fr 100px; align-items:center; } .principle-story-scene .eyebrow { grid-column:1/-1; } .principle-story-scene svg { height:100px; } .principle-story-scene h4 { font-size:27px; } .principle-story-lesson { grid-template-columns:1fr; padding:24px 20px; gap:20px; } .principle-scripture { margin:0 16px 20px; padding:22px 18px; } .app .philosophy-foundations { grid-template-columns:1fr; } .app .source-register { padding:22px; } }
+.meaning-source-arabic { font-family:var(--firdawsi-font-family-arabic); font-size:22px; line-height:2; margin:14px 0; }
+.principle-story-heading h3 span::before { content:' / '; white-space:pre; font-family:var(--firdawsi-font-family-display); opacity:.5; }
+.principle-example-marks--4 span { height:30px; border-radius:8px; }
+.principle-example-marks--4 span:last-child { display:none; }
+.principle-example-marks--6 span { width:32px; height:32px; flex:none; border-radius:50%; }
+.principle-example-marks--9 { align-items:end; }
+.principle-example-marks--9 span:nth-child(1) { height:32px; }
+.principle-example-marks--9 span:nth-child(2) { height:48px; }
+.principle-example-marks--9 span:nth-child(3) { height:24px; }
+
+/* A concrete preview makes the application of each source legible. */
+.meaning-steps .meaning-before { border:0; border-inline-start:2px solid #a9a0a7; border-radius:0; padding:4px 0 4px 14px; background:transparent; }
+.meaning-steps .meaning-before small { color:#625968; }
+[data-theme="dark"] .meaning-steps .meaning-before small { color:#d0c4d9; }
+[data-theme="high-contrast"] .meaning-steps .meaning-before small { color:#fff; }
+.meaning-steps .meaning-after { display:grid; grid-template-columns:64px 1fr; align-items:center; gap:18px; min-height:118px; margin-block-start:12px; padding:18px 20px; border:1px solid color-mix(in srgb,var(--meaning-ink) 32%,transparent); border-radius:14px; background:var(--meaning-bg); color:var(--meaning-ink); box-shadow:0 8px 24px #30234010; }
+.meaning-after__mark { display:grid; place-items:center; width:64px; height:64px; border-radius:50%; background:var(--meaning-soft); }
+.meaning-after__mark svg { width:52px; }
+.meaning-steps .meaning-after p { font-family:var(--firdawsi-font-family-display); font-size:clamp(17px,2vw,23px); line-height:1.35; margin:3px 0 14px; }
+.meaning-after__rule { display:flex; gap:4px; }
+.meaning-after__rule i { width:22px; height:3px; border-radius:3px; background:currentColor; opacity:.25; }
+.meaning-after__rule i:first-child { width:40px; opacity:.8; }
+[data-theme="dark"] .meaning-steps .meaning-after { background:var(--meaning-bg); color:var(--meaning-ink); }
+[data-theme="high-contrast"] .meaning-steps .meaning-after,.meaning-after__mark { border:1px solid currentColor; }

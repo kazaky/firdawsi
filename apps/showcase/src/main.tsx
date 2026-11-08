@@ -16,9 +16,12 @@ import "@firdawsi/web/styles.css";
 import "./styles.css";
 import { App } from "./App";
 import "./art-direction.css";
+import "./garden.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
   </StrictMode>,
 );
+
+import "./meaning.css";

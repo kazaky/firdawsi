@@ -1,21 +1,15 @@
-import {
-  PRESETS,
-  applyRegionalProfile,
-  generatePreset,
-  preferredPresetForProfile,
-  type PatternOptions,
-  type PatternPresetId,
-} from "@firdawsi/geometry";
+import { type PatternPresetId } from "@firdawsi/geometry";
+import { GeometryAtlas } from "./geometry-atlas";
 import { TYPE_ROLES, themes, tokenVar, type ThemeName } from "@firdawsi/tokens";
 import {
   Text,
   ThemeProvider,
   type Direction,
 } from "@firdawsi/web";
-import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 
 import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
-import { ArtDirection, GeometryArtwork } from "./art-direction";
+import { ArtDirection } from "./art-direction";
 import { PatternGuidance } from "./adoption-guide";
 import { ComponentContracts } from "./component-contracts";
 import { PhilosophySection } from "./philosophy-section";
@@ -27,15 +21,11 @@ import {
   GuideScrim,
   guideNavGroups,
 } from "./guide-panel";
+import { GardenWorld, GardenAtmosphere, GardenInvitation } from "./garden-world";
 import { KhatamMark } from "./khatam-mark";
 import { FirdawsiLogo } from "./firdawsi-logo";
 import { PatternStudio } from "./pattern-studio";
-import {
-  CurvilinearIsometricPlate,
-  KhatamZelligeReference,
-  ZelligeConstructionPlate,
-} from "./reference-examples";
-import { galleryPresets, palettes, profileCopy, profiles, type PaletteName } from "./showcase-data";
+import { type PaletteName } from "./showcase-data";
 
 const sectionIds = guideNavGroups.flatMap((group) => group.items.map((item) => item.id));
 
@@ -63,35 +53,6 @@ function SectionHeading({
         {children && <p className="section-intro">{children}</p>}
       </div>
     </header>
-  );
-}
-
-function PresetPreview({
-  presetId,
-  options,
-  className = "",
-}: {
-  presetId: PatternPresetId;
-  options?: PatternOptions;
-  className?: string;
-}) {
-  const svg = useMemo(
-    () =>
-      generatePreset(presetId, {
-        width: 720,
-        height: 500,
-        maxNodes: 1400,
-        accessibility: { decorative: true },
-        ...options,
-      }).svg,
-    [options, presetId],
-  );
-  return (
-    <div
-      className={`pattern-preview ${className}`}
-      aria-hidden="true"
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
   );
 }
 
@@ -179,16 +140,19 @@ function TokensSwatches() {
 
 function hashSection(): string {
   const hash = window.location.hash.replace("#", "");
+  if (hash === "regions") return "geometry";
   if (hash === "home" || hash === "") return "overview";
   return sectionIds.includes(hash as (typeof sectionIds)[number]) ? hash : "overview";
 }
 
 export function App() {
-  const [artPalette, setArtPalette] = useState<PaletteName>("cobalt");
+  const [artPalette, setArtPalette] = useState<PaletteName>("garden");
   const [theme, setTheme] = useState<ThemeName>("light");
   const [direction, setDirection] = useState<Direction>("ltr");
   const [active, setActive] = useState(hashSection);
   const [guideOpen, setGuideOpen] = useState(false);
+  const [studioRequest, setStudioRequest] = useState(0);
+  const [studioPreset, setStudioPreset] = useState<PatternPresetId>("rosette-12-almond");
 
   useEffect(() => {
     const onHash = () => setActive(hashSection());
@@ -246,6 +210,7 @@ export function App() {
           onNavigate={() => setGuideOpen(false)}
         />
 
+        <GardenAtmosphere />
         <main id="main" data-page={active}>
           <section hidden={active !== "overview"} id="overview" className="hero">
             <div className="hero-content">
@@ -279,13 +244,15 @@ export function App() {
               </div>
             </div>
             <figure className="hero-art">
-              <GeometryArtwork palette={artPalette} hero />
-              <figcaption><span>Geometry, in full colour</span><span lang="ar" dir="rtl">هندسةٌ تنبض بالألوان</span></figcaption>
+              <GardenWorld />
+              <figcaption><span>A garden of light & quiet</span><span lang="ar" dir="rtl">حديقة من نور وسكينة</span></figcaption>
             </figure>
             <div className="hero-meta">
-              <span>7 principles</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
+              <span>12 principles</span><span>6 stages</span><span>3 themes</span><span>2 directions</span>
             </div>
           </section>
+
+          <div hidden={active !== "overview"}><GardenInvitation /></div>
 
           <div hidden={active !== "art-direction"}><ArtDirection palette={artPalette} onPaletteChange={setArtPalette} /></div>
 
@@ -333,131 +300,7 @@ export function App() {
           <div hidden={active !== "pattern-guidance"}><PatternGuidance /></div>
 
           <section hidden={active !== "geometry"} id="geometry" className="section">
-            <SectionHeading number="03" eyebrow="Construction atlas" title="Exact geometry at working scale">
-              Nine curated studies move from compass divisions and repeat cells to architectural
-              lattices and botanical-geometric fields — plus reference plates from the Firdawsi tradition.
-            </SectionHeading>
-            <div className="geometry-grid">
-              {galleryPresets.map((study, index) => (
-                <article className={study.wide ? "geometry-card geometry-card--wide" : "geometry-card"} key={study.id}>
-                  <PresetPreview
-                    presetId={study.id}
-                    options={{
-                      seed: `atlas-${study.id}`,
-                      unitSize: study.wide ? 110 : 150,
-                      density: 0.46,
-                      stroke: 0.35,
-                      strandWidth: 2.2,
-                      weaveGap: 2.4,
-                      petalDepth: 0.2,
-                      botanicalFill: true,
-                      constructionOverlay: "none",
-                      simplificationTier: "expanded",
-                      crop: PRESETS[study.id].topology.mode === "focal" ? "circle" : "square",
-                      palette: palettes[artPalette],
-                    }}
-                  />
-                  <div className="geometry-card__caption">
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <div><h3>{study.label}</h3><p>{study.note}</p></div>
-                    <code>{study.id}</code>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div className="reference-studies">
-              <header className="reference-studies__intro">
-                <p className="eyebrow">Reference examples</p>
-                <h3>From garden tile to construction plate</h3>
-                <p>
-                  Traditional sources show how color, interlace, and isometric scaffolds turn abstract
-                  geometry into paradisiacal atmosphere — the same grammar Firdawsi encodes as recipes.
-                </p>
-              </header>
-              <div className="reference-grid">
-                <article className="reference-card">
-                  <div className="reference-preview reference-preview--plate">
-                    <ZelligeConstructionPlate />
-                  </div>
-                  <div className="geometry-card__caption">
-                    <span>Ref</span>
-                    <div>
-                      <h3>Zellige construction plate</h3>
-                      <p>
-                        Hexagonal grid and curved strapwork above a courtyard tile field —
-                        the drawn sequence before color is laid.
-                      </p>
-                    </div>
-                    <code>zellige · plate</code>
-                  </div>
-                </article>
-                <article className="reference-card">
-                  <div className="reference-preview reference-preview--plate">
-                    <KhatamZelligeReference />
-                  </div>
-                  <div className="geometry-card__caption">
-                    <span>Ref</span>
-                    <div>
-                      <h3>Khatam · zellige palette</h3>
-                      <p>
-                        Eight-fold star and cross with interlaced straps — the Alhambra courtyard motif
-                        rendered as a multi-role color study.
-                      </p>
-                    </div>
-                    <code>khatam-8 · zellige</code>
-                  </div>
-                </article>
-                <article className="reference-card reference-card--wide">
-                  <div className="reference-preview reference-preview--plate">
-                    <CurvilinearIsometricPlate />
-                  </div>
-                  <div className="geometry-card__caption">
-                    <span>Ref</span>
-                    <div>
-                      <h3>Curvilinear isometric tessellation</h3>
-                      <p>
-                        From a single figure on a triangular grid to a tessellated field embellished with
-                        stars and hexagons — a classic construction sequence.
-                      </p>
-                    </div>
-                    <code>isometric · girih</code>
-                  </div>
-                </article>
-              </div>
-            </div>
-          </section>
-
-          <section hidden={active !== "regions"} id="regions" className="section section--sand">
-            <SectionHeading number="04" eyebrow="Regional profiles" title="One engine, many cadences">
-              Profiles adjust proportion and rhythm while preserving the same API and performance budget.
-            </SectionHeading>
-            <div className="profile-strip" tabIndex={0} role="region" aria-label="Regional profile comparison">
-              {profiles.map((profile, index) => {
-                const presetId = preferredPresetForProfile(profile);
-                const options = applyRegionalProfile({
-                  regionalProfile: profile,
-                  seed: `profile-${profile}`,
-                  stroke: 1.2,
-                  width: 720,
-                  height: 500,
-                  maxNodes: 1400,
-                  simplificationTier: "expanded",
-                  accessibility: { decorative: true },
-                  palette: ["currentColor", "#dda83a", "transparent", "#2f6f6d"],
-                });
-                return (
-                  <article key={profile} data-region={profile} data-preset={presetId}>
-                    <PresetPreview presetId={presetId} options={options} />
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <h3>{profile.replace("-", " ")}</h3>
-                    <small>{profileCopy[profile].place}</small>
-                    <p>{profileCopy[profile].note}</p>
-                    <code data-preset={presetId}>{presetId}</code>
-                  </article>
-                );
-              })}
-            </div>
+            <GeometryAtlas onOpenStudio={(id) => { setStudioPreset(id); setStudioRequest(value => value + 1); window.location.hash = "studio"; }} />
           </section>
 
           <section hidden={active !== "mechanics"} id="mechanics" className="section">
@@ -550,7 +393,7 @@ export function App() {
               Begin with a compass rosette — real construction, not a decorative star — then tune
               only the controls its family supports, compare responsive tiers, and export its recipe.
             </SectionHeading>
-            <PatternStudio />
+            <PatternStudio key={studioRequest} initialPreset={studioPreset} />
           </section>
 
           <footer hidden={active === "overview"} className="footer">

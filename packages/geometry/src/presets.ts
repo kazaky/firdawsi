@@ -10,6 +10,42 @@ const MET_SOURCES = ["SRC-MET-001", "SRC-MET-002", "SRC-MET-003"] as const;
 const BOTANICAL_VISUAL_SOURCES = ["SRC-VIS-PIN-BOARD-001", "SRC-MET-003"] as const;
 
 export const PRESETS = {
+  "sebka-lattice": {
+    id: "sebka-lattice", label: "Sebka lozenge lattice", kind: "screen", constructionId: "sebka-lattice-v2",
+    description: "A curvilinear lozenge net inspired by Andalusi architectural surfaces.", sourceIds: ["SRC-MET-003", "SRC-ALH-SEBKA"],
+    defaults: { symmetry: 2, density: .6, unitSize: 110, stroke: 1.2, interlace: false },
+    validSymmetries: [2], topology: { mode: "periodic", rotationOrder: 2, interlace: "none", edgeContinuity: "repeat-matched", prototiles: ["curved-lozenge", "almond"] },
+  },
+  "lobed-arch": {
+    id: "lobed-arch", label: "Seven-lobed arch", kind: "arch", constructionId: "lobed-arch-v2",
+    description: "A contemporary seven-lobed architectural study with nested outlines.", sourceIds: ["SRC-MET-003"],
+    defaults: { symmetry: 2, density: .6, unitSize: 110, stroke: 1.2, interlace: false },
+    validSymmetries: [2], topology: { mode: "bounded", rotationOrder: 1, interlace: "none", edgeContinuity: "frame-terminated", prototiles: ["lobed-arch", "nested-contour"] },
+  },
+  "zellige-pinwheel": {
+    id: "zellige-pinwheel", label: "Zellige pinwheel", kind: "zellige", constructionId: "zellige-pinwheel-v2",
+    description: "Four rotating kite modules with a central diamond, composed as a square tile study.", sourceIds: ["SRC-MET-003"],
+    defaults: { symmetry: 4, density: .6, unitSize: 110, stroke: 1.2, interlace: false },
+    validSymmetries: [4], topology: { mode: "periodic", rotationOrder: 4, interlace: "none", edgeContinuity: "repeat-matched", prototiles: ["kite", "diamond"] },
+  },
+  "hex-rosette-field": {
+    id: "hex-rosette-field", label: "Six-fold rosette field", kind: "rosette", constructionId: "hex-rosette-field-v2",
+    description: "A triangular lattice of six-petal rosettes with a rectangular repeat cell.", sourceIds: ["SRC-MET-003"],
+    defaults: { symmetry: 6, density: .6, unitSize: 110, stroke: 1.2, interlace: false },
+    validSymmetries: [6], topology: { mode: "periodic", rotationOrder: 6, interlace: "none", edgeContinuity: "repeat-matched", prototiles: ["almond-petal", "six-fold-rosette"] },
+  },
+  "shamsa-sunburst": {
+    id: "shamsa-sunburst", label: "Shamsa sunburst", kind: "rosette", constructionId: "shamsa-sunburst-v2",
+    description: "A contemporary illuminated medallion of layered petals, rays, and a star core.", sourceIds: ["SRC-MET-003"],
+    defaults: { symmetry: 12, density: .6, unitSize: 110, stroke: 1.2, interlace: false },
+    validSymmetries: [12, 16], topology: { mode: "focal", rotationOrder: 12, interlace: "none", edgeContinuity: "frame-terminated", prototiles: ["radial-petal", "ray", "star"] },
+  },
+  "islimi-vine": {
+    id: "islimi-vine", label: "Islimi vine study", kind: "arabesque", constructionId: "islimi-vine-v2",
+    description: "A scrolling vine with paired leaves, inspired by the shared vegetal language of Islamic ornament.", sourceIds: ["SRC-MET-003"],
+    defaults: { symmetry: 2, density: .6, unitSize: 110, stroke: 1.2, interlace: false },
+    validSymmetries: [2], topology: { mode: "periodic", rotationOrder: 2, interlace: "none", edgeContinuity: "repeat-matched", prototiles: ["s-scroll", "paired-leaf"] },
+  },
   "construction-grid": {
     id: "construction-grid",
     label: "Construction grid",

@@ -133,6 +133,38 @@ Production motifs require at least one A-level object/source record plus relevan
 - **Use:** supports a carefully scoped Mughal profile distinction between flowering-plant/vase compositions and geometry.
 - **Safeguard:** funerary association, uncertain production details, and collection history must remain visible; do not copy the panel or call all vase-and-flower designs Mughal.
 
+## Design-method precedents reviewed 18 October 2026
+
+These sources support claims about their authors' methods and stated findings. Their presence in this registry does not validate Firdawsi's religious interpretations or license reuse of book images and interface artwork. The fuller application is in [Prior work to design practice](18-precedents-to-design-system.md).
+
+### SRC-MCUID-2014 — Original prototype abstract
+
+- **Record:** [Nasruddin and Hussin, *Muslim Centred user interface design prototype*](https://ir.uitm.edu.my/id/eprint/70450/), UiTM institutional repository, 2014.
+- **Evidence:** institutional metadata and exposition abstract; no detailed results in that record.
+- **Supports:** the Culture-Centred Design adaptation, designer/user filters, mosque and icon metaphors, and the authors' statement that they evaluated the prototype with students.
+- **Use:** precedent for treating intended cultural meaning as a question to research with users.
+
+### SRC-MCUID-2022 — Framework and icon-recognition study
+
+- **Publication:** [Nasruddin et al., *Muslim Centered User Interface Design (MCUID) Framework and MCUID Prototype*](https://www.istes.org/seeder/books/files/70a06283965f27a3f824dac257f774fc.pdf), ICRES 2022 proceedings, pp. 170–180.
+- **Evidence:** accessible full conference paper from the research group. It reports 26 student participants in closed card sorting; 17 selected the intended Start association for one tested icon, and 9 selected other actions.
+- **Supports:** a designer–user–product framework and the existence of divergent interpretations within its sample.
+- **Limit:** one reported icon and a narrow student sample; no universal icon standard or Firdawsi validation follows from it.
+
+### SRC-RIASAT-2024 — Author's design-thinking essay
+
+- **Article:** [Riasat Islam, *Design Thinking from an Islamic Perspective*](https://www.riasatislam.com/blog/design-thinking/), 2024.
+- **Evidence:** original author essay, not a controlled UX study or religious ruling.
+- **Supports:** that the author proposes empathy, purposeful ideation, iteration, consultation, and ethical responsibility as five process headings.
+- **Limit:** independently inspect Qur'anic context and hadith status before using a passage in Firdawsi's source register.
+
+### SRC-ARDALAN-1973 — Architectural theory book
+
+- **Book record:** [Nader Ardalan and Laleh Bakhtiar, *The Sense of Unity*](https://books.google.com/books?id=oMDVV5JnbxkC), University of Chicago Press, 1973; [publisher description](https://books.google.com/books/about/The_Sense_of_Unity.html?id=g7A3jwEACAAJ).
+- **Evidence:** bibliographic record, visible contents headings, publisher description, and a [CEPT University library review](https://cept.ac.in/UserFiles/File/03%20CEPT%20University%202016/02%20-%20News/10%20-%20Oct/CEPT-bookrev-PRINT-1.pdf) describing the book's three-part structure; full text not reviewed.
+- **Supports:** an authorial inquiry into unity and relationships across scales in Persian architecture through a Sufi lens.
+- **Limit:** digital component rules and a comprehensive inventory of the book's principles cannot be attributed to it from this material.
+
 ## Rights and use
 
 - A publicly accessible record is not a reproduction license.
@@ -204,3 +236,11 @@ Examples:
 - Record disagreements and changed attributions.
 - Profile review must include sources from scholars, institutions, and practitioners connected to the relevant regions; this initial registry is a baseline, not a complete or sufficiently representative canon.
 
+
+### SRC-ALH-SEBKA — Alhambra Museum sebka reference
+
+- Source: Patronato de la Alhambra y Generalife, [Paño de sebka en relieve](https://www.alhambra-patronato.es/sebka-en-relieve).
+- Checked: 2026-10-18.
+- Supports: sebka as an architectural decorative vocabulary, with curving ceramic relief patterns documented in the museum collection.
+- Application: the atlas's `sebka-lattice` is an original parametric lozenge study. It is not a traced reconstruction of the cited object.
+- The new atlas constructions remain `research-draft` in geometry and cultural metadata. The six regional collection groupings are interpretive, not claims of exclusive origin. General geometric and vegetal context is linked to The Met's essays in the atlas.

@@ -155,6 +155,13 @@ describe("geometry generators", () => {
 });
 
 const GOLDEN_HASHES = {
+  "sebka-lattice": "8e7221f9acc5fc1d",
+  "lobed-arch": "02af1b9d421b5ed8",
+  "zellige-pinwheel": "eac8b431c6392deb",
+  "hex-rosette-field": "384339eb1827bd86",
+  "shamsa-sunburst": "417c156e36f5cc16",
+  "islimi-vine": "9f994e0f89ce566f",
+
   "construction-grid": "45e6400cf2e7d876",
   "khatam-8-star-cross": "7fa32634c0de856a",
   "rosette-12-almond": "bc0b19cadf506f0f",

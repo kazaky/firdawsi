@@ -22,7 +22,7 @@ This specification governs design intent and cross-platform behavior. It does no
 10. [Sources and provenance registry](10-sources-and-provenance.md) — authoritative references, evidence levels, object records, and source logging.
 11. [Qur’an-guided experience and interaction](11-quranic-experience-and-interaction.md) — source hierarchy, non-claims, experiential laws, and the six-stage interaction cycle.
 
-12. [Meaning to product](12-meaning-to-product.md) — seven grounded principles, source context, foundations, and the interactive experience lab.
+12. [Meaning to product](12-meaning-to-product.md) — twelve grounded principles, source context, foundations, and the interactive experience lab.
 
 13. [Component guidance](13-component-guidance.md) — religious connections, observable contracts, and working component-state examples.
 
@@ -31,6 +31,10 @@ This specification governs design intent and cross-platform behavior. It does no
 15. [Reference task lifecycle](15-reference-task-lifecycle.md) — editable tasks, completion, grouped weeks, reversible removal, and persistence recovery.
 
 16. [Validation and release gates](16-validation-and-release-gates.md) — week-phase status, automated evidence, user-study protocol, and pending human reviews.
+
+17. [Art direction](17-art-direction.md) — visual direction and application examples.
+
+18. [Prior work to design practice](18-precedents-to-design-system.md) — source-by-source research, evidence limits, and Firdawsi's philosophy and component applications.
 
 ## Normative language
 

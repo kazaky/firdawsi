@@ -50,9 +50,9 @@ export function ArtDirection({ palette, onPaletteChange }: {
       <div className="art-editorial">
         <span className="art-arabic" lang="ar" dir="rtl">تناسقٌ يصنع الهويّة</span>
         <h3>Precise in structure.<br />Alive in colour.</h3>
-        <p>Stars and their complementary crosses share every edge. Facets bring light into the repeat; cobalt, violet and coral give it different expressions.</p>
+        <p>Stars and their complementary crosses share every edge. Facets bring light into the repeat; garden greens, cobalt, violet and coral give it different expressions.</p>
         <fieldset className="art-palettes"><legend>Explore the colour study</legend>
-          {([["cobalt", "Cobalt"], ["violet", "Violet"], ["coral", "Coral"]] as const).map(([id, label]) =>
+          {([["garden", "Garden"], ["cobalt", "Cobalt"], ["violet", "Violet"], ["coral", "Coral"]] as const).map(([id, label]) =>
             <label key={id} style={{ "--pigment": palettes[id][0] } as CSSProperties}>
               <input type="radio" name="art-palette" value={id} checked={palette === id} onChange={() => onPaletteChange(id)} />
               <span className="art-pigment" aria-hidden="true" />{label}

@@ -4,6 +4,18 @@
 
 The system translates durable compositional ideas—proportion, rhythm, continuity, balance, modular construction, and skilled restraint—into contemporary interface behavior. It does not turn historical ornament into a visual theme pack.
 
+Its starting point is the person using the interface. Welcome, rest, permission, fair dealing, consultation, tranquillity, nearness, ease, and beauty are qualities for reflection; care becomes real when the interface receives people clearly, lets them pause and resume, asks before accessing private capabilities or data, discloses the full exchange before commitment, involves affected people in design decisions, preserves their work, explains its state, respects choice, and settles clearly. Visual expression should make that care legible in both Arabic and English. The source-to-behaviour chain and its religious limits are documented in [Meaning to product](12-meaning-to-product.md).
+
+Five commitments guide this translation:
+
+1. **Care is practical.** A calm appearance cannot compensate for lost work, hidden consequences, or uncertain status.
+2. **Beauty is relational.** Proportion, rhythm, language, and space create coherence; visible pattern serves that order where useful.
+3. **Interpretation is accountable.** Name the source and its context, distinguish the design inference, then observe whether the resulting behaviour helps people.
+4. **Meaning is tested with people.** The designer's intended metaphor, action, or cultural signal is a hypothesis until affected people can explain it and use it. Unexpected interpretations are recorded and repaired.
+5. **Consultation changes the work.** Arabic readers, people using assistive technology, and domain experts should review real tasks. The design record names what their feedback changed.
+
+The source-by-source research behind these commitments and their component applications is in [Prior work to design practice](18-precedents-to-design-system.md).
+
 “Islamic” here describes a broad field of arts and design produced across societies where Islam was culturally significant. It does not imply one theology, ethnicity, geography, dynasty, or formal language. Historical works must be named as precisely as evidence allows: place, period or polity, medium, maker/workshop when known, and collection record.
 
 ## Design philosophy

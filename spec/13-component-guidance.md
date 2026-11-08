@@ -19,6 +19,18 @@ These are design interpretations with the contextual limits documented in the
 philosophy source register. Scripture does not prescribe these component APIs or
 technical values. Sacred excerpts stay outside specimen controls and feedback.
 
+## Research-informed checks across the contracts
+
+The [prior-work review](18-precedents-to-design-system.md) adds checks that apply across components:
+
+- **Recognise the action:** for any culturally derived icon or metaphor, ask intended users what they expect it to do before activation. Keep a plain functional label and accessible name. Nasruddin and colleagues' 2022 study found divergent interpretations of a tested icon even within its computer-literate student sample.
+- **Consult across modes:** review the same task with Arabic and English readers, keyboard users, and assistive-technology users. Record what feedback changed; do not infer a shared mental model from one participant.
+- **Audit the exchange:** a button or dialog that commits a purchase must show the total price, renewal, included benefits, and limits before commitment. A permission prompt explains why access is needed and respects refusal.
+- **Preserve coherence:** inspect the component alone, within a screen, and across a complete journey. Spacing and grouping establish hierarchy before optional pattern; decorative scale never replaces action semantics.
+- **Observe recovery:** long forms retain work and allow a suitable return path; status components state pending, success, or failure as observed.
+
+These checks are design-system contracts derived from the cited research and Firdawsi's existing principles. The research does not establish numerical acceptance thresholds for this product.
+
 ## Working specimens
 
 - Button: activation counter; ready, busy, and disabled states; native disabled and

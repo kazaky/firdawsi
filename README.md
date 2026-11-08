@@ -16,7 +16,7 @@ interactive web showcase. It ships no photographs or raster artwork.
 
 ## Philosophy and experience lab
 
-The showcase begins with seven principles, each with a Qur’an or sahih-hadith
+The showcase begins with twelve principles, each with a Qur’an or sahih-hadith
 reference, source context, and an explicitly labelled design interpretation.
 Arabic and English are independently authored. The experience lab demonstrates
 local task capture, editing, completion, grouped weeks, keyboard-accessible day
@@ -24,7 +24,10 @@ changes, save failure, retry, reversible removal, and undo,
 with three visual treatments and optional ornament. Data stays in the browser.
 
 See [the implementation contract](spec/12-meaning-to-product.md) for scope,
-religious connections, and verification.
+religious connections, prior work, and verification.
+The [research synthesis](spec/18-precedents-to-design-system.md) traces the
+earlier interface, design-thinking, and architectural work into Firdawsi's
+philosophy and component decisions.
 
 The component-guidance explorer extends these principles to six control families,
 with bilingual contracts and interactive specimens for validation, keyboard

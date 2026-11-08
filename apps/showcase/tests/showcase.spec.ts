@@ -13,19 +13,18 @@ test("showcase presents every foundation section", async ({ page }) => {
   await expect(page.getByRole("heading", { name: /Gardens of/i })).toBeVisible();
   await expect(page.locator("#overview")).toContainText("A design system for peaceful, secure, effortless interaction");
   await expect(page.locator("#overview")).toContainText("does not depict, reconstruct, or simulate Jannah");
-  await expect(page.locator(".interaction-cycle article")).toHaveCount(6);
-  await expect(page.locator(".interaction-cycle")).toContainText("Sukūn");
-  await expect(page.locator(".interaction-cycle")).toContainText("Salām");
+  await page.locator('#guide-panel a[href="#principles"]').click();
+  await expect(page.locator(".care-journey article")).toHaveCount(6);
+  await expect(page.locator(".care-journey")).toContainText("Sukūn");
+  await expect(page.locator(".care-journey")).toContainText("Salām");
 
   await expect(page.getByRole("link", { name: /View on GitHub/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Star on GitHub/i })).toBeVisible();
 
   for (const id of [
     "overview",
     "principles",
     "foundations",
     "geometry",
-    "regions",
     "mechanics",
     "tokens",
     "components",
@@ -40,16 +39,16 @@ test("showcase presents every foundation section", async ({ page }) => {
 
   await page.goto("/#geometry");
   await expect(page.locator("#geometry img")).toHaveCount(0);
-  await expect(page.locator("#geometry .geometry-card")).toHaveCount(9);
-  await expect(page.locator("#geometry .reference-card")).toHaveCount(3);
+  await expect(page.locator("#geometry .atlas-card")).toHaveCount(16);
+  await expect(page.locator("#geometry .atlas-reference figure")).toHaveCount(3);
   await expect(page.locator("#geometry svg[data-plate='zellige']")).toBeVisible();
   await expect(page.locator("#geometry svg[data-plate='khatam-zellige']")).toBeVisible();
   await expect(page.locator("#geometry svg[data-plate='khatam-zellige'] [data-construction-role]").first()).toBeAttached();
   await expect(page.locator("#geometry")).toContainText("Zellige construction plate");
   await expect(page.locator("#geometry")).toContainText("Khatam · zellige palette");
   await expect(page.locator("#geometry")).toContainText("Curvilinear isometric tessellation");
-  await expect(page.locator("#geometry")).toContainText("Khatam · 8");
-  await expect(page.locator("#geometry")).toContainText("Floral-geometric field");
+  await expect(page.locator("#geometry")).toContainText("Khatam · eight-fold");
+  await expect(page.locator("#geometry")).toContainText("Floral field");
   await page.goto("/#studio");
   await expect(page.locator("#studio .studio-canvas svg")).toBeVisible();
   await expectNoHorizontalOverflow(page);
@@ -77,15 +76,16 @@ test("documentation site exposes mechanics, tokens, and components", async ({ pa
   await expect(page.locator("#components")).toContainText("Open courtyard timetable");
 });
 
-test("regional profiles render visibly distinct presets", async ({ page }) => {
+test("legacy regions link opens the unified atlas with distinct traditions", async ({ page }) => {
   await page.goto("/#regions");
-  const maghrebi = page.locator('#regions article[data-region="maghrebi"]');
-  const ottoman = page.locator('#regions article[data-region="ottoman"]');
-  await expect(maghrebi).toHaveAttribute("data-preset", "zellige-star-cross");
-  await expect(ottoman).toHaveAttribute("data-preset", "rumi-medallion-6");
-  const maghrebiSvg = await maghrebi.locator("svg").evaluate((node) => node.outerHTML);
-  const ottomanSvg = await ottoman.locator("svg").evaluate((node) => node.outerHTML);
-  expect(maghrebiSvg).not.toBe(ottomanSvg);
+  await expect(page.locator("#geometry")).toBeVisible();
+  const filters = page.getByRole("navigation", { name: "Filter by tradition" });
+  await filters.getByRole("button", { name: "Moroccan", exact: true }).click();
+  await expect(page.locator('.atlas-card')).toHaveCount(3);
+  const moroccan = await page.locator('.atlas-feature-svg').innerHTML();
+  await filters.getByRole("button", { name: "Persian", exact: true }).click();
+  await expect(page.locator('.atlas-card')).toHaveCount(5);
+  expect(await page.locator('.atlas-feature-svg').innerHTML()).not.toBe(moroccan);
 });
 
 test("component gallery exposes product chrome primitives", async ({ page }) => {
@@ -231,7 +231,7 @@ test("mobile guide drawer reaches studio and components", async ({ page }) => {
 test("art direction coordinates colour and reveals geometric construction", async ({ page }) => {
   await page.goto("/#art-direction");
   const art = page.locator("#art-direction");
-  const hero = page.locator(".hero-art svg");
+  const hero = art.locator(".geometry-artwork svg");
   const before = await hero.evaluate(node => node.outerHTML);
   await art.getByRole("radio", { name: "Violet", exact: true }).check();
   await expect.poll(() => hero.evaluate(node => node.outerHTML)).not.toBe(before);
@@ -267,7 +267,7 @@ test("home shows only overview and guide navigation supports browser history", a
   await expect(page.locator("#art-direction")).toBeHidden();
   await expect(page.locator("#geometry")).toBeHidden();
   await expect(page.locator("#principles")).toBeHidden();
-  await page.locator("#guide-panel").getByRole("link", {name:"Geometry", exact:true}).click();
+  await page.locator("#guide-panel").getByRole("link", {name:"Geometry & traditions", exact:true}).click();
   await expect(page.locator("#geometry")).toBeVisible();
   await expect(page.locator("#overview")).toBeHidden();
   await page.goBack();

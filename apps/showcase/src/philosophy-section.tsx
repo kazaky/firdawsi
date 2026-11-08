@@ -1,5 +1,9 @@
+import { CareConvictions, CareJourney, CareFoundations } from "./philosophy-compositions";
+import { PrincipleStories } from "./principle-stories";
+import { MeaningExplorer } from "./meaning-explorer";
+import { GardenWorld } from "./garden-world";
 import { useState } from "react";
-import { principles, sources, stages, type Language, type SourceId } from "./philosophy-data";
+import { type Language } from "./philosophy-data";
 import { ExperienceLab } from "./experience-lab";
 import { SourceLink } from "./source-link";
 import "./philosophy.css";
@@ -11,48 +15,40 @@ export function PhilosophySection({ view = "principles" }: { view?: string }) {
     <header className="philosophy-heading">
       <div><p className="eyebrow">01 / {t("The Firdawsi philosophy", "فلسفة فردوسي")}</p>
         <h2>{t("Meaning takes form.", "معنى يتجسّد.")}</h2>
-        <p className="section-intro">{t("Seven principles. A traceable religious connection. A practical promise in every interaction.", "سبعة مبادئ. صلة دينية موثّقة. ووعد عملي في كل تفاعل.")}</p></div>
-      <div className="segmented" aria-label="Philosophy language">
+        <p className="section-intro">{t("What should an interface give back for the attention it asks of us? Firdawsi draws on welcome, rest, permission, fair dealing, consultation, tranquillity, nearness, ease, and beauty to shape experiences that respect people’s work, choices, and time. These values should be felt from the first step through recovery and completion.", "ماذا تقدّم الواجهة للإنسان مقابل انتباهه؟ يستلهم فردوسي الترحيب والراحة والاستئذان والإنصاف والشورى والطمأنينة والقرب والتيسير والجمال ليصمّم تجارب تحترم عمل الناس واختياراتهم ووقتهم. وتظهر هذه القيم منذ الخطوة الأولى، وعند التعثر، وحتى اكتمال المهمة.")}</p></div>
+      <div className="segmented" aria-label={t("Philosophy language", "لغة الفلسفة")}>
         <button type="button" aria-pressed={language === "en"} onClick={() => setLanguage("en")}>English</button>
         <button type="button" lang="ar" aria-pressed={language === "ar"} onClick={() => setLanguage("ar")}>العربية</button>
       </div>
     </header>
-    <div hidden={view === "experience"}><aside className="philosophy-boundary">
-      <strong>{t("Source → meaning → design interpretation → observable behaviour", "المصدر ← المعنى ← الاستلهام التصميمي ← السلوك القابل للملاحظة")}</strong>
-      <p>{t("Qur’anic descriptions of Jannah inspire experiential qualities; Islamic teachings inform our ethics. The interface rules are our design interpretations, not religious prescriptions or depictions of the unseen.", "تلهمنا أوصاف الجنة في القرآن بصفات للتجربة، وتوجّه التعاليم الإسلامية أخلاقنا. قواعد الواجهة اجتهادات تصميمية، وليست أحكامًا دينية أو تصويرًا للغيب.")}</p>
-    </aside>
-    <div className="philosophy-principles">
-      {principles.map((principle, index) => <article key={principle.id} className="philosophy-principle" id={`principle-${principle.id}`}>
-        <div className="philosophy-principle__title"><span className="philosophy-number">{String(index + 1).padStart(2, "0")}</span><h3>{principle.name[language]}</h3><span lang="ar" dir="rtl" className="philosophy-arabic-name">{language === "en" ? principle.name.ar : ""}</span></div>
-        <div className="philosophy-principle__body"><h4>{principle.rule[language]}</h4><p>{principle.example[language]}</p>
-          <p className="philosophy-avoid"><strong>{t("Avoid: ", "تجنّب: ")}</strong>{principle.avoid[language]}</p></div>
-        <div className="philosophy-source"><p lang="ar" dir="rtl" className="source-arabic">{sources[principle.id].arabic}</p>
-          <SourceLink id={principle.id} /><p>{sources[principle.id].meaning[language]}</p>
-          <details><summary>{t("Context & interpretation", "السياق والاستلهام")}</summary><p>{sources[principle.id].context[language]}</p></details>
-        </div>
-      </article>)}
+    <div hidden={view === "experience"}>
+    <MeaningExplorer language={language} />
+    <div className="philosophy-manifesto" aria-label={t("What guides Firdawsi", "ما يوجّه فردوسي")}>
+      <div className="philosophy-manifesto__art" aria-hidden="true"><GardenWorld compact /></div>
+      <div className="philosophy-manifesto__words"><p className="eyebrow">{t("Our point of departure", "نقطة الانطلاق")}</p><h3>{t("Care becomes real in use.", "العناية تظهر في الاستخدام.")}</h3><p>{t("A considerate interface protects what people enter, shows what has happened, and makes the next step clear.", "تحفظ الواجهة المراعية ما أدخله الإنسان، وتوضح ما حدث، وتُبيّن الخطوة التالية.")}</p></div>
     </div>
-    <div className="philosophy-subheading"><p className="eyebrow">{t("Touch & transition", "اللمس والانتقال")}</p><h3>{t("Received gently. Settled clearly.", "استجابة برفق. واستقرار بوضوح.")}</h3><p>{t("Six lenses for evaluating an interaction, not six compulsory animations.", "ست مراحل لتقييم التفاعل، وليست ست حركات إلزامية.")}</p></div>
-    <div className="interaction-cycle">
-      {stages.map((stage, index) => <article key={stage.name} data-stage={stage.name.toLowerCase()}>
-        <span>{String(index + 1).padStart(2, "0")}</span><h3>{language === "en" ? stage.name : stage.ar}</h3><strong>{stage.meaning[language]}</strong><p>{stage.behavior[language]}</p><SourceLink id={stage.source} />
-      </article>)}
+    <CareConvictions language={language} />
+    <div className="philosophy-method">
+      <div className="philosophy-method__heading"><p className="eyebrow">{t("From meaning to action", "من المعنى إلى الفعل")}</p><h3>{t("A source opens a question for design.", "المصدر يفتح سؤالًا للتصميم.")}</h3><p>{t("This example shows how we move from a source to a design decision.", "يوضح هذا المثال كيف ننتقل من المصدر إلى قرار تصميمي.")}</p></div>
+      <div className="philosophy-method__story"><div className="philosophy-method__source"><span className="philosophy-label">{t("Qur’anic guidance / Al-Ahzab 33:70", "توجيه قرآني / الأحزاب ٣٣:٧٠")}</span><blockquote>{t("Say what is right.", "وَقُولُوا قَوْلًا سَدِيدًا")}</blockquote><p>{t("The verse calls believers to speak rightly.", "تدعو الآية المؤمنين إلى القول السديد.")}</p><SourceLink id="truth" language={language} /></div><div className="philosophy-method__translation"><span className="philosophy-label">{t("A question for design", "سؤال للتصميم")}</span><p>{t("How can an interface report a task’s status truthfully?", "كيف تصف الواجهة حالة المهمة بصدق؟")}</p><span className="philosophy-method__connector" aria-hidden="true">↓</span><span className="philosophy-label">{t("Our interpretation", "استلهامنا")}</span><p>{t("Status messages should report what happened, including when saving fails.", "ينبغي أن تصف رسائل الحالة ما حدث فعلًا، وأن توضح تعذّر الحفظ عند وقوعه.")}</p></div><div className="philosophy-method__outcome"><span className="philosophy-label">{t("What a person experiences", "ما يلمسه الإنسان")}</span><div className="outcome-status" aria-label={t("Three honest saving states", "ثلاث حالات صادقة للحفظ")}><span><i aria-hidden="true">✓</i>{t("Saved", "حُفظ")}</span><span><i aria-hidden="true">◌</i>{t("Saving", "جارٍ الحفظ")}</span><span><i aria-hidden="true">↻</i>{t("Couldn’t save", "تعذّر الحفظ")}</span></div><p>{t("Show the actual state. If saving fails, keep the work and offer a clear way to try again.", "اعرض الحالة الفعلية. وإذا تعذّر الحفظ، فاحتفظ بالعمل وقدّم طريقة واضحة لإعادة المحاولة.")}</p></div></div>
     </div>
-    <div className="philosophy-subheading"><p className="eyebrow">{t("Foundations with purpose", "أسس ذات غاية")}</p><h3>{t("Every choice answers a need.", "كل اختيار يخدم حاجة.")}</h3></div>
-    <div className="philosophy-foundations">
-      {([
-        ["Prepared surfaces", "أسطح مهيأة", "Useful defaults and stable places for work.", "إعدادات مفيدة ومواضع عمل مستقرة.", "preparation"],
-        ["Colour & focus", "الألوان والتركيز", "Legible contrast and states beyond colour alone.", "تباين مقروء وحالات لا تعتمد على اللون وحده.", "dignity"],
-        ["Bilingual typography", "خطوط ثنائية اللغة", "Independent optical tuning, shaping, and reading order.", "ضبط بصري وتشكيل وترتيب قراءة لكل لغة.", "language"],
-        ["Geometry & proportion", "الهندسة والتناسب", "Coherent relationships before decorative patterns.", "علاقات متسقة قبل الزخارف.", "beauty"],
-        ["Motion & feedback", "الحركة والتغذية الراجعة", "Acknowledge change gently; preserve reduced-motion access.", "أكّد التغيير برفق، واحفظ الإتاحة عند تقليل الحركة.", "gentleness"],
-        ["Data & recovery", "البيانات والاستعادة", "Protect drafts, name failures, and keep repair nearby.", "احفظ المسودات ووضّح الفشل وقرّب الإصلاح.", "trust"],
-      ] as const).map(([en, ar, copy, arCopy, source]) => <article key={en}><h4>{t(en, ar)}</h4><p>{t(copy, arCopy)}</p><SourceLink id={source}/></article>)}
-    </div>
-    <details className="source-register"><summary>{t("Source register · context and limits", "سجل المصادر · السياق والحدود")}</summary>
-      <p>{t("Meanings are paraphrased. Hadith references are from Sahih al-Bukhari and Sahih Muslim. References checked; design interpretations have not received scholarly endorsement. Numerical timings, accessibility targets, and visual tokens are engineering choices.", "المعاني معروضة بتصرف، والأحاديث من صحيحَي البخاري ومسلم. جرى التحقق من المراجع، ولم تُعتمد الاستلهامات التصميمية من مراجع شرعي. الأزمنة ومعايير الإتاحة والقيم البصرية اختيارات هندسية.")}</p>
-      {Object.entries(sources).map(([id, source]) => <article key={id}><SourceLink id={id as SourceId}/><p>{source.meaning[language]} {source.context[language]}</p></article>)}
-    </details>
+    <aside className="philosophy-boundary"><strong>{t("Where interpretation ends", "حدود الاستلهام")}</strong><p>{t("Qur’anic descriptions of Jannah invite reflection, and Islamic teachings inform our ethics. The interface decisions here are our own design interpretations. They neither depict the unseen nor give religious authority to a colour, layout, or control.", "تدعونا أوصاف الجنة في القرآن إلى التأمل، وتوجّه التعاليم الإسلامية أخلاقنا. أما قرارات الواجهة فهي استلهامات تصميمية من عندنا؛ لا تصوّر الغيب ولا تضفي صفة دينية على لون أو تخطيط أو عنصر تحكّم.")}</p></aside>
+    <section className="philosophy-precedents" aria-labelledby="philosophy-precedents-heading">
+      <div className="philosophy-precedents__intro"><p className="eyebrow">{t("Earlier thinking", "أفكار سبقتنا")}</p><h3 id="philosophy-precedents-heading">{t("Build on the work already done.", "نبني على ما سبقنا.")}</h3><p>{t("These works inform how we research, involve people, and compose a visual language. Each has a different scope; none is presented as an endorsement of Firdawsi’s interpretations.", "تساعدنا هذه الأعمال في البحث وإشراك الناس وبناء لغة بصرية. ولكل عمل نطاقه؛ ولا نقدّم أيًّا منها بوصفه اعتمادًا لاستلهامات فردوسي.")}</p></div>
+      <div className="philosophy-precedents__list">
+        <article><span>01 / {t("Interface research", "بحث الواجهات")}</span><h4>Muslim Centred User Interface Design</h4><p>{t("Nasruddin and colleagues separate the designer's cultural reading, the user's interpretation, and the interface. In their later study, 17 of 26 students linked a tested icon to its intended action; 9 chose another action. We use that result to test metaphors rather than assume their meaning is obvious.", "تفصل نصر الدين وزملاؤها بين فهم المصمم للثقافة، وتفسير المستخدم، والواجهة. في دراستهم اللاحقة، ربط ١٧ من ٢٦ طالبًا رمزًا مختبرًا بالفعل المقصود؛ واختار ٩ فعلًا آخر. لذا نختبر معنى الرموز مع الناس بدل افتراض وضوحها.")}</p><a href="https://www.istes.org/seeder/books/files/70a06283965f27a3f824dac257f774fc.pdf" target="_blank" rel="noopener noreferrer">{t("Read the full 2022 paper ↗", "اقرأ ورقة ٢٠٢٢ كاملة ↗")}</a></article>
+        <article><span>02 / {t("Design process", "عملية التصميم")}</span><h4>{t("Design Thinking from an Islamic Perspective", "التفكير التصميمي من منظور إسلامي")}</h4><p>{t("Riasat Islam connects empathy, purposeful ideas, iteration, consultation, and ethical responsibility with Islamic thought. We use these as process prompts: listen to affected people, prototype, invite critique, and revise. Individual religious claims still need independent review.", "يربط رياست إسلام بين فهم الناس، والأفكار ذات الغاية، والتحسين، والشورى، والمسؤولية الأخلاقية وبين الفكر الإسلامي. نستخدمها أسئلة للعمل: نستمع للناس المعنيين، ونجرب، ونطلب النقد، ونعدّل. وتبقى الإحالات الدينية بحاجة إلى مراجعة مستقلة.")}</p><a href="https://www.riasatislam.com/blog/design-thinking/" target="_blank" rel="noopener noreferrer">{t("Read the article ↗", "اقرأ المقال ↗")}</a></article>
+        <article><span>03 / {t("Architecture", "العمارة")}</span><h4>The Sense of Unity</h4><p>{t("Ardalan and Bakhtiar study relationships among elements of Persian Islamic architecture, from a single unit to an urban setting. A university review describes the book's progression from concepts and forms to city scale. We ask whether parts form a coherent whole; the full book still needs direct review.", "يدرس أردلان وبختيار ترابط عناصر العمارة الإسلامية الفارسية من الوحدة الصغيرة إلى البيئة العمرانية. وتعرض مراجعة جامعية انتقال الكتاب من المفاهيم والأشكال إلى مستوى المدينة. نسأل: هل تصنع الأجزاء كلًّا متسقًا؟ وتبقى قراءة الكتاب كاملًا خطوة لازمة.")}</p><a href="https://books.google.com/books/about/The_Sense_of_Unity.html?id=g7A3jwEACAAJ" target="_blank" rel="noopener noreferrer">{t("View the book record ↗", "اطّلع على سجل الكتاب ↗")}</a></article>
+      </div>
+      <div className="philosophy-precedents__application"><strong>{t("What changes in the system", "ما الذي يتغير في النظام")}</strong><p>{t("We write down a design's intended meaning, test what people think it will do, revise after feedback, and check coherence from component to complete journey. Religious and historical sources remain cited with their context.", "نكتب المعنى المقصود من التصميم، ونختبر ما يتوقع الناس أن يفعله، ونعدّله بعد الملاحظات، ونراجع ترابطه من المكوّن إلى الرحلة كاملة. ونوثّق المصادر الدينية والتاريخية مع سياقها.")}</p></div>
+    </section>
+    <div className="philosophy-subheading philosophy-subheading--principles"><p className="eyebrow">{t("Twelve principles", "اثنا عشر مبدأً")}</p><h3>{t("Principles made visible in use.", "مبادئ تظهر في الاستخدام.")}</h3><p>{t("Each principle connects a cited source with an interpretation and a design behaviour people can observe.", "يربط كل مبدأ مصدرًا موثّقًا باستلهام تصميمي وسلوك يمكن للناس ملاحظته.")}</p></div>
+    <PrincipleStories language={language} />
+    <aside className="philosophy-test"><p className="eyebrow">{t("A practical test", "اختبار عملي")}</p><h3>{t("The experience is the measure.", "التجربة هي المقياس.")}</h3><p>{t("If a calm-looking screen loses a draft, it fails Tranquillity and Ease. If a beautiful screen excludes Arabic readers or keyboard users, it fails Dignity. The principles matter only when the experience lives up to them.", "إذا بدت الواجهة مطمئنة لكنها أضاعت مسودة، فقد أخفقت في الطمأنينة والتيسير. وإذا كانت جميلة لكنها تُقصي قارئ العربية أو مستخدم لوحة المفاتيح، فقد أخفقت في الكرامة. قيمة المبادئ فيما تحققه التجربة.")}</p></aside>
+    <div className="philosophy-subheading"><p className="eyebrow">{t("Touch & transition", "اللمس والانتقال")}</p><h3>{t("From first touch to a clear result.", "من اللمسة الأولى إلى نتيجة واضحة.")}</h3><p>{t("Six qualities to look for across an interaction. They are a guide for evaluation, not a required animation sequence.", "ست صفات ننظر إليها خلال التفاعل. هي دليل للتقييم، وليست تسلسل حركات إلزاميًا.")}</p></div>
+    <CareJourney language={language} />
+    <div className="philosophy-subheading"><p className="eyebrow">{t("Foundations with purpose", "أسس ذات غاية")}</p><h3>{t("Give every choice a purpose.", "اجعل لكل اختيار غاية.")}</h3></div>
+    <CareFoundations language={language} />
     </div><div hidden={view !== "experience"}><ExperienceLab language={language}/></div>
   </section>;
 }
