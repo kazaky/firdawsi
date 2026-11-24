@@ -237,7 +237,7 @@ export function App() {
               </p>
               <div className="hero-actions">
                 <a className="text-link" href="#principles">Explore the philosophy <Arrow /></a>
-                <a className="text-link text-link--quiet" href="#experience">Try the experience ↓</a>
+                <a className="text-link text-link--quiet" href="/foundations/">The visual foundations book →</a>
                 <a className="text-link text-link--github" href={GITHUB_URL} rel="noreferrer" target="_blank">
                   Star on GitHub <Arrow />
                 </a>
