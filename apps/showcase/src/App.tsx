@@ -1,19 +1,14 @@
 import { type PatternPresetId } from "@firdawsi/geometry";
 import { GeometryAtlas } from "./geometry-atlas";
-import { TYPE_ROLES, themes, tokenVar, type ThemeName } from "@firdawsi/tokens";
+import { type ThemeName } from "@firdawsi/tokens";
 import {
-  Text,
   ThemeProvider,
   type Direction,
 } from "@firdawsi/web";
-import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
-import { ComponentAnatomy, ComponentMatrix, MechanicsSection, TokensSection } from "./component-gallery";
 import { ArtDirection } from "./art-direction";
-import { PatternGuidance } from "./adoption-guide";
-import { ComponentContracts } from "./component-contracts";
 import { PhilosophySection } from "./philosophy-section";
-import { CourtyardSection } from "./courtyard-section";
 import {
   GITHUB_URL,
   GuideMenuButton,
@@ -22,7 +17,6 @@ import {
   guideNavGroups,
 } from "./guide-panel";
 import { GardenWorld, GardenAtmosphere, GardenInvitation } from "./garden-world";
-import { KhatamMark } from "./khatam-mark";
 import { FirdawsiLogo } from "./firdawsi-logo";
 import { PatternStudio } from "./pattern-studio";
 import { type PaletteName } from "./showcase-data";
@@ -96,45 +90,6 @@ function ThemeControls({
         ))}
       </div>
     </div>
-  );
-}
-
-function TokensSwatches() {
-  return (
-    <>
-      <div className="type-specimen" data-type-specimen>
-        <p className="type-specimen__note">
-          El Messiri gives Arabic and Latin display a shared character. Qandus remains a licensed Fez reference we do not ship.
-        </p>
-        <div className="type-specimen__pair">
-          <Text role="display-sm">Gardens of light</Text>
-          <Text role="display-sm" lang="ar">حدائق النور</Text>
-        </div>
-        <div className="type-specimen__pair">
-          <Text role="body-md">Body in Noto Sans, optically paired.</Text>
-          <Text role="body-md" lang="ar">النص بالعربية في نوتو سنس عربي.</Text>
-        </div>
-      </div>
-      <table className="docs-table">
-        <caption>Semantic color roles</caption>
-        <thead><tr><th>Role</th><th>Swatch</th><th>Variable</th></tr></thead>
-        <tbody>
-          {["primary", "secondary", "tertiary", "surface-tier-1", "surface-tier-2", "error", "success"].map((role) => (
-            <tr key={role}>
-              <td>{role}</td>
-              <td><span className="docs-swatch" style={{ background: tokenVar(`color.${role}`) }} /></td>
-              <td><code>{tokenVar(`color.${role}`)}</code></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h3>Type roles</h3>
-      <ul className="docs-typelist">
-        {TYPE_ROLES.map((role) => (
-          <li key={role}><Text role={role}>{role} · Gardens of light</Text></li>
-        ))}
-      </ul>
-    </>
   );
 }
 
@@ -256,140 +211,14 @@ export function App() {
 
           <div hidden={active !== "art-direction"}><ArtDirection palette={artPalette} onPaletteChange={setArtPalette} /></div>
 
-          <div hidden={active !== "principles" && active !== "experience"}><PhilosophySection view={active} /></div>
-
-          <section hidden={active !== "foundations"} id="foundations" className="section section--ink">
-            <SectionHeading number="02" eyebrow="Foundations" title="A calibrated material palette">
-              Semantic tokens keep every surface coherent across themes, directions, and products.
-            </SectionHeading>
-            <div className="foundation-layout">
-              <div className="swatch-stack">
-                {[
-                  ["Primary / Cobalt", themes[theme]["color.primary"]],
-                  ["Accent / Amber", themes[theme]["color.accent"]],
-                  ["Surface", themes[theme]["color.surface"]],
-                  ["Text", themes[theme]["color.text"]],
-                ].map(([label, value], index) => (
-                  <div className="swatch" key={label} style={{ "--swatch": value } as CSSProperties}>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{label}</strong>
-                    <code>{value}</code>
-                  </div>
-                ))}
-              </div>
-              <div className="type-specimen">
-                <p className="eyebrow">Multiscript typography</p>
-                <div className="type-line type-line--display">
-                  <span>Measured clarity</span>
-                  <span lang="ar" dir="rtl">وضوحٌ متوازن</span>
-                </div>
-                <div className="type-line">
-                  <p>Plan the next step with calm, legible hierarchy.</p>
-                  <p lang="ar" dir="rtl">خطّط للخطوة التالية بتسلسل واضح وهادئ.</p>
-                </div>
-                <div className="measure-grid">
-                  {[4, 8, 16, 24, 40, 64].map((size) => (
-                    <div key={size}><span style={{ width: size }} />{size}</div>
-                  ))}
-                </div>
-                <code className="token-callout">{tokenVar("font.family.sans")}</code>
-              </div>
-            </div>
-          </section>
-
-          <div hidden={active !== "pattern-guidance"}><PatternGuidance /></div>
+          <div hidden={active !== "principles"}><PhilosophySection /></div>
 
           <section hidden={active !== "geometry"} id="geometry" className="section">
             <GeometryAtlas onOpenStudio={(id) => { setStudioPreset(id); setStudioRequest(value => value + 1); window.location.hash = "studio"; }} />
           </section>
 
-          <section hidden={active !== "mechanics"} id="mechanics" className="section">
-            <SectionHeading number="05" eyebrow="Signature mechanics" title="Six non-decorative identities">
-              Ornament is optional. These six mechanics fire in every component, so the system
-              stays recognizably Firdawsi with decoration turned off.
-            </SectionHeading>
-            <MechanicsSection />
-          </section>
-
-          <section hidden={active !== "tokens"} id="tokens" className="section section--ink">
-            <SectionHeading number="06" eyebrow="Tokens" title="Sebka scale, carved planes, Alberca springs">
-              Type roles, surface tiers, springs, and regional overlays are authorable — not hardcoded CSS.
-            </SectionHeading>
-            <TokensSection swatches={<TokensSwatches />} />
-          </section>
-
-          <section hidden={active !== "components" && active !== "contracts"} id="components" className="section">
-            <SectionHeading number="07" eyebrow="Component gallery" title="Components">
-              Accessible React primitives carry the grammar — arch corners, carved tiers, strapwork
-              focus — without changing expected behavior.
-            </SectionHeading>
-            <div hidden={active !== "contracts"}><ComponentContracts /></div>
-            <div hidden={active !== "components"}><ComponentAnatomy />
-            <ComponentMatrix /></div>
-          </section>
-
-          <section hidden={active !== "courtyard"} id="courtyard" className="section section--courtyard">
-            <SectionHeading number="08" eyebrow="Use" title="Courtyard day desk">
-              A real local-first workflow: prayer context, quick capture, persistent intentions,
-              reversible removal, and peaceful completion—without an account.
-            </SectionHeading>
-            <CourtyardSection />
-          </section>
-
-          <section hidden={active !== "motion"} id="motion" className="section section--motion">
-            <SectionHeading number="09" eyebrow="Interaction" title="From rest to peaceful completion">
-              One causal cycle serves touch, pointer, keyboard, and voice. Motion can disappear;
-              response, continuity, and a stable result cannot.
-            </SectionHeading>
-            <div className="motion-grid">
-              {[
-                ["0", "Sukūn", "Rest · stable default"],
-                ["120", "Dunūw", "Nearness · availability clarifies"],
-                ["120", "Istijābah", "Response · input acknowledged"],
-                ["220", "Jarāyān", "Flow · place is preserved"],
-                ["360", "Istiqrār", "Settling · state stabilizes"],
-                ["220", "Salām", "Peace · result remains visible"],
-              ].map(([duration, title, copy], index) => (
-                <div className="motion-card" key={title} data-stage={title.toLowerCase()}>
-                  <div className={`motion-orbit motion-orbit--${index + 1}`}><KhatamMark size={24} /></div>
-                  <strong>{duration}<small>ms</small></strong>
-                  <h3>{title}</h3><p>{copy}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section hidden={active !== "accessibility"} id="accessibility" className="section">
-            <SectionHeading number="10" eyebrow="Accessibility" title="Access is part of the form">
-              Contrast, focus, direction, language, and motion preferences are design inputs—not post-production checks.
-            </SectionHeading>
-            <div className="access-layout">
-              <div className="access-score">
-                <div>
-                  <span>AA</span>
-                  <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" /><circle className="score-ring" cx="60" cy="60" r="52" /></svg>
-                </div>
-                <p>Target: WCAG 2.2 AA. Automated audits support verification; manual accessibility review remains pending.</p>
-              </div>
-              <div className="access-list">
-                {[
-                  ["Direction aware", "Logical properties and mirrored reading order."],
-                  ["Keyboard complete", "Visible strapwork focus and predictable tab sequence."],
-                  ["Motion considerate", "No essential information depends on animation."],
-                  ["Geometry described", "Decorative SVG stays silent; meaningful SVG is named."],
-                ].map(([title, copy], index) => (
-                  <article key={title}><span>0{index + 1}</span><div><h3>{title}</h3><p>{copy}</p></div><b aria-hidden="true">✓</b></article>
-                ))}
-              </div>
-            </div>
-            <div className="language-pair">
-              <article dir="ltr"><span>English / LTR</span><h3>Your week, in balance.</h3><p>Review priorities and make room for what matters next.</p></article>
-              <article dir="rtl" lang="ar"><span>العربية / من اليمين</span><h3>أسبوعك، بتوازن.</h3><p>راجع أولوياتك واترك مساحة لما هو مهم تالياً.</p></article>
-            </div>
-          </section>
-
           <section hidden={active !== "studio"} id="studio" className="section section--studio">
-            <SectionHeading number="11" eyebrow="Preset-first workshop" title="Pattern Studio">
+            <SectionHeading number="04" eyebrow="Preset-first workshop" title="Pattern Studio">
               Begin with a compass rosette — real construction, not a decorative star — then tune
               only the controls its family supports, compare responsive tiers, and export its recipe.
             </SectionHeading>

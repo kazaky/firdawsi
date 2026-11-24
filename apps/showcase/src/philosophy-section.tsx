@@ -4,11 +4,10 @@ import { MeaningExplorer } from "./meaning-explorer";
 import { GardenWorld } from "./garden-world";
 import { useState } from "react";
 import { type Language } from "./philosophy-data";
-import { ExperienceLab } from "./experience-lab";
 import { SourceLink } from "./source-link";
 import "./philosophy.css";
 
-export function PhilosophySection({ view = "principles" }: { view?: string }) {
+export function PhilosophySection() {
   const [language, setLanguage] = useState<Language>("en");
   const t = (en: string, ar: string) => language === "en" ? en : ar;
   return <section id="principles" className="section philosophy" lang={language} dir={language === "ar" ? "rtl" : "ltr"}>
@@ -21,7 +20,6 @@ export function PhilosophySection({ view = "principles" }: { view?: string }) {
         <button type="button" lang="ar" aria-pressed={language === "ar"} onClick={() => setLanguage("ar")}>العربية</button>
       </div>
     </header>
-    <div hidden={view === "experience"}>
     <article className="return-study" aria-labelledby="return-heading">
       <header>
         <p className="eyebrow">{t("A study in mercy", "تأمّل في الرحمة")}</p>
@@ -68,6 +66,5 @@ export function PhilosophySection({ view = "principles" }: { view?: string }) {
     <CareJourney language={language} />
     <div className="philosophy-subheading"><p className="eyebrow">{t("Foundations with purpose", "أسس ذات غاية")}</p><h3>{t("Give every choice a purpose.", "اجعل لكل اختيار غاية.")}</h3></div>
     <CareFoundations language={language} />
-    </div><div hidden={view !== "experience"}><ExperienceLab language={language}/></div>
   </section>;
 }

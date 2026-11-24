@@ -11,26 +11,6 @@ export function GeometryArtwork({ palette, construction = false, hero = false }:
   </div>;
 }
 
-function InterfaceStudy() {
-  const [selected, setSelected] = useState("Focus");
-  const [complete, setComplete] = useState(false);
-  return <div className="interface-study">
-    <div className="interface-study__intro"><span className="eyebrow">From pattern to interaction</span>
-      <h3>One language.<br />Every detail.</h3><p>The eight-fold centre becomes a selection mark. A softened facet gives controls their silhouette. Colour gathers around the action.</p>
-      <SourceLink id="beauty" /></div>
-    <div className="interface-study__demo">
-      <div className="interface-study__top"><span className="facet-seal" aria-hidden="true">✦</span><span>Make room for intention<br /><span lang="ar" dir="rtl">مساحةٌ للنيّة</span></span><span className="study-status">Interactive study</span></div>
-      <fieldset className="intention-choices"><legend>Choose your rhythm</legend>
-        {["Focus", "Create", "Reflect"].map(label => <label key={label}><input type="radio" name="intention-study" checked={selected === label} onChange={() => { setSelected(label); setComplete(false); }} /><span>{label}</span></label>)}
-      </fieldset>
-      <div className="study-action-row"><div><span className="study-caption">Your intention</span><strong>{selected}, with presence.</strong></div>
-        <button className="study-action" type="button" onClick={() => setComplete(!complete)} aria-pressed={complete}>{complete ? "Begin again" : "Set intention"}<span aria-hidden="true">{complete ? "↺" : "↗"}</span></button></div>
-      <div className="study-progress" role="progressbar" aria-label="Intention set" aria-valuemin={0} aria-valuemax={1} aria-valuenow={complete ? 1 : 0}><span style={{ width: complete ? "100%" : "12%" }} /></div>
-      <p className="study-feedback" role="status">{complete ? `${selected} is your intention. Take one thoughtful step.` : "A small action, a clear response."}</p>
-    </div>
-  </div>;
-}
-
 export function ArtDirection({ palette, onPaletteChange }: {
   palette: PaletteName; onPaletteChange: (palette: PaletteName) => void;
 }) {
@@ -67,6 +47,5 @@ export function ArtDirection({ palette, onPaletteChange }: {
       <article><span>02 / Geometry</span><h3>From edge to whole.</h3><p>Shared boundaries build the repeat. The same measured facets guide controls, selection and composition.</p></article>
       <article><span>03 / Typography</span><h3>Two scripts. One voice.</h3><p>El Messiri carries both Arabic and Latin display. Each script keeps its natural rhythm, with Noto Sans for sustained reading.</p></article>
     </div>
-    <InterfaceStudy />
   </section>;
 }

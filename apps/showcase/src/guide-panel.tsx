@@ -11,32 +11,12 @@ export const guideNavGroups = [
       { id: "overview", label: "Overview", icon: "home" },
       { id: "art-direction", label: "Art direction", icon: "palette" },
       { id: "principles", label: "Philosophy", icon: "star" },
-      { id: "experience", label: "Experience lab", icon: "mechanics" },
-      { id: "foundations", label: "Foundations", icon: "palette" },
     ],
   },
   {
-    label: "System",
+    label: "Patterns",
     items: [
-      { id: "pattern-guidance", label: "Pattern guidance", icon: "grid" },
       { id: "geometry", label: "Geometry & traditions", icon: "grid" },
-      { id: "mechanics", label: "Mechanics", icon: "mechanics" },
-      { id: "tokens", label: "Tokens", icon: "tokens" },
-      { id: "contracts", label: "Component guidance", icon: "blocks" },
-      { id: "components", label: "Components", icon: "blocks" },
-    ],
-  },
-  {
-    label: "Use",
-    items: [
-      { id: "courtyard", label: "Courtyard", icon: "courtyard" },
-    ],
-  },
-  {
-    label: "Craft",
-    items: [
-      { id: "motion", label: "Motion", icon: "motion" },
-      { id: "accessibility", label: "Access", icon: "access" },
       { id: "studio", label: "Pattern Studio", icon: "studio" },
     ],
   },

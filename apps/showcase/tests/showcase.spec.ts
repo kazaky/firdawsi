@@ -23,14 +23,7 @@ test("showcase presents every foundation section", async ({ page }) => {
   for (const id of [
     "overview",
     "principles",
-    "foundations",
     "geometry",
-    "mechanics",
-    "tokens",
-    "components",
-    "courtyard",
-    "motion",
-    "accessibility",
     "studio",
   ]) {
     await page.locator(`#guide-panel a[href="#${id}"]`).click();
@@ -54,28 +47,6 @@ test("showcase presents every foundation section", async ({ page }) => {
   await expectNoHorizontalOverflow(page);
 });
 
-test("documentation site exposes mechanics, tokens, and components", async ({ page }) => {
-  await page.goto("/");
-
-  await page.getByRole("navigation", { name: "Showcase sections" }).getByRole("link", { name: "Mechanics" }).click();
-  await expect(page.getByRole("heading", { name: /signature mechanics/i })).toBeVisible();
-  await expect(page.locator("#mechanics")).toContainText("Sebka");
-  await expect(page.locator("#mechanics")).toContainText("Alberca");
-
-  await page.getByRole("navigation", { name: "Showcase sections" }).getByRole("link", { name: "Tokens" }).click();
-  await expect(page.getByRole("heading", { name: /Token reference/i })).toBeVisible();
-  await expect(page.locator("#tokens")).toContainText("surface-tier-1");
-  await expect(page.locator("#tokens [data-type-specimen]")).toContainText("El Messiri");
-  await expect(page.locator("#tokens [data-type-specimen]")).toContainText("حدائق النور");
-
-  await page.getByRole("navigation", { name: "Showcase sections" }).getByRole("link", { name: "Components" }).click();
-  const primary = page.locator("#button").getByRole("button", { name: "Primary", exact: true });
-  await expect(primary).toBeVisible();
-  await expect(primary).toHaveAttribute("data-shape", "arch");
-  await expect(page.locator("#components .firdawsi-card").first()).toBeVisible();
-  await expect(page.locator("#components")).toContainText("Open courtyard timetable");
-});
-
 test("legacy regions link opens the unified atlas with distinct traditions", async ({ page }) => {
   await page.goto("/#regions");
   await expect(page.locator("#geometry")).toBeVisible();
@@ -88,17 +59,8 @@ test("legacy regions link opens the unified atlas with distinct traditions", asy
   expect(await page.locator('.atlas-feature-svg').innerHTML()).not.toBe(moroccan);
 });
 
-test("component gallery exposes product chrome primitives", async ({ page }) => {
-  await page.goto("/#components");
-  await expect(page.locator("#components .firdawsi-app-header")).toBeVisible();
-  await expect(page.locator("#components .firdawsi-navigation")).toBeVisible();
-  await expect(page.locator("#components .firdawsi-menu")).toBeVisible();
-  await expect(page.locator("#components .firdawsi-atmosphere").first()).toBeVisible();
-  await expect(page.locator("#components [data-atmosphere='courtyard-wash']")).toBeVisible();
-});
-
 test("themes and direction remain interactive", async ({ page }) => {
-  await page.goto("/#components");
+  await page.goto("/#principles");
   await page.getByRole("button", { name: "dark", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 
@@ -107,7 +69,7 @@ test("themes and direction remain interactive", async ({ page }) => {
 
   await page.getByRole("button", { name: "RTL", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
-  await expect(page.locator("#components")).toBeVisible();
+  await expect(page.locator("#principles")).toBeVisible();
   await expectNoHorizontalOverflow(page);
 });
 
@@ -136,7 +98,7 @@ test("studio shows construction and preset-valid controls", async ({ page }) => 
   await straps.uncheck();
   await expect(page.locator("#studio .studio-canvas")).toHaveClass(/studio-layer--hide-straps/);
 
-  await expect(page.locator(".tier-grid article")).toHaveCount(3);
+
   await expect(page.locator(".tier-grid")).toContainText("compact");
   await expect(page.locator(".tier-grid")).toContainText("regular");
   await expect(page.locator(".tier-grid")).toContainText("expanded");
@@ -159,46 +121,7 @@ test("recipe v2 metadata and exports are available", async ({ page }) => {
   await expectNoHorizontalOverflow(page);
 });
 
-test("courtyard timetable composes a local product desk", async ({ page }) => {
-  await page.goto("/#courtyard");
-  const courtyard = page.locator("#courtyard");
-  await expect(courtyard).toBeVisible();
-  await expect(courtyard).toContainText("A schedule, not scripture");
-  await expect(page.locator("#prayer-plaque")).toContainText("الفجر");
-  await expect(page.locator("#prayer-plaque")).toContainText("Granada");
-  await expect(page.locator(".firdawsi-prayer-plaque")).toBeVisible();
-
-  await courtyard.getByLabel("City").selectOption("fez");
-  await expect(page.locator("#prayer-plaque")).toContainText("فاس");
-  await expect(page.locator("#prayer-plaque")).toContainText("Fez");
-
-  await courtyard.getByRole("tab", { name: "Week" }).click();
-  await expect(courtyard.locator(".firdawsi-table")).toContainText("This week in Fez");
-  await expect(courtyard.locator(".firdawsi-table")).toContainText("الفجر");
-  await courtyard.getByRole("tab", { name: "Today" }).click();
-  await expect(page.locator("#prayer-plaque")).toBeVisible();
-
-  await courtyard.getByRole("textbox", { name: "Quick capture" }).fill("Review the roadmap");
-  await courtyard.getByRole("button", { name: "Add intention" }).click();
-  const task = courtyard.getByRole("checkbox", { name: "Review the roadmap" });
-  await expect(task).toBeVisible();
-  await courtyard.getByText("Review the roadmap", { exact: true }).click();
-  await expect(courtyard.getByRole("status")).toContainText("Task settled");
-  await page.reload();
-  await expect(courtyard.getByRole("checkbox", { name: "Review the roadmap" })).toBeChecked();
-
-  await courtyard.getByRole("button", { name: "Remove Review the roadmap" }).click();
-  await expect(courtyard.getByRole("checkbox", { name: "Review the roadmap" })).toHaveCount(0);
-  await courtyard.getByRole("button", { name: "Undo" }).click();
-  await expect(courtyard.getByRole("checkbox", { name: "Review the roadmap" })).toBeChecked();
-
-  await courtyard.getByRole("button", { name: "RTL courtyard" }).click();
-  await expect(courtyard.locator(".firdawsi-theme")).toHaveAttribute("dir", "rtl");
-  await expect(page.locator("html")).not.toHaveAttribute("dir", "rtl");
-  await expectNoHorizontalOverflow(page);
-});
-
-test("mobile guide drawer reaches studio and components", async ({ page }) => {
+test("mobile guide drawer reaches studio and philosophy", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto("/");
   await expectNoHorizontalOverflow(page);
@@ -210,22 +133,14 @@ test("mobile guide drawer reaches studio and components", async ({ page }) => {
   await expect(page.locator("#guide-panel")).not.toHaveClass(/guide-panel--open/);
 
   await page.getByRole("button", { name: "Open guide" }).click();
-  await page.locator("#guide-panel").getByRole("link", { name: "Courtyard", exact: true }).click();
-  await expect(page.locator("#courtyard")).toBeInViewport();
-  await expect(page.locator("#prayer-plaque")).toContainText("الفجر");
-  await expectNoHorizontalOverflow(page);
-
-  await page.getByRole("button", { name: "Open guide" }).click();
-  await page.locator("#guide-panel").getByRole("link", { name: "Components", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Components" })).toBeVisible();
-
+  await page.locator('#guide-panel a[href="#principles"]').click();
   await page.getByRole("button", { name: "RTL", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
   await expectNoHorizontalOverflow(page);
 
-  await expect(page.locator("#components")).toBeVisible();
+  await expect(page.locator("#principles")).toBeVisible();
   await expect(page.locator("#studio")).toBeHidden();
-  await expect(page.locator(".tier-grid article")).toHaveCount(3);
+
 });
 
 test("art direction coordinates colour and reveals geometric construction", async ({ page }) => {
@@ -246,21 +161,6 @@ test("art direction coordinates colour and reveals geometric construction", asyn
 });
 
 
-test("shared type and intention controls keep the new identity functional", async ({ page }) => {
-  await page.goto("/#art-direction");
-  const display = await page.locator("#overview h1").evaluate(node => getComputedStyle(node).fontFamily);
-  expect(display).toContain("El Messiri");
-  expect(display).not.toContain("Cormorant");
-  const study = page.locator(".interface-study");
-  await study.getByRole("radio", { name: "Create", exact: true }).check();
-  await study.getByRole("button", { name: "Set intention" }).click();
-  await expect(study.getByRole("status")).toContainText("Create is your intention");
-  await expect(study.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "1");
-  await study.getByRole("button", { name: "Begin again" }).click();
-  await expect(study.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "0");
-});
-
-
 test("home shows only overview and guide navigation supports browser history", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#overview")).toBeVisible();
@@ -273,4 +173,17 @@ test("home shows only overview and guide navigation supports browser history", a
   await page.goBack();
   await expect(page.locator("#overview")).toBeVisible();
   await expect(page.locator("#geometry")).toBeHidden();
+});
+
+test("the guide contains only the five public sections and retired links open overview", async ({ page }) => {
+  await page.goto("/");
+  const links = page.locator("#guide-panel nav a");
+  expect(await links.evaluateAll(items => items.map(item => item.getAttribute("href")).sort())).toEqual(
+    ["#art-direction", "#geometry", "#overview", "#principles", "#studio"]
+  );
+  for (const id of ["experience", "foundations", "pattern-guidance", "contracts", "components", "courtyard", "mechanics", "tokens", "motion", "accessibility"]) {
+    await page.goto("/#" + id);
+    await expect(page.locator("#overview")).toBeVisible();
+    await expect(page.locator("#" + id)).toHaveCount(0);
+  }
 });
