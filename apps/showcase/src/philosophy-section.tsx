@@ -22,6 +22,25 @@ export function PhilosophySection({ view = "principles" }: { view?: string }) {
       </div>
     </header>
     <div hidden={view === "experience"}>
+    <article className="return-study" aria-labelledby="return-heading">
+      <header>
+        <p className="eyebrow">{t("A study in mercy", "تأمّل في الرحمة")}</p>
+        <h3 id="return-heading">{t("When we return", "حين نعود")}</h3>
+        <p>{t("A planner can count the days since we last opened it. Only we know what those days asked of us.", "يستطيع المخطّط أن يحصي الأيام منذ آخر زيارة. ونحن وحدنا نعرف ما احتاجته تلك الأيام منّا.")}</p>
+      </header>
+      <div className="return-panels">
+        {[
+          ["intention", t("Monday", "الاثنين"), t("An intention takes shape", "بداية النيّة"), t("In Misho, I set aside Thursday to call my sister and finish a drawing.", "أخصّص في ميشو وقتًا يوم الخميس لأتصل بأختي وأُكمل رسمة.")],
+          ["interval", t("Midweek", "منتصف الأسبوع"), t("The space between", "ما بين الموعدين"), t("My child falls ill. I spend two nights by his bed. The drawing stays where I left it.", "يمرض طفلي، فأقضي ليلتين إلى جوار سريره. تبقى الرسمة حيث تركتها.")],
+          ["return", t("Thursday", "الخميس"), t("I choose again", "أختار من جديد"), t("I still want to call my sister. I let the drawing go for this week. Both decisions are mine.", "ما زلت أرغب في الاتصال بأختي. أمّا الرسمة فأتركها جانبًا هذا الأسبوع. كلا القرارين لي.")]
+        ].map(([id, day, title, caption]) => <figure key={id}>
+          <img src={`/return-study/${id}.svg`} alt="" width="360" height="240" />
+          <figcaption><small>{day}</small><h4>{title}</h4><p>{caption}</p></figcaption>
+        </figure>)}
+      </div>
+      <footer><p><strong>{t("The right to return", "حقّ الرجوع إلى ما بدأناه")}</strong> {t("Keep a familiar landmark where someone paused. Give carrying a plan forward and setting it aside equal weight. Ask for no explanation.", "نترك معلمًا مألوفًا حيث توقّف الإنسان، ونمنحه حرية مواصلة خطته أو تركها جانبًا، من غير أن نطلب منه تبرير اختياره.")}</p>
+      <p>{t("Looking at the last panel, what do you feel the planner expects of you?", "حين تتأمّل اللوحة الأخيرة، ماذا تشعر أنّ المخطّط ينتظر منك؟")}</p></footer>
+    </article>
     <MeaningExplorer language={language} />
     <div className="philosophy-manifesto" aria-label={t("What guides Firdawsi", "ما يوجّه فردوسي")}>
       <div className="philosophy-manifesto__art" aria-hidden="true"><GardenWorld compact /></div>

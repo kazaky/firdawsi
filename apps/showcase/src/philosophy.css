@@ -279,3 +279,27 @@
 [data-theme="dark"] .philosophy .philosophy-method__outcome { background:#292538; color:#f8f4fc; border-color:#8c7ca9; }
 [data-theme="high-contrast"] .philosophy-precedents__intro,[data-theme="high-contrast"] .philosophy-precedents__list article,[data-theme="high-contrast"] .philosophy .philosophy-method__outcome { background:#000; color:#fff; border:2px solid #fff; }
 [data-theme="high-contrast"] .outcome-status span { background:#000; color:#fff; border-color:#fff; }
+
+.return-study {
+  background: #fbf7ef;
+  color: #242d47;
+  padding: clamp(1.2rem, 4vw, 4rem);
+  margin-block: 2rem 4rem;
+  border-block: 1px solid #bfb7aa;
+}
+.return-study header { max-width: 58ch; margin-block-end: 2rem; }
+.return-study h3 { font: 500 clamp(2.6rem, 6vw, 5rem)/1.2 Georgia, serif; margin: .25em 0; }
+.return-study p { line-height: 1.7; }
+.return-panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 2rem); }
+.return-panels figure { margin: 0; }
+.return-panels img { display: block; width: 100%; height: auto; }
+.return-panels figcaption { padding-block-start: 1rem; }
+.return-panels small { color: #505c71; }
+.return-panels h4 { font-size: 1.35rem; margin: .35rem 0; }
+.return-study footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #bfb7aa; max-width: 75ch; }
+.return-study footer strong { display: block; }
+.return-study:lang(ar) h3 { font-family: "El Messiri", serif; }
+.return-study:lang(ar) img { transform: scaleX(-1); }
+@media (max-width: 760px) {
+  .return-panels { grid-template-columns: 1fr; gap: 1.5rem; }
+}
